@@ -1,0 +1,17 @@
+<ion-view view-title="People">
+    <ion-content>
+        <ion-list>
+            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="person in people" type="item-text-wrap" href="#/tab/chats/{{person.id}}">
+                <img ng-src="{{person.face}}">
+                <h2>{{person.name}}</h2>
+                <p>{{person.errand}}</p>
+                <p>{{person.returns}}</p>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+
+                <ion-option-button class="button-assertive" ng-click="remove(person)">
+                    Delete
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
