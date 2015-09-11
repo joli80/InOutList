@@ -1,7 +1,5 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function ($scope) { })
-
 .controller('PeopleCtrl', function ($scope, People) {
     $scope.people = People.all();
     //$scope.remove = function(chat) {
@@ -13,8 +11,6 @@ angular.module('starter.controllers', [])
     $scope.person = People.get($stateParams.id);
 })
 
-.controller('AccountCtrl', function ($scope) {
-    $scope.settings = {
-        enableFriends: true
-    };
+.controller('MeCtrl', function ($scope, People) {
+    $scope.person = People.get(0);
 });
