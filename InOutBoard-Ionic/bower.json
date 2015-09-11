@@ -1,0 +1,22 @@
+{
+  "name": "InOutBoard-Ionic",
+  "version": "0.0.0",
+  "homepage": "https://github.com/joli80/InOutList",
+  "authors": [
+    "joli80 <joli80@gmail.com>"
+  ],
+  "moduleType": [
+    "es6"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ionic": "^1.1.0"
+  }
+}
