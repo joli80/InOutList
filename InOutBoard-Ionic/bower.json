@@ -17,7 +17,8 @@
     "tests"
   ],
   "dependencies": {
-    "ionic": "^1.1.0",
-    "angular-gettext": "^2.1.0"
+    "ionic": "~1.1.0",
+    "angular-gettext": "~2.1.0",
+    "adal-angular": "~1.0.5"
   }
 }
