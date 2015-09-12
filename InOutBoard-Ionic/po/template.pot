@@ -1,0 +1,15 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+
+#: www/templates/tab-me.html:1
+#: www/templates/tabs.html:14
+msgid "Me"
+msgstr ""
+
+#: www/templates/tab-people.html:1
+#: www/templates/tabs.html:9
+msgid "People"
+msgstr ""
