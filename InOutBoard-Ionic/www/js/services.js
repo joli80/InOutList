@@ -1,4 +1,4 @@
-angular.module('inoutlist.services', [])
+angular.module('starter.services', [])
 
 .factory('People', function () {
     // Might use a resource here that returns a JSON array
