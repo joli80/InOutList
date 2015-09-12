@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('inoutlist.controllers', [])
 
 .controller('PeopleCtrl', function ($scope, People) {
     $scope.people = People.all();
