@@ -1,0 +1,15 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-ms-adal": {
+            "PACKAGE_NAME": "Inne/ute-tavla"
+        }
+    },
+    "dependent_plugins": {}
+}

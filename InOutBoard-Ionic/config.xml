@@ -96,4 +96,5 @@
       <vs:name>Inne/ute-tavla</vs:name>
     </vs:platformSpecificWidget>
   </vs:platformSpecificValues>
+  <vs:plugin name="cordova-plugin-ms-adal" version="0.6.0" />
 </widget>
