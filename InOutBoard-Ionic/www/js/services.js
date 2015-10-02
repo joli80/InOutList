@@ -1,5 +1,75 @@
 angular.module('inoutlist.services', [])
 
+.factory('Adal', function () {
+    var AuthenticationContext
+
+    //var AuthenticationContext;
+
+    var authority = 'https://login.windows.net/common';
+    var resourceUrl = 'https://graph.windows.net/';
+    var appId = '2f4abeff-eedf-4f1b-a008-d60acd8d0b4e';
+    //var redirectUrl = 'http://localhost:4400/services/aad/redirectTarget.html';
+    var redirectUrl = 'http://AdalSample';
+
+    var tenantName = 'infracontrolcom.onmicrosoft.com';
+    var endpointUrl = resourceUrl + tenantName;
+
+    var authContext;
+
+    return {
+        createContext: function () {
+
+            if (!AuthenticationContext) {
+                AuthenticationContext = Microsoft.ADAL.AuthenticationContext;
+            }
+
+            AuthenticationContext.createAsync(authority)
+            .then(function (context) {
+                authContext = context;
+                console.log("Created authentication context for authority URL: " + context.authority);
+            }, function (err) {
+                console.error(pre(err));
+            });
+        },
+        acquireToken: function () {
+            if (authContext == null) {
+                console.error('Authentication context isn\'t created yet. Create context first');
+                return;
+            }
+
+            authContext.acquireTokenAsync(resourceUrl, appId, redirectUrl)
+                .then(function (authResult) {
+                    console.log('Acquired token successfully: ' + pre(authResult));
+                }, function (err) {
+                    console.error("Failed to acquire token: " + pre(err));
+                });
+        },
+        acquireTokenSilent: function () {
+            if (authContext == null) {
+                console.error('Authentication context isn\'t created yet. Create context first');
+                return;
+            }
+
+            // testUserId parameter is needed if you have > 1 token cache items to avoid "multiple_matching_tokens_detected" error
+            // Note: This is for the test purposes only
+            var testUserId;
+            app.authContext.tokenCache.readItems().then(function (cacheItems) {
+                if (cacheItems.length > 1) {
+                    testUserId = cacheItems[0].userInfo.userId;
+                }
+
+                app.authContext.acquireTokenSilentAsync(resourceUrl, appId, testUserId).then(function (authResult) {
+                    app.log('Acquired token successfully: ' + pre(authResult));
+                }, function (err) {
+                    app.error("Failed to acquire token silently: " + pre(err));
+                });
+            }, function (err) {
+                app.error("Unable to get User ID from token cache. Have you acquired token already? " + pre(err));
+            });
+        },
+    };
+})
+
 .factory('People', function () {
     // Might use a resource here that returns a JSON array
 
