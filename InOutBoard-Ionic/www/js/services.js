@@ -1,7 +1,7 @@
 angular.module('inoutlist.services', [])
 
 .factory('Adal', function () {
-    var AuthenticationContext
+    //var AuthenticationContext
 
     //var AuthenticationContext;
 
@@ -16,14 +16,30 @@ angular.module('inoutlist.services', [])
 
     var authContext;
 
+    function pre(json) {
+        return '<pre>' + JSON.stringify(json, null, 4) + '</pre>';
+    }
+
+    function acquireToken(onSuccess) {
+        if (authContext == null) {
+            console.error('Authentication context isn\'t created yet. Create context first');
+            return;
+        }
+
+        authContext.acquireTokenAsync(resourceUrl, appId, redirectUrl)
+            .then(function (authResult) {
+                console.log('Acquired token successfully: ' + pre(authResult));
+                if (onSuccess)
+                    onSuccess(authResult);
+            }, function (err) {
+                console.error("Failed to acquire token: " + pre(err));
+            });
+    }
+
     return {
         createContext: function () {
 
-            if (!AuthenticationContext) {
-                AuthenticationContext = Microsoft.ADAL.AuthenticationContext;
-            }
-
-            AuthenticationContext.createAsync(authority)
+            Microsoft.ADAL.AuthenticationContext.createAsync(authority)
             .then(function (context) {
                 authContext = context;
                 console.log("Created authentication context for authority URL: " + context.authority);
@@ -31,20 +47,8 @@ angular.module('inoutlist.services', [])
                 console.error(pre(err));
             });
         },
-        acquireToken: function () {
-            if (authContext == null) {
-                console.error('Authentication context isn\'t created yet. Create context first');
-                return;
-            }
-
-            authContext.acquireTokenAsync(resourceUrl, appId, redirectUrl)
-                .then(function (authResult) {
-                    console.log('Acquired token successfully: ' + pre(authResult));
-                }, function (err) {
-                    console.error("Failed to acquire token: " + pre(err));
-                });
-        },
-        acquireTokenSilent: function () {
+        acquireToken: acquireToken,
+        acquireTokenSilent: function (onSuccess, onError) {
             if (authContext == null) {
                 console.error('Authentication context isn\'t created yet. Create context first');
                 return;
@@ -53,18 +57,21 @@ angular.module('inoutlist.services', [])
             // testUserId parameter is needed if you have > 1 token cache items to avoid "multiple_matching_tokens_detected" error
             // Note: This is for the test purposes only
             var testUserId;
-            app.authContext.tokenCache.readItems().then(function (cacheItems) {
+            authContext.tokenCache.readItems().then(function (cacheItems) {
                 if (cacheItems.length > 1) {
                     testUserId = cacheItems[0].userInfo.userId;
                 }
 
-                app.authContext.acquireTokenSilentAsync(resourceUrl, appId, testUserId).then(function (authResult) {
-                    app.log('Acquired token successfully: ' + pre(authResult));
+                authContext.acquireTokenSilentAsync(resourceUrl, appId, testUserId).then(function (authResult) {
+                    console.log('Acquired token successfully: ' + pre(authResult));
+                    if (onSuccess)
+                        onSuccess(authResult);
                 }, function (err) {
-                    app.error("Failed to acquire token silently: " + pre(err));
+                    console.error("Failed to acquire token silently: " + pre(err));
+                    acquireToken(onSuccess);
                 });
             }, function (err) {
-                app.error("Unable to get User ID from token cache. Have you acquired token already? " + pre(err));
+                console.error("Unable to get User ID from token cache. Have you acquired token already? " + pre(err));
             });
         },
     };

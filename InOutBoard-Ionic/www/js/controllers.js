@@ -12,9 +12,11 @@ angular.module('inoutlist.controllers', [])
 })
 
 .controller('MeCtrl', function ($scope, People, Adal) {
-    $scope.person = People.get(0);
-
-    $scope.acquireToken = Adal.acquireToken;
-    //Adal.createContext();
-    //Adal.acquireToken();
+    $scope.person = {};
+    $scope.acquireToken = function () {
+        Adal.acquireTokenSilent(function (result) {
+            $scope.person.name = result.userInfo.displayableId;
+            $scope.$apply();
+        });
+    };
 });
