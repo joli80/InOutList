@@ -1,16 +1,16 @@
 <ion-view view-title="{{'People'|translate}}">
     <ion-content>
         <ion-list>
-            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="person in people" type="item-text-wrap" href="#/tab/people/{{person.objectId}}">
+            <ion-item class="item-avatar item-icon-right" ng-repeat="person in people" type="item-text-wrap" href="#/tab/people/{{person.objectId}}">
                 <img ng-src="{{person.face}}">
                 <h2>{{person.displayName}}</h2>
                 <p>{{person.mobile}}</p>
                 <p>{{person.returns}}</p>
                 <i class="icon ion-chevron-right icon-accessory"></i>
 
-                <ion-option-button class="button-assertive" ng-click="remove(person)">
+                <!--<ion-option-button class="button-assertive" ng-click="remove(person)">
                     Delete
-                </ion-option-button>
+                </ion-option-button>-->
             </ion-item>
         </ion-list>
     </ion-content>

@@ -8,7 +8,21 @@ angular.module('inoutlist.services', [])
         clientId = "f0a67ebb-50d3-4de0-aae1-a44b3ff62773",
         graphApiVersion = "1.6";
 
+    var listeners = {};
+    function callListeners(event, args) {
+        for (key in listeners) {
+            var cb = listeners[key];
+            cb(event, args);
+        }
+    };
+
     return {
+        init: function () {
+            callListeners('initialized');
+        },
+        register: function (callback, id) {
+            listeners[id] = callback;
+        },
         authenticate: function (authCompletedCallback) {
 
             var authContext = new Microsoft.ADAL.AuthenticationContext(authority);
@@ -62,15 +76,16 @@ angular.module('inoutlist.services', [])
     var userId;
     var people = [];
 
-    function getUsers(onSuccess) {
+    Adal.register(function () {
+        getUsers();
+    }, 'People');
+
+    function getUsers() {
         Adal.authenticate(function (result) {
             userId = result.userInfo.userId;
             Adal.getUsers(result, function (users) {
                 people = users.value;
-                if (onSuccess) {
-                    onSuccess(people);
-                }
-
+                callListeners('updated', people);
             });
         });
     }
@@ -84,12 +99,25 @@ angular.module('inoutlist.services', [])
         return null;
     }
 
+    var listeners = {};
+    function callListeners(event, args) {
+        for (key in listeners) {
+            var cb = listeners[key];
+            cb(event, args);
+        }
+    };
+
     return {
-        update: getUsers,
+        getAll: function () {
+            return people;
+        },
         get: getUser,
         getMe: function () {
             return getUser(userId);
-        }
+        },
+        register: function (callback, id) {
+            listeners[id] = callback;
+        },
     };
 
 });

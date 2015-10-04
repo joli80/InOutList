@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('inoutlist', ['ionic', 'inoutlist.controllers', 'inoutlist.services', 'gettext'])
 
-.run(function ($ionicPlatform, gettextCatalog) {
+.run(function ($ionicPlatform, gettextCatalog, Adal) {
     $ionicPlatform.ready(function () {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -18,6 +18,7 @@ angular.module('inoutlist', ['ionic', 'inoutlist.controllers', 'inoutlist.servic
             // org.apache.cordova.statusbar required
             StatusBar.styleLightContent();
         }
+        Adal.init();
 
     });
     gettextCatalog.setCurrentLanguage('sv');
@@ -50,16 +51,15 @@ angular.module('inoutlist', ['ionic', 'inoutlist.controllers', 'inoutlist.servic
             }
         }
     })
-      .state('tab.people-detail', {
-          url: '/people/:id',
-          views: {
-              'tab-people': {
-                  templateUrl: 'templates/people-detail.html',
-                  controller: 'PeopleDetailCtrl'
-              }
-          }
-      })
-
+    .state('tab.people-detail', {
+        url: '/people/:id',
+        views: {
+            'tab-people': {
+                templateUrl: 'templates/people-detail.html',
+                controller: 'PeopleDetailCtrl'
+            }
+        }
+    })
     .state('tab.me', {
         url: '/me',
         views: {

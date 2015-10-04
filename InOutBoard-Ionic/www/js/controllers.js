@@ -2,10 +2,12 @@ angular.module('inoutlist.controllers', [])
 
 .controller('PeopleCtrl', function ($scope, People) {
 
-    People.update(function (people) {
+    People.register(function (event, people) {
         $scope.people = people;
         $scope.$apply();
-    });
+    }, 'PeopleCtrl');
+
+    $scope.people = People.getAll();
 
     //$scope.remove = function(chat) {
     //    People.remove(chat);
@@ -18,9 +20,11 @@ angular.module('inoutlist.controllers', [])
 
 .controller('MeCtrl', function ($scope, People) {
 
-    People.update(function (people) {
+    $scope.person = People.getMe();
+
+    People.register(function () {
         $scope.person = People.getMe();
         $scope.$apply();
-    });
+    }, 'PeopleDetailCtrl');
 
 });
