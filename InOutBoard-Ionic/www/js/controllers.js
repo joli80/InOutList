@@ -1,7 +1,12 @@
 angular.module('inoutlist.controllers', [])
 
 .controller('PeopleCtrl', function ($scope, People) {
-    $scope.people = People.all();
+
+    People.update(function (people) {
+        $scope.people = people;
+        $scope.$apply();
+    });
+
     //$scope.remove = function(chat) {
     //    People.remove(chat);
     //}
