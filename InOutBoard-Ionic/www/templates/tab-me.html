@@ -1,15 +1,13 @@
 <ion-view view-title="{{'Me'|translate}}">
     <ion-content class="padding">
-        <h3>{{person.name}}</h3>
+        <h3>{{person.displayName}}</h3>
         <img ng-src="{{person.face}}" style="width: 64px; height: 64px">
         <p>
-            {{person.errand}}
+            {{person.mobile}}
         </p>
         <p>
             {{person.returns}}
         </p>
-        <ion-button class="button-assertive" ng-click="acquireToken()">
-            Login
-        </ion-button>
+        
     </ion-content>
 </ion-view>

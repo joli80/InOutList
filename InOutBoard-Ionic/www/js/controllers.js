@@ -16,15 +16,11 @@ angular.module('inoutlist.controllers', [])
     $scope.person = People.get($stateParams.id);
 })
 
-.controller('MeCtrl', function ($scope, People, Adal) {
-    $scope.person = {};
-    $scope.acquireToken = function () {
-        Adal.authenticate(function (result) {
-            $scope.person.name = result.userInfo.displayableId;
-            $scope.$apply();
+.controller('MeCtrl', function ($scope, People) {
 
-            Adal.getUsers(result);
+    People.update(function (people) {
+        $scope.person = People.getMe();
+        $scope.$apply();
+    });
 
-        });
-    };
 });

@@ -60,60 +60,36 @@ angular.module('inoutlist.services', [])
     // Might use a resource here that returns a JSON array
 
     var userId;
+    var people = [];
 
     function getUsers(onSuccess) {
         Adal.authenticate(function (result) {
             userId = result.userInfo.userId;
             Adal.getUsers(result, function (users) {
-                //console.log(users);
+                people = users.value;
                 if (onSuccess) {
-                    onSuccess(users.value);
+                    onSuccess(people);
                 }
 
             });
         });
     }
 
-    // Some fake testing data
-    //var people = [{
-    //    id: 0,
-    //    name: 'Johan Lindqvist',
-    //    errand: 'Tjänsteärende',
-    //    returns: 'lunch',
-    //    face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'
-    //}, {
-    //    id: 1,
-    //    name: 'Max Lynx',
-    //    errand: 'Hey, it\'s me',
-    //    face: 'https://avatars3.githubusercontent.com/u/11214?v=3&s=460'
-    //}, {
-    //    id: 2,
-    //    name: 'Andrew Jostlin',
-    //    errand: 'Did you get the ice cream?',
-    //    face: 'https://pbs.twimg.com/profile_images/491274378181488640/Tti0fFVJ.jpeg'
-    //}, {
-    //    id: 3,
-    //    name: 'Adam Bradleyson',
-    //    errand: 'I should buy a boat',
-    //    face: 'https://pbs.twimg.com/profile_images/479090794058379264/84TKj_qa.jpeg'
-    //}, {
-    //    id: 4,
-    //    name: 'Perry Governor',
-    //    errand: 'Look at my mukluks!',
-    //    face: 'https://pbs.twimg.com/profile_images/491995398135767040/ie2Z_V6e.jpeg'
-    //}];
+    function getUser(objectId) {
+        for (var i = 0; i < people.length; i++) {
+            if (people[i].objectId === objectId) {
+                return people[i];
+            }
+        }
+        return null;
+    }
 
-    var people = {
+    return {
         update: getUsers,
-        get: function (id) {
-            //for (var i = 0; i < people.length; i++) {
-            //    if (people[i].id === parseInt(id)) {
-            //        return people[i];
-            //    }
-            //}
-            return null;
+        get: getUser,
+        getMe: function () {
+            return getUser(userId);
         }
     };
 
-    return people;
 });
