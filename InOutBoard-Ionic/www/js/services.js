@@ -3,14 +3,9 @@ angular.module('inoutlist.services', [])
 .factory('Adal', function () {
 
     var authority = "https://login.windows.net/common",
-        redirectUri = "http://AdalSample",
+        redirectUri = "http://InOutList",
         resourceUri = "https://graph.windows.net",
-        clientId = "2f4abeff-eedf-4f1b-a008-d60acd8d0b4e",
-        graphApiVersion = "2013-11-08";
-
-    function pre(json) {
-        return '<pre>' + JSON.stringify(json, null, 4) + '</pre>';
-    }
+        clientId = "f0a67ebb-50d3-4de0-aae1-a44b3ff62773";
 
     return {
         authenticate: function (authCompletedCallback) {
@@ -28,7 +23,7 @@ angular.module('inoutlist.services', [])
                     // We require user credentials so triggers authentication dialog
                     authContext.acquireTokenAsync(resourceUri, clientId, redirectUri)
                     .then(authCompletedCallback, function (err) {
-                        console.error("Failed to authenticate: " + pre(err));
+                        console.error("Failed to authenticate: " + JSON.stringify(err));
                     });
                 });
             });
