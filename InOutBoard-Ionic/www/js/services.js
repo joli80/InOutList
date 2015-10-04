@@ -5,7 +5,8 @@ angular.module('inoutlist.services', [])
     var authority = "https://login.windows.net/common",
         redirectUri = "http://InOutList",
         resourceUri = "https://graph.windows.net",
-        clientId = "f0a67ebb-50d3-4de0-aae1-a44b3ff62773";
+        clientId = "f0a67ebb-50d3-4de0-aae1-a44b3ff62773",
+        graphApiVersion = "2013-11-08";
 
     return {
         authenticate: function (authCompletedCallback) {
@@ -28,6 +29,27 @@ angular.module('inoutlist.services', [])
                 });
             });
 
+        },
+        getUsers: function (authResult, searchText) {
+            var req = new XMLHttpRequest();
+            var url = resourceUri + "/" + authResult.tenantId + "/users?api-version=" + graphApiVersion;
+            // url = searchText ? url + "&$filter=mailNickname eq '" + searchText + "'" : url + "&$top=10";
+
+            req.open("GET", url, true);
+            req.setRequestHeader('Authorization', 'Bearer ' + authResult.accessToken);
+
+            req.onload = function (e) {
+                if (e.target.status >= 200 && e.target.status < 300) {
+                    //app.renderData(JSON.parse(e.target.response));
+                    return;
+                }
+                console.error('Data request failed: ' + e.target.response);
+            };
+            req.onerror = function (e) {
+                console.error('Data request failed: ' + e.error);
+            }
+
+            req.send();
         },
     };
 })

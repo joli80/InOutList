@@ -17,6 +17,9 @@ angular.module('inoutlist.controllers', [])
         Adal.authenticate(function (result) {
             $scope.person.name = result.userInfo.displayableId;
             $scope.$apply();
+
+            Adal.getUsers(result);
+
         });
     };
 });
