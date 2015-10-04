@@ -1,10 +1,10 @@
 <ion-view view-title="{{'People'|translate}}">
     <ion-content>
         <ion-list>
-            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="person in people" type="item-text-wrap" href="#/tab/people/{{person.id}}">
+            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="person in people" type="item-text-wrap" href="#/tab/people/{{person.objectId}}">
                 <img ng-src="{{person.face}}">
-                <h2>{{person.name}}</h2>
-                <p>{{person.errand}}</p>
+                <h2>{{person.displayName}}</h2>
+                <p>{{person.mobile}}</p>
                 <p>{{person.returns}}</p>
                 <i class="icon ion-chevron-right icon-accessory"></i>
 
