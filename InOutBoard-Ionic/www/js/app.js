@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('inoutlist', ['ionic', 'inoutlist.controllers', 'inoutlist.services', 'gettext'])
 
-.run(function ($ionicPlatform, gettextCatalog, Adal) {
+.run(function ($ionicPlatform, gettextCatalog) {
     $ionicPlatform.ready(function () {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -18,8 +18,6 @@ angular.module('inoutlist', ['ionic', 'inoutlist.controllers', 'inoutlist.servic
             // org.apache.cordova.statusbar required
             StatusBar.styleLightContent();
         }
-
-        Adal.createContext();
 
     });
     gettextCatalog.setCurrentLanguage('sv');

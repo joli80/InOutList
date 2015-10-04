@@ -92,10 +92,10 @@
     <splash src="res/screens/wp8/SplashScreenImage.jpg" width="480" height="800" />
   </platform>
   <vs:platformSpecificValues>
-    <vs:platformSpecificWidget platformName="windows" version="0.1.0.0">
+    <vs:platformSpecificWidget platformName="windows" version="0.1.0.0" id="">
       <vs:name>Inne/ute-tavla</vs:name>
     </vs:platformSpecificWidget>
   </vs:platformSpecificValues>
   <vs:plugin name="cordova-plugin-ms-adal" version="0.6.0" />
-    <preference name="android-minSdkVersion" value="14" />
+  <preference name="android-minSdkVersion" value="14" />
 </widget>

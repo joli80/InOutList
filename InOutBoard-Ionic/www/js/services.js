@@ -2,13 +2,11 @@ angular.module('inoutlist.services', [])
 
 .factory('Adal', function () {
 
-    var authority = 'https://login.windows.net/common';
-    var resourceUrl = 'https://graph.windows.net/';
-    var appId = '2f4abeff-eedf-4f1b-a008-d60acd8d0b4e';
-    var redirectUrl = 'http://AdalSample';
-
-    var tenantName = 'infracontrolcom.onmicrosoft.com';
-    var endpointUrl = resourceUrl + tenantName;
+    var authority = "https://login.windows.net/common",
+        redirectUri = "http://AdalSample",
+        resourceUri = "https://graph.windows.net",
+        clientId = "2f4abeff-eedf-4f1b-a008-d60acd8d0b4e",
+        graphApiVersion = "2013-11-08";
 
     var authContext;
 
@@ -16,66 +14,26 @@ angular.module('inoutlist.services', [])
         return '<pre>' + JSON.stringify(json, null, 4) + '</pre>';
     }
 
-    function acquireToken(onSuccess, onError) {
-        if (authContext == null) {
-            console.error('Authentication context isn\'t created yet. Create context first');
-            return;
-        }
-
-        authContext.acquireTokenAsync(resourceUrl, appId, redirectUrl)
-            .then(function (authResult) {
-                console.log('Acquired token successfully: ' + pre(authResult));
-                if (onSuccess) {
-                    onSuccess(authResult);
-                }
-            }, function (err) {
-                console.error("Failed to acquire token: " + pre(err));
-                if (onError) {
-                    onError(err);
-                }
-            });
-    }
-
     return {
-        createContext: function () {
+        authenticate: function (authCompletedCallback) {
 
-            Microsoft.ADAL.AuthenticationContext.createAsync(authority)
-            .then(function (context) {
-                authContext = context;
-                console.log("Created authentication context for authority URL: " + context.authority);
-            }, function (err) {
-                console.error(pre(err));
-            });
-        },
-        acquireToken: acquireToken,
-        acquireTokenSilent: function (onSuccess, onError) {
-            if (authContext == null) {
-                console.error('Authentication context isn\'t created yet. Create context first');
-                return;
-            }
-
-            // testUserId parameter is needed if you have > 1 token cache items to avoid "multiple_matching_tokens_detected" error
-            // Note: This is for the test purposes only
-            authContext.tokenCache.readItems()
-                .then(function (cacheItems) {
-                    var userId;
-                    if (cacheItems.length) {
-                        userId = cacheItems[0].userInfo.userId;
-                    }
-
-                    authContext.acquireTokenSilentAsync(resourceUrl, appId, userId)
-                        .then(function (authResult) {
-                            console.log('Acquired token successfully: ' + pre(authResult));
-                            if (onSuccess) {
-                                onSuccess(authResult);
-                            }
-                        }, function (err) {
-                            console.error("Failed to acquire token silently: " + pre(err));
-                            acquireToken(onSuccess, onError);
-                        });
-                }, function (err) {
-                    console.error("Unable to get User ID from token cache. Have you acquired token already? " + pre(err));
+            authContext = new Microsoft.ADAL.AuthenticationContext(authority);
+            authContext.tokenCache.readItems().then(function (items) {
+                if (items.length > 0) {
+                    authority = items[0].authority;
+                    authContext = new Microsoft.ADAL.AuthenticationContext(authority);
+                }
+                // Attempt to authorize user silently
+                authContext.acquireTokenSilentAsync(resourceUri, clientId)
+                .then(authCompletedCallback, function () {
+                    // We require user cridentials so triggers authentication dialog
+                    authContext.acquireTokenAsync(resourceUri, clientId, redirectUri)
+                    .then(authCompletedCallback, function (err) {
+                        console.error("Failed to authenticate: " + pre(err));
+                    });
                 });
+            });
+
         },
     };
 })

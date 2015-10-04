@@ -14,7 +14,7 @@ angular.module('inoutlist.controllers', [])
 .controller('MeCtrl', function ($scope, People, Adal) {
     $scope.person = {};
     $scope.acquireToken = function () {
-        Adal.acquireTokenSilent(function (result) {
+        Adal.authenticate(function (result) {
             $scope.person.name = result.userInfo.displayableId;
             $scope.$apply();
         });
