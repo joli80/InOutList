@@ -8,8 +8,6 @@ angular.module('inoutlist.services', [])
         clientId = "2f4abeff-eedf-4f1b-a008-d60acd8d0b4e",
         graphApiVersion = "2013-11-08";
 
-    var authContext;
-
     function pre(json) {
         return '<pre>' + JSON.stringify(json, null, 4) + '</pre>';
     }
@@ -17,16 +15,17 @@ angular.module('inoutlist.services', [])
     return {
         authenticate: function (authCompletedCallback) {
 
-            authContext = new Microsoft.ADAL.AuthenticationContext(authority);
+            var authContext = new Microsoft.ADAL.AuthenticationContext(authority);
             authContext.tokenCache.readItems().then(function (items) {
                 if (items.length > 0) {
                     authority = items[0].authority;
                     authContext = new Microsoft.ADAL.AuthenticationContext(authority);
                 }
+
                 // Attempt to authorize user silently
                 authContext.acquireTokenSilentAsync(resourceUri, clientId)
                 .then(authCompletedCallback, function () {
-                    // We require user cridentials so triggers authentication dialog
+                    // We require user credentials so triggers authentication dialog
                     authContext.acquireTokenAsync(resourceUri, clientId, redirectUri)
                     .then(authCompletedCallback, function (err) {
                         console.error("Failed to authenticate: " + pre(err));
