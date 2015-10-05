@@ -1,5 +1,45 @@
 angular.module('inoutlist.services', [])
 
+.factory('InOutBoard', function (Adal, $resource) {
+
+    //var url = "https://www1.infracontrol.com/InOutBoard/api/";
+    var url = "http://localhost:9557/api/";
+
+    Adal.register(function () {
+        getPersons();
+    }, 'InOutBoard');
+
+    getPersons();
+
+    var person = $resource(url + 'person/:id', {}, {
+        query: {
+            method: 'GET',
+            isArray: true,
+            headers: {
+                'Authorization': 'Bearer ' + Adal.getAccessToken()
+            }
+        }
+    });
+
+    var people = [];
+    function getPersons() {
+        Adal.authenticate(function (result) {
+            person.query(function (persons) {
+                people = persons;
+            }, function (err) {
+                console.error(err);
+            });
+        });
+
+
+    }
+
+    return {
+        people: people
+    };
+
+})
+
 .factory('Adal', function () {
 
     var authority = "https://login.windows.net/common",
@@ -16,6 +56,8 @@ angular.module('inoutlist.services', [])
         }
     };
 
+    var accessToken;
+
     return {
         init: function () {
             callListeners('initialized');
@@ -29,6 +71,7 @@ angular.module('inoutlist.services', [])
             authContext.tokenCache.readItems().then(function (items) {
                 if (items.length > 0) {
                     authority = items[0].authority;
+                    accessToken = items[0].accessToken;
                     authContext = new Microsoft.ADAL.AuthenticationContext(authority);
                 }
 
@@ -43,6 +86,9 @@ angular.module('inoutlist.services', [])
                 });
             });
 
+        },
+        getAccessToken: function () {
+            return accessToken
         },
         getUsers: function (authResult, onSuccess) {
             var req = new XMLHttpRequest();

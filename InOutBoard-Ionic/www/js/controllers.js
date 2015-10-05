@@ -1,6 +1,6 @@
 angular.module('inoutlist.controllers', [])
 
-.controller('PeopleCtrl', function ($scope, People) {
+.controller('PeopleCtrl', function ($scope, People, InOutBoard) {
 
     People.register(function (event, people) {
         $scope.people = people;
