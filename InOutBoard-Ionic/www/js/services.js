@@ -12,7 +12,7 @@ angular.module('inoutlist.services', [])
     getPersons();
 
     function person(token) {
-        var person = $resource(url + 'person/:id', {}, {
+        var person = $resource(url + 'persons/:id', {}, {
             query: {
                 method: 'GET',
                 isArray: true,
