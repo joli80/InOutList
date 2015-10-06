@@ -11,25 +11,29 @@ angular.module('inoutlist.services', [])
 
     getPersons();
 
-    var person = $resource(url + 'person/:id', {}, {
-        query: {
-            method: 'GET',
-            isArray: true,
-            headers: {
-                'Authorization': 'Bearer ' + Adal.getAccessToken()
+    function person(token) {
+        var person = $resource(url + 'person/:id', {}, {
+            query: {
+                method: 'GET',
+                isArray: true,
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                }
             }
-        }
-    });
+        });
+
+        return person;
+    };
 
     var people = [];
     function getPersons() {
         Adal.authenticate(function (result) {
-            person.query(function (persons) {
+            person(result.accessToken).query(function (persons) {
                 people = persons;
             }, function (err) {
                 console.error(err);
             });
-        });
+        }, 'http://infracontrolcom.onmicrosoft.com/inoutlistapi');
 
 
     }
@@ -65,14 +69,23 @@ angular.module('inoutlist.services', [])
         register: function (callback, id) {
             listeners[id] = callback;
         },
-        authenticate: function (authCompletedCallback) {
+        authenticate: function (authCompletedCallback, uri) {
 
             var authContext = new Microsoft.ADAL.AuthenticationContext(authority);
             authContext.tokenCache.readItems().then(function (items) {
-                if (items.length > 0) {
-                    authority = items[0].authority;
-                    accessToken = items[0].accessToken;
-                    authContext = new Microsoft.ADAL.AuthenticationContext(authority);
+
+                if (uri) {
+                    resourceUri = uri;
+                }
+
+                for (var i = 0; i < items.length; i++) {
+                    var item = items[i];
+
+                    if (item.resource == resourceUri) {
+                        authority = item.authority;
+                        accessToken = item.accessToken;
+                        authContext = new Microsoft.ADAL.AuthenticationContext(authority);
+                    }
                 }
 
                 // Attempt to authorize user silently
