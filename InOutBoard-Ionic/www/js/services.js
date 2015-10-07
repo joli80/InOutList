@@ -54,6 +54,8 @@ angular.module('inoutlist.services', [])
     var resourceUri = "https://graph.windows.net",
         graphApiVersion = "1.6";
 
+    //return getUsersUrl + "/" + tenantId + "/users/" + objectId + "/thumbnailPhoto?api-version=" + graphApiVersion;
+
     function users(authResult) {
         var url = resourceUri + "/" + authResult.tenantId + "/users?api-version=" + graphApiVersion;
         var user = $resource(url, {}, {
@@ -67,10 +69,11 @@ angular.module('inoutlist.services', [])
         return user;
     };
 
-    var userId;
+    var userId, tenantId;
     function getUsers(onSuccess) {
         Adal.authenticate(resourceUri, function (result) {
             userId = result.userInfo.userId;
+            tenantId = result.tenantId;
             users(result).query(function (users) {
                 api.users = users.value;
                 api.me = getUser(userId);
@@ -95,7 +98,10 @@ angular.module('inoutlist.services', [])
         update: getUsers,
         users: [],
         getUser: getUser,
-        me: {}
+        me: {},
+        getThumbnailUrl: function (objectId) {
+            return resourceUri + "/" + tenantId + "/users/" + objectId + "/thumbnailPhoto?api-version=" + graphApiVersion;
+        }
     };
 
     return api;
@@ -157,6 +163,7 @@ angular.module('inoutlist.services', [])
         GraphApi.update(function () {
             //people.all = GraphApi.users;
             people.me = GraphApi.me;
+            people.face = GraphApi.getThumbnailUrl(GraphApi.me.objectId);
         });
     }
 
