@@ -23,7 +23,8 @@ angular.module('inoutlist.services', [])
         Adal.authenticate(audience, function (result) {
             person(result.accessToken).query(function (persons) {
                 api.all = persons;
-                onSuccess();
+                if (onSuccess)
+                    onSuccess();
             }, function (err) {
                 console.error(err);
             });
@@ -73,7 +74,8 @@ angular.module('inoutlist.services', [])
             users(result).query(function (users) {
                 api.users = users.value;
                 api.me = getUser(userId);
-                onSuccess();
+                if (onSuccess)
+                    onSuccess();
             }, function (err) {
                 console.error(err);
             });
@@ -151,19 +153,17 @@ angular.module('inoutlist.services', [])
 .factory('People', function (GraphApi, InOutListApi) {
     // Might use a resource here that returns a JSON array
 
-    function getUsers(onSuccess) {
+    function getUsers() {
         GraphApi.update(function () {
             //people.all = GraphApi.users;
             people.me = GraphApi.me;
-            onSuccess();
         });
     }
 
-    function getPersons(onSuccess) {
+    function getPersons() {
         InOutListApi.update(function () {
             people.all = InOutListApi.all;
             //people.me = GraphApi.me;
-            onSuccess();
         });
     }
 
@@ -171,9 +171,9 @@ angular.module('inoutlist.services', [])
         return InOutListApi.getPerson(id);
     }
 
-    function update(onSuccess) {
-        getUsers(onSuccess);
-        getPersons(onSuccess);
+    function update() {
+        getUsers();
+        getPersons();
     }
 
     var people = {

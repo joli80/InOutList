@@ -13,9 +13,7 @@ angular.module('inoutlist.controllers', [])
     $scope.people = People;
 
     $scope.update = function () {
-        People.update(function () {
-            //$scope.$apply();
-        });
+        People.update();
     };
 
 });
