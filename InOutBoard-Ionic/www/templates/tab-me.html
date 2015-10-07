@@ -1,12 +1,12 @@
 <ion-view view-title="{{'Me'|translate}}">
     <ion-content class="padding">
-        <h3>{{People.me.displayName}}</h3>
-        <img ng-src="{{People.me.face}}" style="width: 64px; height: 64px">
+        <h3>{{people.me.displayName}}</h3>
+        <img ng-src="{{people.me.face}}" style="width: 64px; height: 64px">
         <p>
-            {{People.me.mobile}}
+            {{people.me.mobile}}
         </p>
         <p>
-            {{People.me.returns}}
+            {{people.me.returns}}
         </p>
 
         <ion-button class="button-assertive" ng-click="update()">
