@@ -1,18 +1,21 @@
 angular.module('inoutlist.services', [])
 
-.factory('InOutBoard', function (Adal, $resource) {
+//.factory('InOutBoard', function (Adal, InOutBoard) {
+
+.factory('InOutListApi', function (Adal, $resource) {
 
     //var url = "https://www1.infracontrol.com/InOutBoard/api/";
-    var url = "http://localhost:9557/api/";
+    var apiUrl = "http://localhost:9557/api/";
+    var audience = "http://infracontrolcom.onmicrosoft.com/inoutlistapi";
 
-    Adal.register(function () {
-        getPersons();
-    }, 'InOutBoard');
+    //Adal.register(function () {
+    //    getPersons();
+    //}, 'InOutBoard');
 
-    getPersons();
+    // getPersons();
 
     function person(token) {
-        var person = $resource(url + 'persons/:id', {}, {
+        var person = $resource(apiUrl + 'persons/:id', {}, {
             query: {
                 method: 'GET',
                 isArray: true,
@@ -27,15 +30,13 @@ angular.module('inoutlist.services', [])
 
     var people = [];
     function getPersons() {
-        Adal.authenticate(function (result) {
+        Adal.authenticate(audience, function (result) {
             person(result.accessToken).query(function (persons) {
                 people = persons;
             }, function (err) {
                 console.error(err);
             });
-        }, 'http://infracontrolcom.onmicrosoft.com/inoutlistapi');
-
-
+        });
     }
 
     return {
@@ -44,39 +45,110 @@ angular.module('inoutlist.services', [])
 
 })
 
+
+.factory('GraphApi', function (Adal, $resource) {
+    var resourceUri = "https://graph.windows.net",
+        graphApiVersion = "1.6";
+
+    function getUsers(authResult, onSuccess) {
+        var req = new XMLHttpRequest();
+        var url = resourceUri + "/" + authResult.tenantId + "/users?api-version=" + graphApiVersion;
+        // url = searchText ? url + "&$filter=mailNickname eq '" + searchText + "'" : url + "&$top=10";
+
+        req.open("GET", url, true);
+        req.setRequestHeader('Authorization', 'Bearer ' + authResult.accessToken);
+
+        req.onload = function (e) {
+            if (e.target.status >= 200 && e.target.status < 300) {
+                if (onSuccess) {
+                    onSuccess(JSON.parse(e.target.response));
+                }
+                return;
+            }
+            console.error('Data request failed: ' + e.target.response);
+        };
+        req.onerror = function (e) {
+            console.error('Data request failed: ' + e.error);
+        }
+
+        req.send();
+    }
+
+    var userId
+    function update(onSuccess) {
+        Adal.authenticate(resourceUri, function (result) {
+            userId = result.userInfo.userId;
+            getUsers(result, function (users) {
+                api.users = users.value;
+                api.me = getUser(userId);
+                if (onSuccess) {
+                    onSuccess();
+                }
+            }, function (err) {
+                console.error(err);
+            });
+        });
+    }
+
+    function getUser(objectId) {
+        for (var i = 0; i < api.users.length; i++) {
+            if (api.users[i].objectId === objectId) {
+                return api.users[i];
+            }
+        }
+        return null;
+    }
+
+    var api = {
+        update: update,
+        users: [],
+        getUser: getUser,
+        me: {}
+    };
+
+    return api;
+})
+
 .factory('Adal', function () {
 
     var authority = "https://login.windows.net/common",
         redirectUri = "http://InOutList",
-        resourceUri = "https://graph.windows.net",
-        clientId = "f0a67ebb-50d3-4de0-aae1-a44b3ff62773",
-        graphApiVersion = "1.6";
+        //resourceUri = "https://graph.windows.net",
+        clientId = "f0a67ebb-50d3-4de0-aae1-a44b3ff62773";
+    //graphApiVersion = "1.6";
 
-    var listeners = {};
-    function callListeners(event, args) {
-        for (key in listeners) {
-            var cb = listeners[key];
-            cb(event, args);
+    var userId; // = result.userInfo.userId;
+
+    //var listeners = {};
+    //function callListeners(event, args) {
+    //    for (key in listeners) {
+    //        var cb = listeners[key];
+    //        cb(event, args);
+    //    }
+    //};
+
+    //var accessToken;
+    var initialised = false;
+
+    function onAuthCompleted(authResult, authCompletedCallback) {
+        userId = authResult.userInfo.userId;
+        if (authCompletedCallback) {
+            authCompletedCallback(authResult);
         }
-    };
-
-    var accessToken;
+    }
 
     return {
         init: function () {
-            callListeners('initialized');
+            initialised = true;
+            //callListeners('initialized');
         },
-        register: function (callback, id) {
-            listeners[id] = callback;
-        },
-        authenticate: function (authCompletedCallback, uri) {
+        //register: function (callback, id) {
+        //    listeners[id] = callback;
+        //},
+        authenticate: function (resourceUri, authCompletedCallback) {
 
             var authContext = new Microsoft.ADAL.AuthenticationContext(authority);
             authContext.tokenCache.readItems().then(function (items) {
-
-                if (uri) {
-                    resourceUri = uri;
-                }
 
                 for (var i = 0; i < items.length; i++) {
                     var item = items[i];
@@ -89,94 +161,71 @@ angular.module('inoutlist.services', [])
                 }
 
                 // Attempt to authorize user silently
-                authContext.acquireTokenSilentAsync(resourceUri, clientId)
-                .then(authCompletedCallback, function () {
+                authContext.acquireTokenSilentAsync(resourceUri, clientId).then(function (authResult) {
+                    onAuthCompleted(authResult, authCompletedCallback);
+                }, function () {
                     // We require user credentials so triggers authentication dialog
-                    authContext.acquireTokenAsync(resourceUri, clientId, redirectUri)
-                    .then(authCompletedCallback, function (err) {
+                    authContext.acquireTokenAsync(resourceUri, clientId, redirectUri).then(function (authResult) {
+                        onAuthCompleted(authResult, authCompletedCallback);
+                    }, function (err) {
                         console.error("Failed to authenticate: " + JSON.stringify(err));
                     });
                 });
             });
 
         },
-        getAccessToken: function () {
-            return accessToken
-        },
-        getUsers: function (authResult, onSuccess) {
-            var req = new XMLHttpRequest();
-            var url = resourceUri + "/" + authResult.tenantId + "/users?api-version=" + graphApiVersion;
-            // url = searchText ? url + "&$filter=mailNickname eq '" + searchText + "'" : url + "&$top=10";
+        getUserId: function () {
+            return userId;
+        }
+        //getAccessToken: function () {
+        //    return accessToken
+        //},
 
-            req.open("GET", url, true);
-            req.setRequestHeader('Authorization', 'Bearer ' + authResult.accessToken);
-
-            req.onload = function (e) {
-                if (e.target.status >= 200 && e.target.status < 300) {
-                    if (onSuccess) {
-                        onSuccess(JSON.parse(e.target.response));
-                    }
-                    return;
-                }
-                console.error('Data request failed: ' + e.target.response);
-            };
-            req.onerror = function (e) {
-                console.error('Data request failed: ' + e.error);
-            }
-
-            req.send();
-        },
     };
 })
 
-.factory('People', function (Adal) {
+
+.factory('People', function (GraphApi) {
     // Might use a resource here that returns a JSON array
 
-    var userId;
-    var people = [];
+    //var userId;
+    //var people = [];
 
-    Adal.register(function () {
-        getUsers();
-    }, 'People');
+    //Adal.register(function () {
+    //    getUsers();
+    //}, 'People');
 
-    function getUsers() {
-        Adal.authenticate(function (result) {
-            userId = result.userInfo.userId;
-            Adal.getUsers(result, function (users) {
-                people = users.value;
-                callListeners('updated', people);
-            });
+    function getUsers(onSuccess) {
+        GraphApi.update(function () {
+            people.all = GraphApi.users;
+            people.me = GraphApi.me;
+            onSuccess();
+            //callListeners('updated', people);
         });
     }
 
-    function getUser(objectId) {
-        for (var i = 0; i < people.length; i++) {
-            if (people[i].objectId === objectId) {
-                return people[i];
-            }
-        }
-        return null;
-    }
+    //var listeners = {};
+    //function callListeners(event, args) {
+    //    for (key in listeners) {
+    //        var cb = listeners[key];
+    //        cb(event, args);
+    //    }
+    //};
 
-    var listeners = {};
-    function callListeners(event, args) {
-        for (key in listeners) {
-            var cb = listeners[key];
-            cb(event, args);
-        }
+    var people = {
+        update: getUsers,
+        all: [],
+        me: {}
+        //getAll: function () {
+        //    return people;
+        //},
+        //get: getUser,
+        //getMe: function () {
+        //    return getUser(userId);
+        //},
+        //register: function (callback, id) {
+        //    listeners[id] = callback;
+        //},
     };
-
-    return {
-        getAll: function () {
-            return people;
-        },
-        get: getUser,
-        getMe: function () {
-            return getUser(userId);
-        },
-        register: function (callback, id) {
-            listeners[id] = callback;
-        },
-    };
-
+    return people;
 });
