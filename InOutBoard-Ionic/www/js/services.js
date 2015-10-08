@@ -19,7 +19,7 @@ angular.module('inoutlist.services', [])
         return person;
     };
 
-    function getPersons(onSuccess) {
+    function getPersons(onSuccess, onError) {
         Adal.authenticate(audience, function (result) {
             person(result.accessToken).query(function (persons) {
                 api.all = persons;
@@ -27,6 +27,8 @@ angular.module('inoutlist.services', [])
                     onSuccess();
             }, function (err) {
                 console.error(err);
+                if (onError)
+                    onError(err);
             });
         });
     }
@@ -70,7 +72,7 @@ angular.module('inoutlist.services', [])
     };
 
     var userId, tenantId;
-    function getUsers(onSuccess) {
+    function getUsers(onSuccess, onError) {
         Adal.authenticate(resourceUri, function (result) {
             userId = result.userInfo.userId;
             tenantId = result.tenantId;
@@ -81,6 +83,8 @@ angular.module('inoutlist.services', [])
                     onSuccess();
             }, function (err) {
                 console.error(err);
+                if (onError)
+                    onError;
             });
         });
     }
@@ -159,28 +163,28 @@ angular.module('inoutlist.services', [])
 .factory('People', function (GraphApi, InOutListApi) {
     // Might use a resource here that returns a JSON array
 
-    function getUsers() {
+    function getUsers(onError) {
         GraphApi.update(function () {
             //people.all = GraphApi.users;
             people.me = GraphApi.me;
             people.face = GraphApi.getThumbnailUrl(GraphApi.me.objectId);
-        });
+        }, onError);
     }
 
-    function getPersons() {
+    function getPersons(onError) {
         InOutListApi.update(function () {
             people.all = InOutListApi.all;
             //people.me = GraphApi.me;
-        });
+        }, onError);
     }
 
     function getPerson(id) {
         return InOutListApi.getPerson(id);
     }
 
-    function update() {
-        getUsers();
-        getPersons();
+    function update(onError) {
+        getUsers(onError);
+        getPersons(onError);
     }
 
     var people = {

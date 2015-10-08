@@ -8,12 +8,17 @@ angular.module('inoutlist.controllers', [])
     $scope.person = People.get($stateParams.id);
 })
 
-.controller('MeCtrl', function ($scope, People) {
+.controller('MeCtrl', function ($scope, People, $ionicPopup) {
 
     $scope.people = People;
 
     $scope.update = function () {
-        People.update();
+        People.update(function (err) {
+            $ionicPopup.alert({
+                title: 'Error',
+                template: JSON.stringify(err).substring(1, 100)
+            });
+        });
     };
 
 });

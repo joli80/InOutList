@@ -1,0 +1,10 @@
+{
+    "cordova-plugin-ms-adal": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-ms-adal@0.6.0"
+        },
+        "is_top_level": true,
+        "variables": {}
+    }
+}
