@@ -4,12 +4,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
 
+#: www/templates/tab-people.html:1
+#: www/templates/tabs.html:9
+msgid "All"
+msgstr ""
+
 #: www/templates/tab-me.html:1
 #: www/templates/tabs.html:14
 msgid "Me"
-msgstr ""
-
-#: www/templates/tab-people.html:1
-#: www/templates/tabs.html:9
-msgid "People"
 msgstr ""

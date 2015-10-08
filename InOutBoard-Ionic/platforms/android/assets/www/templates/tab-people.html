@@ -1,11 +1,12 @@
-<ion-view view-title="{{'People'|translate}}">
+<ion-view view-title="{{'All'|translate}}">
     <ion-content>
         <ion-list>
-            <ion-item class="item-avatar item-icon-right" ng-repeat="person in people" type="item-text-wrap" href="#/tab/people/{{person.objectId}}">
+            <ion-item class="item-avatar item-icon-right" ng-repeat="person in people.all | orderBy:'Name'" type="item-text-wrap" href="#/tab/people/{{person.Id}}">
                 <img ng-src="{{person.face}}">
-                <h2>{{person.displayName}}</h2>
-                <p>{{person.mobile}}</p>
-                <p>{{person.returns}}</p>
+                <h2>{{person.Name}}</h2>
+                <p>
+                    {{person.StatusMessage}} ({{person.BackAgainMessage}})
+                </p>
                 <i class="icon ion-chevron-right icon-accessory"></i>
 
                 <!--<ion-option-button class="button-assertive" ng-click="remove(person)">

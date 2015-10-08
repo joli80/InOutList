@@ -1,4 +1,4 @@
-angular.module('inoutlist.services', [])
+﻿angular.module('inoutlist.services', [])
 
 .factory('InOutListApi', function (Adal, $resource) {
 
@@ -53,8 +53,6 @@ angular.module('inoutlist.services', [])
 .factory('GraphApi', function (Adal, $resource) {
     var resourceUri = "https://graph.windows.net",
         graphApiVersion = "1.6";
-
-    //return getUsersUrl + "/" + tenantId + "/users/" + objectId + "/thumbnailPhoto?api-version=" + graphApiVersion;
 
     function users(authResult) {
         var url = resourceUri + "/" + authResult.tenantId + "/users?api-version=" + graphApiVersion;
