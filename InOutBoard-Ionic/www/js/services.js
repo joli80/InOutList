@@ -2,8 +2,8 @@ angular.module('inoutlist.services', [])
 
 .factory('InOutListApi', function (Adal, $resource) {
 
-    //var url = "https://www1.infracontrol.com/InOutBoard/api/";
-    var apiUrl = "http://localhost:9557/api/";
+    var apiUrl = "https://www1.infracontrol.com/InOutBoardApi/api/";
+    //var apiUrl = "http://localhost:9557/api/";
     var audience = "http://infracontrolcom.onmicrosoft.com/inoutlistapi";
 
     function person(token) {
@@ -58,8 +58,7 @@ angular.module('inoutlist.services', [])
 
     //return getUsersUrl + "/" + tenantId + "/users/" + objectId + "/thumbnailPhoto?api-version=" + graphApiVersion;
 
-    function users(authResult) {
-        var url = resourceUri + "/" + authResult.tenantId + "/users?api-version=" + graphApiVersion;
+    function users(authResult, url) {
         var user = $resource(url, {}, {
             query: {
                 method: 'GET',
@@ -71,12 +70,26 @@ angular.module('inoutlist.services', [])
         return user;
     };
 
+    function thumbnail(authResult, url) {
+        var user = $resource(url, {}, {
+            query: {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + authResult.accessToken
+                },
+                responseType: "arraybuffer"
+            }
+        });
+        return user;
+    };
+
     var userId, tenantId;
     function getUsers(onSuccess, onError) {
         Adal.authenticate(resourceUri, function (result) {
             userId = result.userInfo.userId;
             tenantId = result.tenantId;
-            users(result).query(function (users) {
+            var url = resourceUri + "/" + result.tenantId + "/users?api-version=" + graphApiVersion;
+            users(result, url).query(function (users) {
                 api.users = users.value;
                 api.me = getUser(userId);
                 if (onSuccess)
@@ -98,14 +111,35 @@ angular.module('inoutlist.services', [])
         return null;
     }
 
+    function hexToBase64(str) {
+        return btoa(String.fromCharCode.apply(null, str.replace(/\r|\n/g, "").replace(/([\da-fA-F]{2}) ?/g, "0x$1 ").replace(/ +$/, "").split(" ")));
+    }
+
+    function getThumbnail(objectId, onSuccess) {
+        Adal.authenticate(resourceUri, function (result) {
+            var tenantId = result.tenantId;
+            var thumbUrl = resourceUri + "/" + tenantId + "/users/" + objectId + "/thumbnailPhoto?api-version=" + graphApiVersion;
+            thumbnail(result, thumbUrl).query(function (imgData) {
+                //var blob = new Blob(imgData, { type: 'application/octet-binary' });
+                //var url = URL.createObjectURL(blob);
+                //var imgString = string = imgData.join("");
+                //var dataUri = 'data:image/jpeg;base64,' + hexToBase64(imgString);
+                //if (onSuccess)
+                    //onSuccess(url);
+            }, function (err) {
+                console.error(err);
+                if (onError)
+                    onError;
+            });
+        });
+    }
+
     var api = {
         update: getUsers,
         users: [],
         getUser: getUser,
         me: {},
-        getThumbnailUrl: function (objectId) {
-            return resourceUri + "/" + tenantId + "/users/" + objectId + "/thumbnailPhoto?api-version=" + graphApiVersion;
-        }
+        getThumbnail: getThumbnail
     };
 
     return api;
@@ -167,7 +201,12 @@ angular.module('inoutlist.services', [])
         GraphApi.update(function () {
             //people.all = GraphApi.users;
             people.me = GraphApi.me;
-            people.face = GraphApi.getThumbnailUrl(GraphApi.me.objectId);
+            //people.face = GraphApi.getThumbnail(GraphApi.me.objectId);
+
+            GraphApi.getThumbnail(people.me.objectId, function (img) {
+                people.face = img;
+            });
+
         }, onError);
     }
 

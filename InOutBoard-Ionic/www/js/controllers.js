@@ -16,7 +16,7 @@ angular.module('inoutlist.controllers', [])
         People.update(function (err) {
             $ionicPopup.alert({
                 title: 'Error',
-                template: JSON.stringify(err).substring(1, 100)
+                template: JSON.stringify(err)
             });
         });
     };
