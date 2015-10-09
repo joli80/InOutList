@@ -13,7 +13,7 @@ angular.module('inoutlist.controllers', [])
     $scope.people = People;
 
     $scope.update = function () {
-        People.update(function (err) {
+        People.update($scope, function (err) {
             $ionicPopup.alert({
                 title: 'Error',
                 template: JSON.stringify(err)

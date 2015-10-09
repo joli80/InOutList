@@ -52,7 +52,7 @@ angular.module('inoutlist.services', [])
 
 })
 
-.factory('GraphApi', function (Adal, $resource) {
+.factory('GraphApi', function (Adal, $resource, FileReader) {
     var resourceUri = "https://graph.windows.net",
         graphApiVersion = "1.6";
 
@@ -81,15 +81,20 @@ angular.module('inoutlist.services', [])
                 },
                 transformResponse: function (data, headersGetter) {
                     var contentType = headersGetter('content-type');
-                    var blob = new Blob([data], contentType);
-                    var url = URL.createObjectURL(blob);
-                    return { url: url };
+                    var blob = new Blob([data], { type: contentType });
+                    return { blob: blob };
                 },
                 responseType: "arraybuffer"
             }
         });
         return user;
     };
+
+    //function blobToDataURL(blob, callback) {
+    //    var a = new FileReader();
+    //    a.onload = function (e) { callback(e.target.result); }
+    //    a.readAsDataURL(blob);
+    //}
 
     function getUsers(onSuccess, onError) {
         Adal.authenticate(resourceUri, function (result) {
@@ -116,11 +121,14 @@ angular.module('inoutlist.services', [])
         return null;
     }
 
-    function getThumbnail(objectId, onSuccess) {
+    function getThumbnail(objectId, onSuccess, scope) {
         Adal.authenticate(resourceUri, function (result) {
             thumbnail(result, objectId).query(function (imgData) {
-                if (onSuccess)
-                    onSuccess(imgData.url);
+                if (onSuccess) {
+                    FileReader.readAsDataURL(imgData.blob, scope).then(onSuccess);
+
+                    //blobToDataURL(imgData.blob, onSuccess);
+                }
             }, function (err) {
                 console.error(err);
                 if (onError)
@@ -192,13 +200,13 @@ angular.module('inoutlist.services', [])
 .factory('People', function (GraphApi, InOutListApi) {
     // Might use a resource here that returns a JSON array
 
-    function getUsers(onError) {
+    function getUsers(scope, onError) {
         GraphApi.update(function () {
             //people.all = GraphApi.users;
             people.me = GraphApi.me;
             GraphApi.getThumbnail(people.me.objectId, function (img) {
                 people.face = img;
-            });
+            }, scope);
 
         }, onError);
     }
@@ -214,8 +222,8 @@ angular.module('inoutlist.services', [])
         return InOutListApi.getPerson(id);
     }
 
-    function update(onError) {
-        getUsers(onError);
+    function update(scope, onError) {
+        getUsers(scope, onError);
         getPersons(onError);
     }
 
