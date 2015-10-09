@@ -1,4 +1,7 @@
 <ion-view view-title="{{'Me'|translate}}">
+    <ion-nav-buttons side="secondary">
+        <button class="button button-icon icon ion-refresh" ng-click="update()"></button>
+    </ion-nav-buttons>
     <ion-content class="padding">
         <h3>{{people.me.displayName}}</h3>
         <img ng-src="{{people.face}}">
@@ -8,10 +11,5 @@
         <p>
             {{people.me.returns}}
         </p>
-
-        <ion-button class="button-assertive" ng-click="update()">
-            Update
-        </ion-button>
-
     </ion-content>
 </ion-view>

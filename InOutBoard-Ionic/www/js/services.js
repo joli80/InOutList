@@ -201,21 +201,24 @@ angular.module('inoutlist.services', [])
 .factory('People', function (GraphApi, InOutListApi) {
     // Might use a resource here that returns a JSON array
 
-    function getUsers(scope, onError) {
+    function getUsers(scope, onSuccess, onError) {
         GraphApi.update(function () {
             //people.all = GraphApi.users;
             people.me = GraphApi.me;
             GraphApi.getThumbnail(people.me.objectId, function (img) {
                 people.face = img;
             }, scope);
-
+            if (onSuccess)
+                onSuccess();
         }, onError);
     }
 
-    function getPersons(onError) {
+    function getPersons(onSuccess, onError) {
         InOutListApi.update(function () {
             people.all = InOutListApi.all;
             //people.me = GraphApi.me;
+            if (onSuccess)
+                onSuccess();
         }, onError);
     }
 
@@ -223,9 +226,9 @@ angular.module('inoutlist.services', [])
         return InOutListApi.getPerson(id);
     }
 
-    function update(scope, onError) {
-        getUsers(scope, onError);
-        getPersons(onError);
+    function update(scope, onSuccess, onError) {
+        getUsers(scope, onSuccess, onError);
+        getPersons(onSuccess, onError);
     }
 
     var people = {

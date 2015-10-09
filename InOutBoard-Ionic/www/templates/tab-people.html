@@ -1,5 +1,11 @@
 <ion-view view-title="{{'All'|translate}}">
+    <ion-nav-buttons side="secondary">
+        <button class="button button-icon icon ion-refresh" ng-click="update()"></button>
+    </ion-nav-buttons>
     <ion-content>
+        <ion-refresher pulling-text="Pull to refresh..."
+                       on-refresh="update()">
+        </ion-refresher>
         <ion-list>
             <ion-item class="item-avatar item-icon-right" ng-repeat="person in people.all | orderBy:'Name'" type="item-text-wrap" href="#/tab/people/{{person.Id}}">
                 <img ng-src="{{person.face}}">
