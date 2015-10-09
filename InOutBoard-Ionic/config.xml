@@ -98,4 +98,5 @@
   </vs:platformSpecificValues>
   <vs:plugin name="cordova-plugin-ms-adal" version="0.6.0" />
   <preference name="android-minSdkVersion" value="14" />
+  <vs:plugin name="cordova-plugin-whitelist" version="1.0.0" />
 </widget>

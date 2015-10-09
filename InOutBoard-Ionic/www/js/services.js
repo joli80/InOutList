@@ -54,12 +54,13 @@ angular.module('inoutlist.services', [])
 
 .factory('GraphApi', function (Adal, $resource, FileReader) {
     var resourceUri = "https://graph.windows.net",
-        graphApiVersion = "1.6";
+        graphApiVersion = "1.6",
+        tenantId = '7e046de7-97c5-4177-b6a6-e5852edf378e';
 
     //return getUsersUrl + "/" + tenantId + "/users/" + objectId + "/thumbnailPhoto?api-version=" + graphApiVersion;
 
     function users(authResult) {
-        var url = resourceUri + "/" + authResult.tenantId + "/users?api-version=" + graphApiVersion;
+        var url = resourceUri + "/" + tenantId + "/users?api-version=" + graphApiVersion;
         var user = $resource(url, {}, {
             query: {
                 method: 'GET',
@@ -72,7 +73,7 @@ angular.module('inoutlist.services', [])
     };
 
     function thumbnail(authResult, objectId) {
-        var url = resourceUri + "/" + authResult.tenantId + "/users/" + objectId + "/thumbnailPhoto?api-version=" + graphApiVersion;
+        var url = resourceUri + "/" + tenantId + "/users/" + objectId + "/thumbnailPhoto?api-version=" + graphApiVersion;
         var user = $resource(url, {}, {
             query: {
                 method: 'GET',
@@ -107,7 +108,7 @@ angular.module('inoutlist.services', [])
             }, function (err) {
                 console.error(err);
                 if (onError)
-                    onError;
+                    onError(err);
             });
         });
     }

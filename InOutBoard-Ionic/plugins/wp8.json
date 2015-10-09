@@ -9,6 +9,9 @@
     "installed_plugins": {
         "cordova-plugin-ms-adal": {
             "PACKAGE_NAME": "{f2497580-6d06-11e5-8a42-b7cb25d6e63c}"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "{f2497580-6d06-11e5-8a42-b7cb25d6e63c}"
         }
     },
     "dependent_plugins": {}

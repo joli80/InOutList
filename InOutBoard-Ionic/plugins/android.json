@@ -11,6 +11,10 @@
                         {
                             "xml": "<feature name=\"ADALProxy\"><param name=\"android-package\" value=\"com.microsoft.aad.adal.CordovaAdalPlugin\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -51,6 +55,9 @@
     },
     "installed_plugins": {
         "cordova-plugin-ms-adal": {
+            "PACKAGE_NAME": "se.twigg.inoutlist"
+        },
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "se.twigg.inoutlist"
         }
     },
