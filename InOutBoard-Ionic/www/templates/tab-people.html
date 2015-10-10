@@ -5,7 +5,7 @@
     <ion-content>
         <ion-list>
             <ion-item class="item item-icon-left item-icon-right" ng-repeat="person in people.all() | orderBy:'name'" type="item-text-wrap" href="#/tab/people/{{person.id}}">
-                <div class="status-bar green"></div>
+                <div class="status-bar {{person.statusColor()}}"></div>
                 <h2>{{person.name}}</h2>
                 <p>
                     {{person.status}} <span ng-show="person.returns">(<translate>back</translate> {{person.returns}})</span>

@@ -291,6 +291,7 @@ angular.module('inoutlist.services', [])
                 c.email = c.user.userPrincipalName;
                 c.status = c.person.StatusMessage;
                 c.returns = c.person.BackAgainMessage;
+                c.statusCode = c.person.Status;
             },
             show: false,
             objectId: undefined,
@@ -313,8 +314,31 @@ angular.module('inoutlist.services', [])
                     }, scope);
                 }
             },
+            statusCode: undefined,
             statusColor: function () {
+                switch (c.statusCode) {
+                    case 0:
+                        return "green";
+                    case 1:
+                    case 12:
+                    case 13:
+                        return "red";
+                    case 2:
+                    case 21:
+                    case 22:
+                    case 23:
+                    case 24:
+                        return "yellow";
+                    case 3:
+                        return "green-light";
+                    case 14:
+                        return "purple";
+                    case 11:
+                        return "blue";
+                    default:
+                        return 'red';
 
+                }
             }
         };
 

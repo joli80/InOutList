@@ -23,3 +23,11 @@
     .item .status-bar.blue {
         background-color: #426EFC;
     }
+
+    .item .status-bar.purple {
+        background-color: #8F6FF0;
+    }
+
+    .item .status-bar.yellow {
+        background-color: #FFCC00;
+    }
