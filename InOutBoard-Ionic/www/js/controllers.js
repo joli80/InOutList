@@ -15,9 +15,13 @@ angular.module('inoutlist.controllers', [])
     $scope.update = function () {
         People.update($scope);
     };
+
+    $scope.isMe = $stateParams.id == People.me.id;
 })
 
 .controller('MeCtrl', function ($scope, People, $ionicPopup) {
+
+    $scope.isMe = true;
 
     $scope.person = function () {
         return People.get(People.me.id, $scope);

@@ -14,7 +14,10 @@
             {{person().email()}}
         </p>
         <p>
-            {{person().status()}} <span ng-show="person.returns()">(<translate>back</translate> {{person().returns()}})</span>
+            {{person().status()}} <span ng-show="person().returns()">(<translate>back</translate> {{person().returns()}})</span>
         </p>
+        <div ng-show="isMe">
+            Is me!
+        </div>
     </ion-content>
 </ion-view>
