@@ -27,7 +27,7 @@ angular.module('inoutlist.controllers', [])
 })
 
 .controller('PeopleDetailCtrl', function ($scope, $stateParams, People) {
-    $scope.person = People.get($stateParams.id);
+    $scope.person = People.get($stateParams.id, $scope);
 })
 
 .controller('MeCtrl', function ($scope, People, $ionicPopup) {

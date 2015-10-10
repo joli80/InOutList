@@ -127,13 +127,9 @@ angular.module('inoutlist.services', [])
             thumbnail(result, objectId).query(function (imgData) {
                 if (onSuccess) {
                     FileReader.readAsDataURL(imgData.blob, scope).then(onSuccess);
-
-                    //blobToDataURL(imgData.blob, onSuccess);
                 }
             }, function (err) {
                 console.error(err);
-                if (onError)
-                    onError;
             });
         });
     }
@@ -218,9 +214,9 @@ angular.module('inoutlist.services', [])
                 var c = getCombined(user.userPrincipalName.toLowerCase());
                 c.setUser(user);
 
-                GraphApi.getThumbnail(GraphApi.me.objectId, function (img) {
-                    c.face = img;
-                }, scope);
+                //GraphApi.getThumbnail(c.objectId, function (img) {
+                //    c.face = img;
+                //}, scope);
             }
 
             people.me = getCombined(GraphApi.me.userPrincipalName.toLowerCase());
@@ -250,6 +246,16 @@ angular.module('inoutlist.services', [])
         getPersons(onSuccess, onError);
     }
 
+    function get(id, scope) {
+        var c = getCombined(id);
+
+        GraphApi.getThumbnail(c.objectId, function (img) {
+            c.face = img;
+        }, scope);
+
+        return c;
+    }
+
     function combined(id) {
 
         var person = {}, user = {};
@@ -262,17 +268,19 @@ angular.module('inoutlist.services', [])
             },
             setUser: function (u) {
                 user = u;
+                c.objectId = u.objectId;
             },
             name: function () {
                 return person.Name || user.displayName;
             },
             mobile: function () { return person.CellPhone || user.mobile; },
-            phone: function () { return person.CellPhone || user.mobile; },
+            phone: function () { return person.Ankn; },
             email: function () { return user.userPrincipalName; },
             status: function () { return person.StatusMessage; },
             returns: function () { return person.BackAgainMessage; },
             face: '',
-            show: false
+            show: false,
+            objectId: undefined
         };
 
         return c;
@@ -283,7 +291,7 @@ angular.module('inoutlist.services', [])
         update: update,
         all: combinedUsersAndPersons,
         me: {},
-        get: getCombined
+        get: get
     };
     return people;
 });
