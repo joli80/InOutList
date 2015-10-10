@@ -57,8 +57,6 @@ angular.module('inoutlist.services', [])
         graphApiVersion = "1.6",
         tenantId = '7e046de7-97c5-4177-b6a6-e5852edf378e';
 
-    //return getUsersUrl + "/" + tenantId + "/users/" + objectId + "/thumbnailPhoto?api-version=" + graphApiVersion;
-
     function users(authResult) {
         var url = resourceUri + "/" + tenantId + "/users?api-version=" + graphApiVersion;
         var user = $resource(url, {}, {
@@ -90,12 +88,6 @@ angular.module('inoutlist.services', [])
         });
         return user;
     };
-
-    //function blobToDataURL(blob, callback) {
-    //    var a = new FileReader();
-    //    a.onload = function (e) { callback(e.target.result); }
-    //    a.readAsDataURL(blob);
-    //}
 
     function getUsers(onSuccess, onError) {
         Adal.authenticate(resourceUri, function (result) {
@@ -195,7 +187,6 @@ angular.module('inoutlist.services', [])
 })
 
 .factory('People', function (GraphApi, InOutListApi) {
-    // Might use a resource here that returns a JSON array
 
     var combinedUsersAndPersons = {};
     function getCombined(id) {
@@ -259,8 +250,6 @@ angular.module('inoutlist.services', [])
     }
 
     function combined(id) {
-
-        //var person = {}, user = {};
 
         var c = {
             id: id,
