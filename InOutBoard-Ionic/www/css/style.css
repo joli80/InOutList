@@ -1,11 +1,11 @@
 /* Empty. Add your own CSS if you like */
 
 .item .status-bar {
-    height: 55px;
-    width: 10px;
+    width: 12px;
     position: absolute;
     top: 0;
     left: 0;
+    bottom: 0;
 }
 
     .item .status-bar.red {
