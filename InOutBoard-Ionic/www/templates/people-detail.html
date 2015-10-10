@@ -6,7 +6,7 @@
 -->
 <ion-view view-title="{{person.name()}}">
     <ion-content class="padding">
-        <img ng-src="{{person.face}}">
+        <img ng-src="{{person.face}}" style="max-height:200px;">
         <p>
             {{person.mobile()}}
         </p>
@@ -17,10 +17,7 @@
             {{person.email()}}
         </p>
         <p>
-            {{person.status()}}
-        </p>
-        <p>
-            {{person.returns()}}
+            {{person.status()}} <span ng-show="person.returns()">(<translate>back</translate> {{person.returns()}})</span>
         </p>
     </ion-content>
 </ion-view>

@@ -13,3 +13,9 @@ msgstr ""
 #: www/templates/tabs.html:14
 msgid "Me"
 msgstr ""
+
+#: www/templates/people-detail.html:20
+#: www/templates/tab-me.html:15
+#: www/templates/tab-people.html:12
+msgid "back"
+msgstr ""

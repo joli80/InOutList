@@ -249,35 +249,39 @@ angular.module('inoutlist.services', [])
     function get(id, scope) {
         var c = getCombined(id);
 
-        GraphApi.getThumbnail(c.objectId, function (img) {
-            c.face = img;
-        }, scope);
+        if (!c.face) {
+            GraphApi.getThumbnail(c.objectId, function (img) {
+                c.face = img;
+            }, scope);
+        }
 
         return c;
     }
 
     function combined(id) {
 
-        var person = {}, user = {};
+        //var person = {}, user = {};
 
         var c = {
             id: id,
+            user: {},
+            person: {},
             setPerson: function (p) {
-                person = p;
+                c.person = p;
                 c.show = p != undefined;
             },
             setUser: function (u) {
-                user = u;
+                c.user = u;
                 c.objectId = u.objectId;
             },
             name: function () {
-                return person.Name || user.displayName;
+                return c.person.Name || c.user.displayName;
             },
-            mobile: function () { return person.CellPhone || user.mobile; },
-            phone: function () { return person.Ankn; },
-            email: function () { return user.userPrincipalName; },
-            status: function () { return person.StatusMessage; },
-            returns: function () { return person.BackAgainMessage; },
+            mobile: function () { return c.person.CellPhone || c.user.mobile; },
+            phone: function () { return c.person.Ankn; },
+            email: function () { return c.user.userPrincipalName; },
+            status: function () { return c.person.StatusMessage; },
+            returns: function () { return c.person.BackAgainMessage; },
             face: '',
             show: false,
             objectId: undefined

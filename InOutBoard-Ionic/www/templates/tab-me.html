@@ -4,12 +4,15 @@
     </ion-nav-buttons>
     <ion-content class="padding">
         <h3>{{people.me.name()}}</h3>
-        <img ng-src="{{people.me.face}}">
+        <img ng-src="{{people.me.face}}" style="max-height:200px;">
+        <p>
+            {{people.me.phone()}}
+        </p>
         <p>
             {{people.me.mobile()}}
         </p>
         <p>
-            {{people.me.returns()}}
+            {{people.me.status()}} <span ng-show="people.me.returns()">(<translate>back</translate> {{people.me.returns()}})</span>
         </p>
     </ion-content>
 </ion-view>
