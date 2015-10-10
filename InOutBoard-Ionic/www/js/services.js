@@ -236,9 +236,27 @@ angular.module('inoutlist.services', [])
         }, onError);
     }
 
+    var test = true;
     function update(scope, onSuccess, onError) {
+
+        if (test) {
+            createTestData();
+            return;
+        }
+
         getUsers(scope, onSuccess, onError);
         getPersons(onSuccess, onError);
+    }
+
+    function createTestData() {
+
+        for (var i = 0; i < 5; i++) {
+            var c = getAndAddCombined(i);
+            c.name = function () { return 'Name' + i; };
+            c.mobile = function () { return 'Mobile' + i; };
+            c.show = true;
+        }
+
     }
 
     function get(id, scope) {
@@ -246,6 +264,10 @@ angular.module('inoutlist.services', [])
 
         if (c && !c.face) {
             c.face = 'img/profile.png';
+
+            if (test)
+                return;
+
             GraphApi.getThumbnail(c.objectId, function (img) {
                 c.face = img;
             }, scope);

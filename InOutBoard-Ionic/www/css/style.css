@@ -1,1 +1,25 @@
 /* Empty. Add your own CSS if you like */
+
+.item .status-bar {
+    height: 55px;
+    width: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+    .item .status-bar.red {
+        background-color: #990000;
+    }
+
+    .item .status-bar.green {
+        background-color: #339933;
+    }
+
+    .item .status-bar.green-light {
+        background-color: #00CC00;
+    }
+
+    .item .status-bar.blue {
+        background-color: #426EFC;
+    }
