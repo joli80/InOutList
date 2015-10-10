@@ -1,20 +1,21 @@
-<ion-view view-title="{{person().name()}}">
+<ion-view view-title="{{person().name}}">
+>
     <ion-nav-buttons side="secondary">
         <button class="button button-icon icon ion-refresh" ng-click="update()"></button>
     </ion-nav-buttons>
     <ion-content class="padding">
         <img ng-src="{{person().face}}" style="height:200px;">
         <p>
-            {{person().mobile()}}
+            {{person().mobile}}
         </p>
         <p>
-            {{person().phone()}}
+            {{person().phone}}
         </p>
         <p>
-            {{person().email()}}
+            {{person().email}}
         </p>
         <p>
-            {{person().status()}} <span ng-show="person().returns()">(<translate>back</translate> {{person().returns()}})</span>
+            {{person().status}} <span ng-show="person().returns">(<translate>back</translate> {{person().returns}})</span>
         </p>
         <div ng-show="isMe">
             Is me!

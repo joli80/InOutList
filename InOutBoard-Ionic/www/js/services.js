@@ -236,7 +236,7 @@ angular.module('inoutlist.services', [])
         }, onError);
     }
 
-    var test = true;
+    var test = false;
     function update(scope, onSuccess, onError) {
 
         if (test) {
@@ -284,24 +284,28 @@ angular.module('inoutlist.services', [])
             person: {},
             setPerson: function (p) {
                 c.person = p;
-                c.show = p != undefined;
+                c.show = true;
+                c.update();
             },
             setUser: function (u) {
                 c.user = u;
-                c.objectId = u.objectId;
+                c.update();
             },
-            name: function () {
-                return c.person.Name || c.user.displayName;
+            update: function () {
+                c.objectId = c.user.objectId;
+                c.name = c.person.Name || c.user.displayName;
+                c.mobile = c.person.CellPhone || c.user.mobile;
+                c.phone = c.person.Phone;
+                c.email = c.user.userPrincipalName;
+                c.status = c.person.StatusMessage;
+                c.returns = c.person.BackAgainMessage;
             },
-            mobile: function () { return c.person.CellPhone || c.user.mobile; },
-            phone: function () { return c.person.Ankn; },
-            email: function () { return c.user.userPrincipalName; },
-            status: function () {
-                return c.person.StatusMessage;
-            },
-            returns: function () {
-                return c.person.BackAgainMessage;
-            },
+            name: '',
+            mobile: '',
+            phone: '',
+            email: '',
+            status: '',
+            returns: '',
             face: '',
             show: false,
             objectId: undefined
