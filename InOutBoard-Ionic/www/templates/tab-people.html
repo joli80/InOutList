@@ -4,7 +4,7 @@
     </ion-nav-buttons>
     <ion-content>
         <ion-list>
-            <ion-item class="item-avatar item-icon-right" ng-repeat="person in people() | orderBy:'id'" type="item-text-wrap" href="#/tab/people/{{person.id}}">
+            <ion-item class="item-avatar item-icon-right" ng-repeat="person in people.all() | orderBy:'name()'" type="item-text-wrap" href="#/tab/people/{{person.id}}">
                 <!--<img ng-src="{{person.face}}">-->
                 <h2>{{person.name()}}</h2>
                 <p>

@@ -1,10 +1,17 @@
 angular.module('inoutlist.services', [])
 
-.factory('InOutListApi', function (Adal, $resource) {
+.factory('InOutListApi', function (Adal, $resource, $cacheFactory) {
 
     var apiUrl = "https://www1.infracontrol.com/InOutBoardApi/api/";
     //var apiUrl = "http://localhost:9557/api/";
     var audience = "http://infracontrolcom.onmicrosoft.com/inoutlistapi";
+
+    var cache = $cacheFactory('InOutListApi');
+    function clearCache() {
+        cache.removeAll();
+        //var $httpDefaultCache = $cacheFactory.get('$http');
+        //$httpDefaultCache.remove(apiUrl + 'persons');
+    }
 
     function person(token) {
         var person = $resource(apiUrl + 'persons/:id', {}, {
@@ -14,6 +21,7 @@ angular.module('inoutlist.services', [])
                 headers: {
                     'Authorization': 'Bearer ' + token
                 }
+                //cache: cache
             }
         });
         return person;
@@ -21,6 +29,7 @@ angular.module('inoutlist.services', [])
 
     function getPersons(onSuccess, onError) {
         Adal.authenticate(audience, function (result) {
+            //clearCache();
             person(result.accessToken).query(function (persons) {
                 api.all = persons;
                 if (onSuccess)
@@ -274,8 +283,12 @@ angular.module('inoutlist.services', [])
             mobile: function () { return c.person.CellPhone || c.user.mobile; },
             phone: function () { return c.person.Ankn; },
             email: function () { return c.user.userPrincipalName; },
-            status: function () { return c.person.StatusMessage; },
-            returns: function () { return c.person.BackAgainMessage; },
+            status: function () {
+                return c.person.StatusMessage;
+            },
+            returns: function () {
+                return c.person.BackAgainMessage;
+            },
             face: '',
             show: false,
             objectId: undefined
@@ -287,7 +300,17 @@ angular.module('inoutlist.services', [])
 
     var people = {
         update: update,
-        all: combinedUsersAndPersons,
+        all: function () {
+            var array = [];
+            for (var id in combinedUsersAndPersons) {
+                if (combinedUsersAndPersons.hasOwnProperty(id)) {
+                    var person = combinedUsersAndPersons[id];
+                    if (person.show)
+                        array.push(person);
+                }
+            }
+            return array;
+        },
         me: {},
         get: get
     };
