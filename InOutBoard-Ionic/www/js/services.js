@@ -261,22 +261,14 @@ angular.module('inoutlist.services', [])
 
     function get(id, scope) {
         var c = getCombined(id);
-
-        if (c && !c.face) {
-            c.face = 'img/profile.png';
-
-            if (test)
-                return;
-
-            GraphApi.getThumbnail(c.objectId, function (img) {
-                c.face = img;
-            }, scope);
-        }
-
+        if (c)
+            c.getFace(scope);
         return c;
     }
 
     function combined(id) {
+
+        var thumbnail;
 
         var c = {
             id: id,
@@ -307,6 +299,18 @@ angular.module('inoutlist.services', [])
             status: '',
             returns: '',
             face: '',
+            getFace: function (scope) {
+                if (!c.face) {
+                    c.face = 'img/profile.png';
+
+                    if (test)
+                        return;
+
+                    GraphApi.getThumbnail(c.objectId, function (img) {
+                        c.face = img;
+                    }, scope);
+                }
+            },
             show: false,
             objectId: undefined
         };
