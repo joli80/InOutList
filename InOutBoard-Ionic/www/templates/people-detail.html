@@ -1,5 +1,5 @@
 <ion-view view-title="{{person().name}}">
->
+    >
     <ion-nav-buttons side="secondary">
         <button class="button button-icon icon ion-refresh" ng-click="update()"></button>
     </ion-nav-buttons>
@@ -15,7 +15,9 @@
             {{person().email}}
         </p>
         <p>
-            {{person().status}} <span ng-show="person().returns">(<translate>back</translate> {{person().returns}})</span>
+            <span class="label {{person().statusColor()}}">
+                {{person().status}} <span ng-show="person().returns">(<translate>back</translate> {{person().returns}})</span>
+            </span>
         </p>
         <div ng-show="isMe">
             Is me!

@@ -208,10 +208,6 @@ angular.module('inoutlist.services', [])
                 var user = GraphApi.users[i];
                 var c = getAndAddCombined(user.userPrincipalName.toLowerCase());
                 c.setUser(user);
-
-                //GraphApi.getThumbnail(c.objectId, function (img) {
-                //    c.face = img;
-                //}, scope);
             }
 
             people.me = getCombined(GraphApi.me.userPrincipalName.toLowerCase());
@@ -236,7 +232,7 @@ angular.module('inoutlist.services', [])
         }, onError);
     }
 
-    var test = false;
+    var test = true;
     function update(scope, onSuccess, onError) {
 
         if (test) {
@@ -252,10 +248,15 @@ angular.module('inoutlist.services', [])
 
         for (var i = 0; i < 5; i++) {
             var c = getAndAddCombined(i);
-            c.name = function () { return 'Name' + i; };
-            c.mobile = function () { return 'Mobile' + i; };
+            c.name = 'Name' + i;
+            c.mobile = 'Mobile' + i;
             c.show = true;
+            c.status = "Jobbar";
+            c.returns = "kl " + i;
+            c.statusCode = i;
         }
+
+        people.me = getCombined(0);
 
     }
 

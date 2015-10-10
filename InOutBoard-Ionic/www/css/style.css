@@ -8,26 +8,33 @@
     bottom: 0;
 }
 
-    .item .status-bar.red {
+span.label {
+    color: #fff;
+    padding: 3px 7px;
+    border-radius: 7px;
+}
+
+    .status-bar.red, span.label.red {
         background-color: #990000;
     }
 
-    .item .status-bar.green {
+    .status-bar.green, span.label.green {
         background-color: #339933;
     }
 
-    .item .status-bar.green-light {
+    .status-bar.green-light, span.label.green-light {
         background-color: #00CC00;
     }
 
-    .item .status-bar.blue {
+    .status-bar.blue, span.label.blue {
         background-color: #426EFC;
     }
 
-    .item .status-bar.purple {
+    .status-bar.purple, span.label.purple {
         background-color: #8F6FF0;
     }
 
-    .item .status-bar.yellow {
+    .status-bar.yellow, span.label.yellow {
         background-color: #FFCC00;
+        color: #000;
     }
