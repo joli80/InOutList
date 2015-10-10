@@ -21,10 +21,10 @@ angular.module('inoutlist.controllers', [])
 
 .controller('MeCtrl', function ($scope, People, $ionicPopup) {
 
-    $scope.isMe = true;
-
     $scope.person = function () {
-        return People.get(People.me.id, $scope);
+        var me = People.get(People.me.id, $scope);
+        $scope.isMe = me != null;
+        return me;
     };
 
     $scope.update = function () {

@@ -16,14 +16,70 @@ msgstr ""
 msgid "All"
 msgstr "Alla"
 
-#: www/templates/tab-me.html:1 www/templates/tabs.html:14
+#: www/templates/people-detail.html:31 www/templates/people-detail.html:50
+msgid "Arrend"
+msgstr "Ärende"
+
+#: www/templates/people-detail.html:25 www/templates/people-detail.html:35
+msgid "At work"
+msgstr "På kontoret"
+
+#: www/templates/people-detail.html:54
+msgid "Back"
+msgstr "Åter"
+
+#: www/templates/people-detail.html:43
+msgid "Business arrend"
+msgstr "Tjänsteärende"
+
+#: www/templates/people-detail.html:44
+msgid "Business travel"
+msgstr "Tjänsteresa"
+
+#: www/templates/people-detail.html:37
+msgid "Busy"
+msgstr "Upptagen"
+
+#: www/templates/people-detail.html:26 www/templates/people-detail.html:36
+msgid "Gone for the day"
+msgstr "Gått för dagen"
+
+#: www/templates/people-detail.html:46
+msgid "In a meeting"
+msgstr "Möte"
+
+#: www/templates/tabs.html:14
 msgid "Me"
 msgstr "Jag"
 
-#: www/templates/people-detail.html:20 www/templates/tab-me.html:15
-#: www/templates/tab-people.html:12
+#: www/templates/people-detail.html:42
+msgid "Parenting leave"
+msgstr "Föräldraledig"
+
+#: www/templates/people-detail.html:45
+msgid "Private arrend"
+msgstr "Privat"
+
+#: www/templates/people-detail.html:40
+msgid "Sick"
+msgstr "Sjuk"
+
+#: www/templates/people-detail.html:41
+msgid "Sick children"
+msgstr "Vård av barn"
+
+#: www/templates/people-detail.html:57
+msgid "Submit"
+msgstr "Skicka"
+
+#: www/templates/people-detail.html:39
+msgid "Vacation"
+msgstr "Semester"
+
+#: www/templates/people-detail.html:38
+msgid "Working at home"
+msgstr "Arbetar hemma"
+
+#: www/templates/people-detail.html:10 www/templates/tab-people.html:11
 msgid "back"
 msgstr "åter"
-
-#~ msgid "Back"
-#~ msgstr "Åter"

@@ -9,13 +9,74 @@ msgstr ""
 msgid "All"
 msgstr ""
 
-#: www/templates/tab-me.html:1
+#: www/templates/people-detail.html:31
+#: www/templates/people-detail.html:50
+msgid "Arrend"
+msgstr ""
+
+#: www/templates/people-detail.html:25
+#: www/templates/people-detail.html:35
+msgid "At work"
+msgstr ""
+
+#: www/templates/people-detail.html:54
+msgid "Back"
+msgstr ""
+
+#: www/templates/people-detail.html:43
+msgid "Business arrend"
+msgstr ""
+
+#: www/templates/people-detail.html:44
+msgid "Business travel"
+msgstr ""
+
+#: www/templates/people-detail.html:37
+msgid "Busy"
+msgstr ""
+
+#: www/templates/people-detail.html:26
+#: www/templates/people-detail.html:36
+msgid "Gone for the day"
+msgstr ""
+
+#: www/templates/people-detail.html:46
+msgid "In a meeting"
+msgstr ""
+
 #: www/templates/tabs.html:14
 msgid "Me"
 msgstr ""
 
-#: www/templates/people-detail.html:20
-#: www/templates/tab-me.html:15
-#: www/templates/tab-people.html:12
+#: www/templates/people-detail.html:42
+msgid "Parenting leave"
+msgstr ""
+
+#: www/templates/people-detail.html:45
+msgid "Private arrend"
+msgstr ""
+
+#: www/templates/people-detail.html:40
+msgid "Sick"
+msgstr ""
+
+#: www/templates/people-detail.html:41
+msgid "Sick children"
+msgstr ""
+
+#: www/templates/people-detail.html:57
+msgid "Submit"
+msgstr ""
+
+#: www/templates/people-detail.html:39
+msgid "Vacation"
+msgstr ""
+
+#: www/templates/people-detail.html:38
+msgid "Working at home"
+msgstr ""
+
+#: www/templates/people-detail.html:10
+#: www/templates/tab-people.html:11
 msgid "back"
 msgstr ""

@@ -10,35 +10,40 @@
 
 span.label {
     color: #fff;
-    padding: 3px 7px;
+    padding: 7px 10px;
     border-radius: 7px;
 }
 
+
     span.label img.emoticon, .item img.emoticon {
-        margin: 0 -3px -4px;
+        margin: 0 0 -4px;
     }
 
-    .status-bar.red, span.label.red {
+.control .button {
+    color: #fff;
+}
+
+    .status-bar.red, span.label.red, .control .button.red {
         background-color: #990000;
     }
 
-    .status-bar.green, span.label.green {
+    .status-bar.green, span.label.green, .control .button.green {
         background-color: #339933;
     }
 
-    .status-bar.green-light, span.label.green-light {
-        background-color: #00CC00;
-    }
+.status-bar.green-light, span.label.green-light {
+    background-color: #00CC00;
+}
 
-    .status-bar.blue, span.label.blue {
-        background-color: #426EFC;
-    }
+.status-bar.blue, span.label.blue {
+    background-color: #426EFC;
+}
 
-    .status-bar.purple, span.label.purple {
-        background-color: #8F6FF0;
-    }
+.status-bar.purple, span.label.purple {
+    background-color: #8F6FF0;
+}
 
-    .status-bar.yellow, span.label.yellow {
-        background-color: #FFCC00;
-        color: #000;
-    }
+.status-bar.yellow, span.label.yellow {
+    background-color: #FFCC00;
+    color: #000;
+}
