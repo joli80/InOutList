@@ -3,13 +3,13 @@
         <button class="button button-icon icon ion-refresh" ng-click="update()"></button>
     </ion-nav-buttons>
     <ion-content class="padding">
-        <h3>{{people.me.displayName}}</h3>
+        <h3>{{people.me.name()}}</h3>
         <img ng-src="{{people.face}}">
         <p>
-            {{people.me.mobile}}
+            {{people.me.mobile()}}
         </p>
         <p>
-            {{people.me.returns}}
+            {{people.me.returns()}}
         </p>
     </ion-content>
 </ion-view>

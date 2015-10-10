@@ -1,7 +1,7 @@
 angular.module('inoutlist.controllers', [])
 
 .controller('PeopleCtrl', function ($scope, People) {
-    $scope.people = People;
+    //$scope.people = People;
 
     $scope.update = function () {
         People.update($scope, null, function (err) {
@@ -11,6 +11,18 @@ angular.module('inoutlist.controllers', [])
             });
         });
     };
+
+    $scope.people = function () {
+        var array = [];
+        for (var id in People.all) {
+            if (People.all.hasOwnProperty(id)) {
+                var person = People.all[id];
+                if (person.show)
+                    array.push(person);
+            }
+        }
+        return array;
+    }
 
 })
 

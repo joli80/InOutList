@@ -201,13 +201,30 @@ angular.module('inoutlist.services', [])
 .factory('People', function (GraphApi, InOutListApi) {
     // Might use a resource here that returns a JSON array
 
+    var combinedUsersAndPersons = {};
+    function getCombined(id) {
+        var c = combinedUsersAndPersons[id];
+        if (!c) {
+            c = combined(id);
+            combinedUsersAndPersons[id] = c;
+        }
+        return c;
+    }
+
     function getUsers(scope, onSuccess, onError) {
         GraphApi.update(function () {
-            //people.all = GraphApi.users;
-            people.me = GraphApi.me;
-            GraphApi.getThumbnail(people.me.objectId, function (img) {
-                people.face = img;
-            }, scope);
+            for (var i = 0; i < GraphApi.users.length; i++) {
+                var user = GraphApi.users[i];
+                var c = getCombined(user.userPrincipalName.toLowerCase());
+                c.setUser(user);
+
+                GraphApi.getThumbnail(GraphApi.me.objectId, function (img) {
+                    c.face = img;
+                }, scope);
+            }
+
+            people.me = getCombined(GraphApi.me.userPrincipalName.toLowerCase());
+
             if (onSuccess)
                 onSuccess();
         }, onError);
@@ -215,15 +232,17 @@ angular.module('inoutlist.services', [])
 
     function getPersons(onSuccess, onError) {
         InOutListApi.update(function () {
-            people.all = InOutListApi.all;
-            //people.me = GraphApi.me;
+            for (var i = 0; i < InOutListApi.all.length; i++) {
+                var person = InOutListApi.all[i];
+                if (person.Email) {
+                    var c = getCombined(person.Email.toLowerCase());
+                    c.setPerson(person);
+                }
+            }
+
             if (onSuccess)
                 onSuccess();
         }, onError);
-    }
-
-    function getPerson(id) {
-        return InOutListApi.getPerson(id);
     }
 
     function update(scope, onSuccess, onError) {
@@ -231,11 +250,40 @@ angular.module('inoutlist.services', [])
         getPersons(onSuccess, onError);
     }
 
+    function combined(id) {
+
+        var person = {}, user = {};
+
+        var c = {
+            id: id,
+            setPerson: function (p) {
+                person = p;
+                c.show = p != undefined;
+            },
+            setUser: function (u) {
+                user = u;
+            },
+            name: function () {
+                return person.Name || user.displayName;
+            },
+            mobile: function () { return person.CellPhone || user.mobile; },
+            phone: function () { return person.CellPhone || user.mobile; },
+            email: function () { return user.userPrincipalName; },
+            status: function () { return person.StatusMessage; },
+            returns: function () { return person.BackAgainMessage; },
+            face: '',
+            show: false
+        };
+
+        return c;
+
+    }
+
     var people = {
         update: update,
-        all: [],
+        all: combinedUsersAndPersons,
         me: {},
-        get: getPerson
+        get: getCombined
     };
     return people;
 });

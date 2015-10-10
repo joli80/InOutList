@@ -4,11 +4,12 @@
     </ion-nav-buttons>
     <ion-content>
         <ion-list>
-            <ion-item class="item-avatar item-icon-right" ng-repeat="person in people.all | orderBy:'Name'" type="item-text-wrap" href="#/tab/people/{{person.Id}}">
+            <ion-item class="item-avatar item-icon-right" ng-repeat="person in people() | orderBy:'id'" type="item-text-wrap" href="#/tab/people/{{person.id}}">
                 <img ng-src="{{person.face}}">
-                <h2>{{person.Name}}</h2>
+                <h2>{{person.name()}}</h2>
+                <p>{{person.id}}</p>
                 <p>
-                    {{person.StatusMessage}} ({{person.BackAgainMessage}})
+                    {{person.status()}} ({{person.returns}})
                 </p>
                 <i class="icon ion-chevron-right icon-accessory"></i>
             </ion-item>
