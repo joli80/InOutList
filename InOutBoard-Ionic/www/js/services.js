@@ -1,17 +1,10 @@
 angular.module('inoutlist.services', [])
 
-.factory('InOutListApi', function (Adal, $resource, $cacheFactory) {
+.factory('InOutListApi', function (Adal, $resource) {
 
     var apiUrl = "https://www1.infracontrol.com/InOutBoardApi/api/";
     //var apiUrl = "http://localhost:9557/api/";
     var audience = "http://infracontrolcom.onmicrosoft.com/inoutlistapi";
-
-    var cache = $cacheFactory('InOutListApi');
-    function clearCache() {
-        cache.removeAll();
-        //var $httpDefaultCache = $cacheFactory.get('$http');
-        //$httpDefaultCache.remove(apiUrl + 'persons');
-    }
 
     function person(token) {
         var person = $resource(apiUrl + 'persons/:id', {}, {
@@ -21,7 +14,6 @@ angular.module('inoutlist.services', [])
                 headers: {
                     'Authorization': 'Bearer ' + token
                 }
-                //cache: cache
             }
         });
         return person;
@@ -29,7 +21,6 @@ angular.module('inoutlist.services', [])
 
     function getPersons(onSuccess, onError) {
         Adal.authenticate(audience, function (result) {
-            //clearCache();
             person(result.accessToken).query(function (persons) {
                 api.all = persons;
                 if (onSuccess)

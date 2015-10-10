@@ -21,18 +21,10 @@ angular.module('inoutlist.controllers', [])
 
     $scope.person = function () {
         return People.get(People.me.id, $scope);
-        //return People.me;
     };
 
-    //$scope.people = People;
-
     $scope.update = function () {
-        People.update($scope, null, function (err) {
-            //$ionicPopup.alert({
-            //    title: 'Error',
-            //    template: JSON.stringify(err)
-            //});
-        });
+        People.update($scope);
     };
 
 });
