@@ -292,6 +292,8 @@ angular.module('inoutlist.services', [])
                 c.status = c.person.StatusMessage;
                 c.returns = c.person.BackAgainMessage;
             },
+            show: false,
+            objectId: undefined,
             name: '',
             mobile: '',
             phone: '',
@@ -311,8 +313,9 @@ angular.module('inoutlist.services', [])
                     }, scope);
                 }
             },
-            show: false,
-            objectId: undefined
+            statusColor: function () {
+
+            }
         };
 
         return c;
