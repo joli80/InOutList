@@ -16,7 +16,7 @@
         </p>
         <p>
             <span class="label {{person().statusColor()}}">
-                {{person().status}} <span ng-show="person().returns">(<translate>back</translate> {{person().returns}})</span>
+                <span ng-bind-html="person().statusText()"></span>  <span ng-show="person().returns">(<translate>back</translate> {{person().returns}})</span>
             </span>
         </p>
         <div ng-show="isMe">

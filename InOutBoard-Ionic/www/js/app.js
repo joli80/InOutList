@@ -1,4 +1,4 @@
-angular.module('inoutlist', ['ionic', 'inoutlist.controllers', 'inoutlist.services', 'gettext', 'ngResource', 'filereader'])
+angular.module('inoutlist', ['ionic', 'inoutlist.controllers', 'inoutlist.services', 'gettext', 'ngResource', 'filereader', 'ngSanitize'])
 
 .run(function ($ionicPlatform, gettextCatalog, Adal) {
     $ionicPlatform.ready(function () {

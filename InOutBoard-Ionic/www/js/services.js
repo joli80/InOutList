@@ -251,7 +251,7 @@ angular.module('inoutlist.services', [])
             c.name = 'Name' + i;
             c.mobile = 'Mobile' + i;
             c.show = true;
-            c.status = "Jobbar";
+            c.status = "Jobbar :cool: hemma";
             c.returns = "kl " + i;
             c.statusCode = i;
         }
@@ -340,6 +340,10 @@ angular.module('inoutlist.services', [])
                         return 'red';
 
                 }
+            },
+            statusText: function () {
+                var re = /\:(.*)\:/;
+                return c.status.replace(re, '<img src="img/$1.gif" alt="$1" />');
             }
         };
 
