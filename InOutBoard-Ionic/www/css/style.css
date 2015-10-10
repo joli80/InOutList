@@ -14,6 +14,10 @@ span.label {
     border-radius: 7px;
 }
 
+    span.label img.emoticon, .item img.emoticon {
+        margin: 0 -3px -4px;
+    }
+
     .status-bar.red, span.label.red {
         background-color: #990000;
     }

@@ -251,7 +251,7 @@ angular.module('inoutlist.services', [])
             c.name = 'Name' + i;
             c.mobile = 'Mobile' + i;
             c.show = true;
-            c.status = "Jobbar :fråga: hemma";
+            c.status = "Jobbar :huvudvärk: hemma";
             c.returns = "kl " + i;
             c.statusCode = i;
         }
@@ -345,7 +345,7 @@ angular.module('inoutlist.services', [])
                 var re = /\:(.*)\:/;
                 return c.status
                         .replace('ä', 'a').replace('å', 'a').replace('ö', 'o')
-                        .replace(re, '<img src="img/$1.gif" alt="$1" />');
+                        .replace(re, '<img src="img/$1.gif" alt="$1" class="emoticon" />');
             }
         };
 
