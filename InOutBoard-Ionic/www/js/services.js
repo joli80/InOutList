@@ -189,7 +189,7 @@ angular.module('inoutlist.services', [])
 .factory('People', function (GraphApi, InOutListApi) {
 
     var combinedUsersAndPersons = {};
-    function getCombined(id) {
+    function getAndAddCombined(id) {
         var c = combinedUsersAndPersons[id];
         if (!c) {
             c = combined(id);
@@ -198,11 +198,15 @@ angular.module('inoutlist.services', [])
         return c;
     }
 
+    function getCombined(id) {
+        return combinedUsersAndPersons[id];
+    }
+
     function getUsers(scope, onSuccess, onError) {
         GraphApi.update(function () {
             for (var i = 0; i < GraphApi.users.length; i++) {
                 var user = GraphApi.users[i];
-                var c = getCombined(user.userPrincipalName.toLowerCase());
+                var c = getAndAddCombined(user.userPrincipalName.toLowerCase());
                 c.setUser(user);
 
                 //GraphApi.getThumbnail(c.objectId, function (img) {
@@ -222,7 +226,7 @@ angular.module('inoutlist.services', [])
             for (var i = 0; i < InOutListApi.all.length; i++) {
                 var person = InOutListApi.all[i];
                 if (person.Email) {
-                    var c = getCombined(person.Email.toLowerCase());
+                    var c = getAndAddCombined(person.Email.toLowerCase());
                     c.setPerson(person);
                 }
             }
@@ -240,7 +244,8 @@ angular.module('inoutlist.services', [])
     function get(id, scope) {
         var c = getCombined(id);
 
-        if (!c.face) {
+        if (c && !c.face) {
+            c.face = 'img/profile.png';
             GraphApi.getThumbnail(c.objectId, function (img) {
                 c.face = img;
             }, scope);

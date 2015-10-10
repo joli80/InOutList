@@ -7,7 +7,6 @@
             <ion-item class="item-avatar item-icon-right" ng-repeat="person in people() | orderBy:'id'" type="item-text-wrap" href="#/tab/people/{{person.id}}">
                 <!--<img ng-src="{{person.face}}">-->
                 <h2>{{person.name()}}</h2>
-                <p>{{person.id}}</p>
                 <p>
                     {{person.status()}} <span ng-show="person.returns()">(<translate>back</translate> {{person.returns()}})</span>
                 </p>

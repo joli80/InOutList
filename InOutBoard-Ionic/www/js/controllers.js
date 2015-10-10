@@ -4,13 +4,9 @@ angular.module('inoutlist.controllers', [])
     //$scope.people = People;
 
     $scope.update = function () {
-        People.update($scope, null, function (err) {
-            $ionicPopup.alert({
-                title: 'Error',
-                template: JSON.stringify(err)
-            });
-        });
+        People.update($scope);
     };
+
 
     $scope.people = function () {
         var array = [];
@@ -27,12 +23,25 @@ angular.module('inoutlist.controllers', [])
 })
 
 .controller('PeopleDetailCtrl', function ($scope, $stateParams, People) {
-    $scope.person = People.get($stateParams.id, $scope);
+    $scope.person = function () {
+        return People.get($stateParams.id, $scope);
+    };
+
+    $scope.update = function () {
+        People.update($scope);
+    };
+
+    //$scope.person = People.get($stateParams.id, $scope);
 })
 
 .controller('MeCtrl', function ($scope, People, $ionicPopup) {
 
-    $scope.people = People;
+    $scope.person = function () {
+        return People.get(People.me.id, $scope);
+        //return People.me;
+    };
+
+    //$scope.people = People;
 
     $scope.update = function () {
         People.update($scope, null, function (err) {

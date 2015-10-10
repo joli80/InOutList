@@ -3,16 +3,16 @@
         <button class="button button-icon icon ion-refresh" ng-click="update()"></button>
     </ion-nav-buttons>
     <ion-content class="padding">
-        <h3>{{people.me.name()}}</h3>
-        <img ng-src="{{people.me.face}}" style="max-height:200px;">
+        <h3>{{me().name()}}</h3>
+        <img ng-src="{{me().face}}" style="max-height:200px;">
         <p>
-            {{people.me.phone()}}
+            {{me().phone()}}
         </p>
         <p>
-            {{people.me.mobile()}}
+            {{me().mobile()}}
         </p>
         <p>
-            {{people.me.status()}} <span ng-show="people.me.returns()">(<translate>back</translate> {{people.me.returns()}})</span>
+            {{me().status()}} <span ng-show="me().returns()">(<translate>back</translate> {{me().returns()}})</span>
         </p>
     </ion-content>
 </ion-view>
