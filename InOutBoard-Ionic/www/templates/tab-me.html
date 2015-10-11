@@ -2,11 +2,11 @@
     <ion-nav-buttons side="secondary">
         <button class="button button-icon icon ion-refresh" ng-click="update()"></button>
     </ion-nav-buttons>
-    <ion-content class="padding" ng-show="person()">
+    <ion-content class="padding" ng-show="getMe()">
 
         <div class="list card ">
-            <div class="item person {{person().statusColor()}}">
-                <span ng-bind-html="person().statusText()"></span>  <span ng-show="person().returns">(<translate>back</translate> {{person().returns}})</span>
+            <div class="item person {{me.statusColor()}}">
+                <span ng-bind-html="me.statusText()"></span> <span ng-show="me.returns">(<translate>back</translate> {{me.returns}})</span>
             </div>
         </div>
 
@@ -21,7 +21,7 @@
                 <div class="input-label" translate>
                     Arrend
                 </div>
-                <select>
+                <select ng-model="me.person.Status" convert-to-number ng-change="onSelectChange()">
                     <option value="0" translate>At work</option>
                     <option value="1" translate>Gone for the day</option>
                     <option value="2" translate>Busy</option>
@@ -38,13 +38,13 @@
             </label>
             <label class="item item-input">
                 <span class="input-label" translate>Arrend</span>
-                <input type="text">
+                <input type="text" ng-model="me.person.StatusMessage">
             </label>
             <label class="item item-input">
                 <span class="input-label" translate>Back</span>
-                <input type="text">
+                <input type="text" ng-model="me.person.BackAgainMessage">
             </label>
-            <button class="button button-block" translate>
+            <button class="button button-block" translate ng-click="submit()">
                 Submit
             </button>
     </ion-content>

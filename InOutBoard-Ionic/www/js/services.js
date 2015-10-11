@@ -14,6 +14,12 @@ angular.module('inoutlist.services', [])
                 headers: {
                     'Authorization': 'Bearer ' + token
                 }
+            },
+            update: {
+                method: 'PUT',
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                }
             }
         });
         return person;
@@ -42,10 +48,22 @@ angular.module('inoutlist.services', [])
         }
     }
 
+    function updatePerson(p, onSuccess) {
+        Adal.authenticate(audience, function (result) {
+            person(result.accessToken).update({ id: p.Id }, p, function () {
+                if (onSuccess)
+                    onSuccess();
+            }, function (err) {
+                console.error(err);
+            })
+        });
+    }
+
     var api = {
         all: [],
         update: getPersons,
-        getPerson: getPerson
+        getPerson: getPerson,
+        updatePerson: updatePerson
     };
 
     return api;
@@ -245,21 +263,19 @@ angular.module('inoutlist.services', [])
     }
 
     function createTestData() {
-
         for (var i = 0; i < 5; i++) {
             var c = getAndAddCombined(i);
-            c.name = 'Name' + i;
-            c.phone = '70' + i;
-            c.email = c.name + '@example.com';
-            c.mobile = '+4670345654' + i;
-            c.show = true;
-            c.status = "Jobbar :huvudvärk: hemma";
-            c.returns = "kl " + i;
-            c.statusCode = i;
+            c.setPerson({
+                Name: 'Name' + i,
+                Phone: '70' + i,
+                Email: 'name' + i + '@example.com',
+                CellPhone: '+4670345654' + i,
+                Status: i,
+                StatusMessage: "Jobbar :huvudvärk: hemma",
+                BackAgainMessage: "kl " + i
+            });
         }
-
         people.me = getCombined(0);
-
     }
 
     function get(id, scope) {
@@ -355,6 +371,15 @@ angular.module('inoutlist.services', [])
 
     }
 
+    function put(c, onSuccess) {
+        if (!test)
+            InOutListApi.updatePerson(c.person, function () {
+                c.setPerson(c.person);
+                if (onSuccess)
+                    onSuccess();
+            });
+    }
+
     var people = {
         update: update,
         all: function () {
@@ -369,7 +394,8 @@ angular.module('inoutlist.services', [])
             return array;
         },
         me: {},
-        get: get
+        get: get,
+        put: put
     };
     return people;
 });
