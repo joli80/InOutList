@@ -57,7 +57,7 @@ angular.module('inoutlist', ['ionic', 'inoutlist.controllers', 'inoutlist.servic
         url: '/me',
         views: {
             'tab-me': {
-                templateUrl: 'templates/people-detail.html',
+                templateUrl: 'templates/tab-me.html',
                 controller: 'MeCtrl'
             }
         }

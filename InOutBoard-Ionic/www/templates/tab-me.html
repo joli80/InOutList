@@ -1,0 +1,52 @@
+<ion-view view-title="{{person().name}}">
+    >
+    <ion-nav-buttons side="secondary">
+        <button class="button button-icon icon ion-refresh" ng-click="update()"></button>
+    </ion-nav-buttons>
+    <ion-content class="padding" ng-show="person()">
+
+        <div class="list card ">
+            <div class="item person {{person().statusColor()}}">
+                <span ng-bind-html="person().statusText()"></span>  <span ng-show="person().returns">(<translate>back</translate> {{person().returns}})</span>
+            </div>
+        </div>
+
+        <p>
+            <div class="button-bar control">
+                <a translate class="button green">At work</a>
+                <a translate class="button red">Gone for the day</a>
+            </div>
+        </p>
+        <div class="list">
+            <label class="item item-input item-select">
+                <div class="input-label" translate>
+                    Arrend
+                </div>
+                <select>
+                    <option value="0" translate>At work</option>
+                    <option value="1" translate>Gone for the day</option>
+                    <option value="2" translate>Busy</option>
+                    <option value="3" translate>Working at home</option>
+                    <option value="11" translate>Vacation</option>
+                    <option value="12" translate>Sick</option>
+                    <option value="13" translate>Sick children</option>
+                    <option value="14" translate>Parenting leave</option>
+                    <option value="21" translate>Business arrend</option>
+                    <option value="22" translate>Business travel</option>
+                    <option value="23" translate>Private arrend</option>
+                    <option value="24" translate>In a meeting</option>
+                </select>
+            </label>
+            <label class="item item-input">
+                <span class="input-label" translate>Arrend</span>
+                <input type="text">
+            </label>
+            <label class="item item-input">
+                <span class="input-label" translate>Back</span>
+                <input type="text">
+            </label>
+            <button class="button button-block" translate>
+                Submit
+            </button>
+    </ion-content>
+</ion-view>
