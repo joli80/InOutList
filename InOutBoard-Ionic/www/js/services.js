@@ -362,10 +362,19 @@
                 }
             },
             statusText: function () {
-                var re = /\:(.*)\:/;
-                return c.status
-                        .replace('ä', 'a').replace('å', 'a').replace('ö', 'o')
-                        .replace(re, '<img src="img/$1.gif" alt="$1" class="emoticon" />');
+                var re = /:([^:]{3,}):/g;
+                var textWithImg = c.status;
+
+                var m;
+                do {
+                    m = re.exec(c.status);
+                    if (m) {
+                        var codeWithoutOmlaut = m[1].replace('ä', 'a').replace('å', 'a').replace('ö', 'o');
+                        var img = '<img src="img/' + codeWithoutOmlaut + '.gif" alt="' + m[1] + '" class="emoticon" />'
+                        textWithImg = textWithImg.replace(m[0], img);
+                    }
+                } while (m);
+                return textWithImg;
             }
         };
 
