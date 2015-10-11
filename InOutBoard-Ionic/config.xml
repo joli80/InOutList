@@ -7,6 +7,11 @@
   <content src="index.html" />
   <access origin="https://*.infracontrol.com" />
   <access origin="https://*.windows.net" />
+  <access origin="tel:*" launch-external="yes"/>
+  <access origin="geo:*" launch-external="yes"/>
+  <access origin="mailto:*" launch-external="yes"/>
+  <access origin="sms:*" launch-external="yes"/>
+  <access origin="market:*" launch-external="yes"/>
   <vs:features />
   <preference name="SplashScreen" value="screen" />
   <preference name="windows-target-version" value="8.1" />

@@ -232,7 +232,7 @@ angular.module('inoutlist.services', [])
         }, onError);
     }
 
-    var test = true;
+    var test = false;
     function update(scope, onSuccess, onError) {
 
         if (test) {
@@ -251,7 +251,7 @@ angular.module('inoutlist.services', [])
             c.name = 'Name' + i;
             c.phone = '70' + i;
             c.email = c.name + '@example.com';
-            c.mobile = '+46 703 45654' + i;
+            c.mobile = '+4670345654' + i;
             c.show = true;
             c.status = "Jobbar :huvudvärk: hemma";
             c.returns = "kl " + i;
