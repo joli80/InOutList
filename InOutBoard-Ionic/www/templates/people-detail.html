@@ -1,31 +1,31 @@
 <ion-view view-title="{{person().name}}">
-    >
     <ion-nav-buttons side="secondary">
         <button class="button button-icon icon ion-refresh" ng-click="update()"></button>
     </ion-nav-buttons>
-    <ion-content class="padding" ng-show="person()">
-
+    <ion-content class="padding">
         <div class="list card ">
             <div class="item item-image">
                 <img ng-src="{{person().face}}">
             </div>
-
             <div class="item person {{person().statusColor()}}">
                 <span ng-bind-html="person().statusText()"></span>  <span ng-show="person().returns">(<translate>back</translate> {{person().returns}})</span>
             </div>
-            <div class="item">
-                <p>
-                    {{person().phone}}
-                </p>
-                <p>
-                    {{person().mobile}}
-                </p>
-                <p>
-                    {{person().email}}
-                </p>
-            </div>
-
+            <a href="tel:{{person().phone}}" class="item item-icon-left">
+                <i class="icon ion-ios-telephone"></i>
+                {{person().phone}}
+            </a>
+            <a href="tel:{{person().mobile}}" class="item item-icon-left">
+                <i class="icon ion-ios-telephone"></i>
+                {{person().mobile}}
+            </a>
+            <a href="sms:{{person().mobile}}" class="item item-icon-left">
+                <i class="icon ion-android-textsms"></i>
+                {{person().mobile}}
+            </a>
+            <a href="mailto:{{person().email}}" class="item item-icon-left">
+                <i class="icon ion-ios-email"></i>
+                {{person().email}}
+            </a>
         </div>
-
     </ion-content>
 </ion-view>
