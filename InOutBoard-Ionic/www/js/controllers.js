@@ -8,15 +8,11 @@ angular.module('inoutlist.controllers', [])
 })
 
 .controller('PeopleDetailCtrl', function ($scope, $stateParams, People) {
-    $scope.person = function () {
-        return People.get($stateParams.id, $scope);
-    };
+    $scope.person = People.get($stateParams.id, $scope);
 
     $scope.update = function () {
         People.update($scope);
     };
-
-    $scope.isMe = $stateParams.id == People.me.id;
 })
 
 .controller('MeCtrl', function ($scope, People, $ionicPopup) {
@@ -34,10 +30,18 @@ angular.module('inoutlist.controllers', [])
         People.put($scope.me);
     };
 
-    $scope.onSelectChange = function (e) {
+    $scope.submitStatus = function (status) {
+        $scope.me.person.Status = status;
+        updateStatus();
+        $scope.submit();
+    }
 
+    $scope.onSelectChange = function () {
+        updateStatus();
+    };
+
+    function updateStatus() {
         var status = $scope.me.person.Status;
-
         switch (status) {
             case 0:
                 $scope.me.person.StatusMessage = '';
@@ -50,6 +54,5 @@ angular.module('inoutlist.controllers', [])
                 $scope.me.person.StatusMessage = option[0].label;
                 break;
         };
-    };
-
+    }
 });

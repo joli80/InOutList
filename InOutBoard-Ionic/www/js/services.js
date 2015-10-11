@@ -268,11 +268,13 @@ angular.module('inoutlist.services', [])
             c.setPerson({
                 Name: 'Name' + i,
                 Phone: '70' + i,
-                Email: 'name' + i + '@example.com',
                 CellPhone: '+4670345654' + i,
                 Status: i,
                 StatusMessage: "Jobbar :huvudvärk: hemma",
                 BackAgainMessage: "kl " + i
+            });
+            c.setUser({
+                userPrincipalName: 'name' + i + '@example.com'
             });
         }
         people.me = getCombined(0);
@@ -372,12 +374,15 @@ angular.module('inoutlist.services', [])
     }
 
     function put(c, onSuccess) {
-        if (!test)
+        if (test) {
+            c.setPerson(c.person);
+        } else {
             InOutListApi.updatePerson(c.person, function () {
                 c.setPerson(c.person);
                 if (onSuccess)
                     onSuccess();
             });
+        }
     }
 
     var people = {

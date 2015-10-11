@@ -6,14 +6,15 @@
 
         <div class="list card ">
             <div class="item person {{me.statusColor()}}">
+                <strong>{{me.name}}</strong><br />
                 <span ng-bind-html="me.statusText()"></span> <span ng-show="me.returns">(<translate>back</translate> {{me.returns}})</span>
             </div>
         </div>
 
         <p>
             <div class="button-bar control">
-                <a translate class="button button-green">At work</a>
-                <a translate class="button button-red">Gone for the day</a>
+                <a translate class="button button-green" ng-click="submitStatus(0)">At work</a>
+                <a translate class="button button-red" ng-click="submitStatus(1)">Gone for the day</a>
             </div>
         </p>
         <div class="list">
