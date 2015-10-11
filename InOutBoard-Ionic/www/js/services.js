@@ -1,4 +1,4 @@
-angular.module('inoutlist.services', [])
+ï»¿angular.module('inoutlist.services', [])
 
 .factory('InOutListApi', function (Adal, $resource) {
 
@@ -270,7 +270,7 @@ angular.module('inoutlist.services', [])
                 Phone: '70' + i,
                 CellPhone: '+4670345654' + i,
                 Status: i,
-                StatusMessage: "Jobbar :huvudvärk: hemma",
+                StatusMessage: "Jobbar :huvudvÃ¤rk: hemma",
                 BackAgainMessage: "kl " + i
             });
             c.setUser({
@@ -364,7 +364,7 @@ angular.module('inoutlist.services', [])
             statusText: function () {
                 var re = /\:(.*)\:/;
                 return c.status
-                        .replace('ä', 'a').replace('å', 'a').replace('ö', 'o')
+                        .replace('Ã¤', 'a').replace('Ã¥', 'a').replace('Ã¶', 'o')
                         .replace(re, '<img src="img/$1.gif" alt="$1" class="emoticon" />');
             }
         };
