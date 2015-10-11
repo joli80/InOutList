@@ -1,9 +1,8 @@
 <ion-view>
     <ion-nav-buttons side="secondary">
+        <ion-spinner ng-show="People.loading"></ion-spinner>
         <button class="button button-icon icon ion-refresh" ng-click="update()"></button>
     </ion-nav-buttons>
-
-
     <ion-content class="padding">
         <div ng-hide="getMe()">
             <button class="button button-block icon-left ion-refresh" translate ng-click="update()">

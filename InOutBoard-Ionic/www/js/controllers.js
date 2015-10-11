@@ -1,7 +1,7 @@
 angular.module('inoutlist.controllers', [])
 
 .controller('PeopleCtrl', function ($scope, People) {
-    $scope.people = People;
+    $scope.People = People;
     $scope.update = function () {
         People.update($scope);
     };
@@ -9,6 +9,7 @@ angular.module('inoutlist.controllers', [])
 
 .controller('PeopleDetailCtrl', function ($scope, $stateParams, People) {
     $scope.person = People.get($stateParams.id, $scope);
+    $scope.People = People;
 
     $scope.update = function () {
         People.update($scope);
@@ -16,6 +17,8 @@ angular.module('inoutlist.controllers', [])
 })
 
 .controller('MeCtrl', function ($scope, People, $ionicPopup) {
+
+    $scope.People = People;
 
     $scope.getMe = function () {
         $scope.me = People.get(People.me.id, $scope);

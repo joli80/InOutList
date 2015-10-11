@@ -1,10 +1,11 @@
 <ion-view>
     <ion-nav-buttons side="secondary">
+        <ion-spinner ng-show="People.loading"></ion-spinner>
         <button class="button button-icon icon ion-refresh" ng-click="update()"></button>
     </ion-nav-buttons>
     <ion-content>
         <ion-list>
-            <ion-item class="item item-icon-left item-icon-right" ng-repeat="person in people.all() | orderBy:'name'" type="item-text-wrap" href="#/tab/people/{{person.id}}">
+            <ion-item class="item item-icon-left item-icon-right" ng-repeat="person in People.all() | orderBy:'name'" type="item-text-wrap" href="#/tab/people/{{person.id}}">
                 <div class="status-bar {{person.statusColor()}}"></div>
                 <h2>{{person.name}}</h2>
                 <p>

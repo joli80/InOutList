@@ -205,7 +205,7 @@
     };
 })
 
-.factory('People', function (GraphApi, InOutListApi) {
+.factory('People', function (GraphApi, InOutListApi, $timeout) {
 
     var combinedUsersAndPersons = {};
     function getAndAddCombined(id) {
@@ -251,17 +251,36 @@
         }, onError);
     }
 
-    var test = false;
-    function update(scope, onSuccess, onError) {
+    var loadingPersons, loadingUsers;
+    function updateLoading() {
+        people.loading = loadingUsers || loadingPersons;
+    }
 
+    var test = false;
+    function update(scope) {
         if (test) {
-            createTestData();
+            people.loading = true;
+            $timeout(function () {
+                createTestData();
+                people.loading = false;
+            }, 2000);
             return;
         }
 
-        getUsers(scope, onSuccess, onError, function () {
-            // On login success, continue to get persons
-            getPersons(onSuccess, onError);
+        loadingUsers = true;
+        updateLoading();
+        getUsers(scope, function () {
+            // On success
+            loadingUsers = false;
+            updateLoading();
+        }, null, function () {
+            // On login success, continue to get 
+            updateLoading();
+            loadingPersons = true;
+            getPersons(function () {
+                loadingPersons = false;
+                updateLoading();
+            }, null);
         });
     }
 
@@ -385,17 +404,20 @@
 
     }
 
-    function put(c, onSuccess) {
+    function put(c) {
         if (test) {
             c.setPerson(c.person);
         } else {
+            loadingPersons = true;
+            updateLoading();
             InOutListApi.updatePerson(c.person, function () {
                 c.setPerson(c.person);
-                if (onSuccess)
-                    onSuccess();
+                loadingPersons = false;
+                updateLoading();
             });
         }
     }
+
 
     var people = {
         update: update,
@@ -412,7 +434,8 @@
         },
         me: {},
         get: get,
-        put: put
+        put: put,
+        loading: false
     };
     return people;
 });
