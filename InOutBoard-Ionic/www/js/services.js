@@ -249,7 +249,9 @@ angular.module('inoutlist.services', [])
         for (var i = 0; i < 5; i++) {
             var c = getAndAddCombined(i);
             c.name = 'Name' + i;
-            c.mobile = 'Mobile' + i;
+            c.phone = '70' + i;
+            c.email = c.name + '@example.com';
+            c.mobile = '46 703 45654' + i;
             c.show = true;
             c.status = "Jobbar :huvudvärk: hemma";
             c.returns = "kl " + i;

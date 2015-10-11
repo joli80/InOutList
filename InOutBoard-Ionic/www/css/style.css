@@ -20,13 +20,36 @@
     color: #fff;
 }
 
-    .status-bar.red, .item.red, .control .button.red {
-        background-color: #990000;
+.button.button-green {
+    background-color: #339933;
+    border-color: #33BB33;
+}
+
+    .button.button-green.active, .button.button-green.activated {
+        border-color: #33BB33;
+        background-color: #33BB33;
+        box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
     }
 
-    .status-bar.green, .item.green, .control .button.green {
-        background-color: #339933;
+.button.button-red {
+    background-color: #990000;
+    border-color: #BB0000;
+}
+
+    .button.button-red.active, .button.button-red.activated {
+        border-color: #BB0000;
+        background-color: #BB0000;
+        box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
     }
+
+
+.status-bar.red, .item.red {
+    background-color: #990000;
+}
+
+.status-bar.green, .item.green {
+    background-color: #339933;
+}
 
 .status-bar.green-light, .item.green-light {
     background-color: #00CC00;
