@@ -232,7 +232,7 @@ angular.module('inoutlist.services', [])
         }, onError);
     }
 
-    var test = false;
+    var test = true;
     function update(scope, onSuccess, onError) {
 
         if (test) {
