@@ -4,79 +4,83 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
 
-#: www/templates/tab-people.html:1
-#: www/templates/tabs.html:9
+#: www/templates/tabs.html:14
 msgid "All"
 msgstr ""
 
-#: www/templates/people-detail.html:31
-#: www/templates/people-detail.html:50
+#: www/templates/tab-me.html:30
+#: www/templates/tab-me.html:49
 msgid "Arrend"
 msgstr ""
 
-#: www/templates/people-detail.html:25
-#: www/templates/people-detail.html:35
+#: www/templates/tab-me.html:23
+#: www/templates/tab-me.html:34
 msgid "At work"
 msgstr ""
 
-#: www/templates/people-detail.html:54
+#: www/templates/tab-me.html:53
 msgid "Back"
 msgstr ""
 
-#: www/templates/people-detail.html:43
+#: www/templates/tab-me.html:42
 msgid "Business arrend"
 msgstr ""
 
-#: www/templates/people-detail.html:44
+#: www/templates/tab-me.html:43
 msgid "Business travel"
 msgstr ""
 
-#: www/templates/people-detail.html:37
+#: www/templates/tab-me.html:36
 msgid "Busy"
 msgstr ""
 
-#: www/templates/people-detail.html:26
-#: www/templates/people-detail.html:36
+#: www/templates/tab-me.html:24
+#: www/templates/tab-me.html:35
 msgid "Gone for the day"
 msgstr ""
 
-#: www/templates/people-detail.html:46
+#: www/templates/tab-me.html:45
 msgid "In a meeting"
 msgstr ""
 
-#: www/templates/tabs.html:14
+#: www/templates/tabs.html:9
 msgid "Me"
 msgstr ""
 
-#: www/templates/people-detail.html:42
+#: www/templates/tab-me.html:41
 msgid "Parenting leave"
 msgstr ""
 
-#: www/templates/people-detail.html:45
+#: www/templates/tab-me.html:44
 msgid "Private arrend"
 msgstr ""
 
-#: www/templates/people-detail.html:40
+#: www/templates/tab-me.html:9
+msgid "Refresh"
+msgstr ""
+
+#: www/templates/tab-me.html:39
 msgid "Sick"
 msgstr ""
 
-#: www/templates/people-detail.html:41
+#: www/templates/tab-me.html:40
 msgid "Sick children"
 msgstr ""
 
-#: www/templates/people-detail.html:57
+#: www/templates/tab-me.html:56
 msgid "Submit"
 msgstr ""
 
-#: www/templates/people-detail.html:39
+#: www/templates/tab-me.html:38
 msgid "Vacation"
 msgstr ""
 
-#: www/templates/people-detail.html:38
+#: www/templates/tab-me.html:37
 msgid "Working at home"
 msgstr ""
 
-#: www/templates/people-detail.html:10
+#: www/templates/people-detail.html:12
+#: www/templates/tab-me.html:17
 #: www/templates/tab-people.html:11
 msgid "back"
 msgstr ""

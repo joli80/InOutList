@@ -27,8 +27,6 @@ angular
             // org.apache.cordova.statusbar required
             StatusBar.styleLightContent();
         }
-        Adal.init();
-
     });
     gettextCatalog.setCurrentLanguage('sv');
     gettextCatalog.debug = true;

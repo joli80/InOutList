@@ -107,8 +107,12 @@
         return user;
     };
 
-    function getUsers(onSuccess, onError) {
+    function getUsers(onSuccess, onError, onAuthCompleted) {
         Adal.authenticate(resourceUri, function (result) {
+
+            if (onAuthCompleted)
+                onAuthCompleted();
+
             var userId = result.userInfo.userId;
             users(result).query(function (users) {
                 api.users = users.value;
@@ -172,9 +176,6 @@
     }
 
     return {
-        init: function () {
-            initialised = true;
-        },
         authenticate: function (resourceUri, authCompletedCallback) {
             var authContext = new Microsoft.ADAL.AuthenticationContext(authority);
             authContext.tokenCache.readItems().then(function (items) {
@@ -220,7 +221,7 @@
         return combinedUsersAndPersons[id];
     }
 
-    function getUsers(scope, onSuccess, onError) {
+    function getUsers(scope, onSuccess, onError, onAuthCompleted) {
         GraphApi.update(function () {
             for (var i = 0; i < GraphApi.users.length; i++) {
                 var user = GraphApi.users[i];
@@ -232,7 +233,7 @@
 
             if (onSuccess)
                 onSuccess();
-        }, onError);
+        }, onError, onAuthCompleted);
     }
 
     function getPersons(onSuccess, onError) {
@@ -258,8 +259,10 @@
             return;
         }
 
-        getUsers(scope, onSuccess, onError);
-        getPersons(onSuccess, onError);
+        getUsers(scope, onSuccess, onError, function () {
+            // On login success, continue to get persons
+            getPersons(onSuccess, onError);
+        });
     }
 
     function createTestData() {
