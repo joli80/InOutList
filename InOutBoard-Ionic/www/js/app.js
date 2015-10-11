@@ -1,6 +1,6 @@
 angular
 
-.module('inoutlist', ['ionic', 'inoutlist.controllers', 'inoutlist.services', 'gettext', 'ngResource', 'filereader', 'ngSanitize'])
+.module('inoutlist', ['ionic', 'inoutlist.controllers', 'inoutlist.services', 'gettext', 'ngResource'])
 
 .directive('convertToNumber', function () {
     return {

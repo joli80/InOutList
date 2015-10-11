@@ -70,7 +70,7 @@
 
 })
 
-.factory('GraphApi', function (Adal, $resource, FileReader) {
+.factory('GraphApi', function (Adal, $resource) {
     var resourceUri = "https://graph.windows.net",
         graphApiVersion = "1.6",
         tenantId = '7e046de7-97c5-4177-b6a6-e5852edf378e';
@@ -136,11 +136,12 @@
         return null;
     }
 
-    function getThumbnail(objectId, onSuccess, scope) {
+    function getThumbnail(objectId, onSuccess) {
         Adal.authenticate(resourceUri, function (result) {
             thumbnail(result, objectId).query(function (imgData) {
                 if (onSuccess) {
-                    FileReader.readAsDataURL(imgData.blob, scope).then(onSuccess);
+                    var fileURL = URL.createObjectURL(imgData.blob);
+                    onSuccess(fileURL);
                 }
             }, function (err) {
                 console.error(err);
@@ -221,7 +222,7 @@
         return combinedUsersAndPersons[id];
     }
 
-    function getUsers(scope, onSuccess, onError, onAuthCompleted) {
+    function getUsers(onSuccess, onError, onAuthCompleted) {
         GraphApi.update(function () {
             for (var i = 0; i < GraphApi.users.length; i++) {
                 var user = GraphApi.users[i];
@@ -257,7 +258,7 @@
     }
 
     var test = false;
-    function update(scope) {
+    function update() {
         if (test) {
             people.loading = true;
             $timeout(function () {
@@ -267,17 +268,18 @@
             return;
         }
 
-        loadingUsers = true;
         updateLoading();
-        getUsers(scope, function () {
+        getUsers(function () {
             // On success
             loadingUsers = false;
             updateLoading();
         }, null, function () {
             // On login success, continue to get 
-            updateLoading();
+            loadingUsers = true;
             loadingPersons = true;
+            updateLoading();
             getPersons(function () {
+                // On success
                 loadingPersons = false;
                 updateLoading();
             }, null);
@@ -302,10 +304,10 @@
         people.me = getCombined(0);
     }
 
-    function get(id, scope) {
+    function get(id) {
         var c = getCombined(id);
         if (c)
-            c.getFace(scope);
+            c.getFace();
         return c;
     }
 
@@ -345,7 +347,7 @@
             status: '',
             returns: '',
             face: '',
-            getFace: function (scope) {
+            getFace: function () {
                 if (!c.face) {
                     c.face = 'img/profile.png';
 
@@ -354,7 +356,7 @@
 
                     GraphApi.getThumbnail(c.objectId, function (img) {
                         c.face = img;
-                    }, scope);
+                    });
                 }
             },
             statusCode: undefined,

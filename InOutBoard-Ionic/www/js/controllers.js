@@ -8,11 +8,11 @@ angular.module('inoutlist.controllers', [])
 })
 
 .controller('PeopleDetailCtrl', function ($scope, $stateParams, People) {
-    $scope.person = People.get($stateParams.id, $scope);
+    $scope.person = People.get($stateParams.id);
     $scope.People = People;
 
     $scope.update = function () {
-        People.update($scope);
+        People.update();
     };
 })
 
@@ -21,12 +21,12 @@ angular.module('inoutlist.controllers', [])
     $scope.People = People;
 
     $scope.getMe = function () {
-        $scope.me = People.get(People.me.id, $scope);
+        $scope.me = People.get(People.me.id);
         return $scope.me;
     };
 
     $scope.update = function () {
-        People.update($scope);
+        People.update();
     };
 
     $scope.submit = function () {
