@@ -3,22 +3,31 @@
     <ion-nav-buttons side="secondary">
         <button class="button button-icon icon ion-refresh" ng-click="update()"></button>
     </ion-nav-buttons>
-    <ion-content class="padding">
-        <img ng-src="{{person().face}}" style="height:200px;">
-        <p>
-            <span class="label {{person().statusColor()}}">
+    <ion-content class="padding" ng-show="person()">
+
+        <div class="list card ">
+            <div class="item item-image">
+                <img ng-src="{{person().face}}">
+            </div>
+
+            <div class="item person {{person().statusColor()}}">
                 <span ng-bind-html="person().statusText()"></span>  <span ng-show="person().returns">(<translate>back</translate> {{person().returns}})</span>
-            </span>
-        </p>
-        <p>
-            {{person().mobile}}
-        </p>
-        <p>
-            {{person().phone}}
-        </p>
-        <p>
-            {{person().email}}
-        </p>
+            </div>
+            <div class="item">
+                <p>
+                    {{person().mobile}}
+                </p>
+                <p>
+                    {{person().phone}}
+                </p>
+                <p>
+                    {{person().email}}
+                </p>
+            </div>
+
+        </div>
+
+
         <div ng-show="isMe">
             <p>
                 <div class="button-bar control">

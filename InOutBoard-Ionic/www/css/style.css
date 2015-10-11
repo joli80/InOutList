@@ -8,42 +8,39 @@
     bottom: 0;
 }
 
-span.label {
+.item.person {
     color: #fff;
-    padding: 7px 10px;
-    border-radius: 7px;
 }
 
-
-    span.label img.emoticon, .item img.emoticon {
-        margin: 0 0 -4px;
-    }
+.item img.emoticon {
+    margin: 0 0 -4px;
+}
 
 .control .button {
     color: #fff;
 }
 
-    .status-bar.red, span.label.red, .control .button.red {
+    .status-bar.red, .item.red, .control .button.red {
         background-color: #990000;
     }
 
-    .status-bar.green, span.label.green, .control .button.green {
+    .status-bar.green, .item.green, .control .button.green {
         background-color: #339933;
     }
 
-.status-bar.green-light, span.label.green-light {
+.status-bar.green-light, .item.green-light {
     background-color: #00CC00;
 }
 
-.status-bar.blue, span.label.blue {
+.status-bar.blue, .item.blue {
     background-color: #426EFC;
 }
 
-.status-bar.purple, span.label.purple {
+.status-bar.purple, .item.purple {
     background-color: #8F6FF0;
 }
 
-.status-bar.yellow, span.label.yellow {
+.status-bar.yellow, .item.yellow {
     background-color: #FFCC00;
     color: #000;
 }
