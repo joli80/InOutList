@@ -250,7 +250,7 @@
         }, onError);
     }
 
-    var test = true;
+    var test = false;
     function update(scope, onSuccess, onError) {
 
         if (test) {
