@@ -260,7 +260,7 @@
         people.loading = loadingUsers || loadingPersons;
     }
 
-    var test = true;
+    var test = false;
     function update() {
         if (test) {
             people.loading = true;
