@@ -214,4 +214,4 @@ ModelManifest.xml
 # Cordova
 bld/
 platforms/
-res/
+res/native/
