@@ -42,36 +42,6 @@ img.emoticon {
         box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
     }
 
-
-/*.status-bar.red, .item.red {
-    background-color: #990000;
-}
-
-.status-bar.green, .item.green {
-    background-color: #339933;
-}
-
-.status-bar.green-light, .item.green-light {
-    background-color: #00CC00;
-}
-
-.status-bar.blue, .item.blue {
-    background-color: #426EFC;
-}
-
-.status-bar.purple, .item.purple {
-    background-color: #8F6FF0;
-}
-
-.status-bar.yellow, .item.yellow {
-    background-color: #FFCC00;
-    color: #000;
-}*/
-
-/*.spinner {
-    position: absolute;
-}*/
-
 .spinner svg {
     width: 28px;
     height: 28px;

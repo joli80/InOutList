@@ -4,17 +4,6 @@
         <button class="button button-icon icon ion-refresh" ng-click="update()"></button>
     </ion-nav-buttons>
     <ion-content>
-        <!--<ion-list>
-            <ion-item class="item item-icon-left item-icon-right" ng-repeat="person in People.all() | orderBy:'name'" type="item-text-wrap" href="#/tab/people/{{person.id}}">
-                <div class="status-bar {{person.statusColor()}}"></div>
-                <h2>{{person.name}}</h2>
-                <p>
-                    <span ng-bind-html="person.statusText()"></span> <span ng-show="person.returns">(<translate>back</translate> {{person.returns}})</span>
-                </p>
-                <i class="icon ion-chevron-right icon-accessory"></i>
-            </ion-item>
-        </ion-list>-->
-
         <div class="row responsive-sm people">
             <div class="col" collection-repeat="person in People.all() | orderBy:'name'">
                 <a href="#/tab/people/{{person.id}}">
@@ -25,10 +14,5 @@
                 </a>
             </div>
         </div>
-        <!--<div class="col">.col</div>
-        <div class="col">.col</div>
-        <div class="col">.col</div>-->
-
-
     </ion-content>
 </ion-view>
