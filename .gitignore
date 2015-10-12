@@ -212,6 +212,8 @@ _Pvt_Extensions/
 ModelManifest.xml
 
 # Cordova
+bin/
 bld/
 platforms/
-res/native/
+InOutBoard-Ionic/res/native/android/infracontrol_keystore
+InOutBoard-Ionic/res/native/android/ant.properties
