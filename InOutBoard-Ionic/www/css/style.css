@@ -50,23 +50,32 @@ img.emoticon {
     padding-top: 4px;
 }
 
-.row.people {
-    margin: 20px 0;
+.people {
+    margin: 20px 15px;
 }
 
-    .row.people .col {
-        min-width: 250px;
+    .people .person {
+        width: 100%;
+        margin-bottom: 5px;
     }
 
-        .row.people .col a {
-            color: #fff;
-            text-decoration: none;
-        }
+@media (min-width: 550px) {
+    .people .person {
+        width: 250px;
+        margin-right: 5px;
+        display: inline-block;
+    }
+}
 
-        .row.people .col .col-content {
-            padding: 10px;
-            height: 70px;
-        }
+.people .person a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.person .col-content {
+    padding: 10px;
+    height: 70px;
+}
 
 .green {
     background-color: #339933;

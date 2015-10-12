@@ -4,8 +4,8 @@
         <button class="button button-icon icon ion-refresh" ng-click="update()"></button>
     </ion-nav-buttons>
     <ion-content>
-        <div class="row responsive-sm people">
-            <div class="col" collection-repeat="person in People.all() | orderBy:'name'">
+        <div class="people">
+            <div class="person" ng-repeat="person in People.all() | orderBy:'name'">
                 <a href="#/tab/people/{{person.id}}">
                     <div class="col-content {{person.statusColor()}}">
                         <strong>{{person.name}}</strong><br />
