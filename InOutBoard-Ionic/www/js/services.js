@@ -166,11 +166,7 @@
         redirectUri = "http://InOutList",
         clientId = "f0a67ebb-50d3-4de0-aae1-a44b3ff62773";
 
-    var userId;
-    var initialised = false;
-
     function onAuthCompleted(authResult, authCompletedCallback) {
-        userId = authResult.userInfo.userId;
         if (authCompletedCallback) {
             authCompletedCallback(authResult);
         }
@@ -206,7 +202,14 @@
     };
 })
 
-.factory('People', function (GraphApi, InOutListApi, $timeout) {
+.factory('People', function (GraphApi, InOutListApi, $timeout, $ionicPlatform) {
+
+    $ionicPlatform.on("resume", function (event) {
+        if (combinedUsersAndPersons) {
+            update();
+        }
+        //console.log('app resume event', event);
+    });
 
     var combinedUsersAndPersons = {};
     function getAndAddCombined(id) {
@@ -257,7 +260,7 @@
         people.loading = loadingUsers || loadingPersons;
     }
 
-    var test = false;
+    var test = true;
     function update() {
         if (test) {
             people.loading = true;
@@ -287,19 +290,26 @@
     }
 
     function createTestData() {
-        for (var i = 0; i < 5; i++) {
+        for (var i = 0; i < 25; i++) {
             var c = getAndAddCombined(i);
+
+            var status = "Jobbar :huvudvärk: hemma";
+            if ((i % 7) == 0) {
+                status = "Det här är en lång statustext";
+            }
+
             c.setPerson({
                 Name: 'Name' + i,
                 Phone: '70' + i,
                 CellPhone: '+4670345654' + i,
                 Status: i,
-                StatusMessage: "Jobbar :huvudvärk: hemma",
+                StatusMessage: status,
                 BackAgainMessage: "kl " + i
             });
             c.setUser({
                 userPrincipalName: 'name' + i + '@example.com'
             });
+
         }
         people.me = getCombined(0);
     }
