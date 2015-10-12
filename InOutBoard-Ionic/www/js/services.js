@@ -257,14 +257,14 @@
         people.loading = loadingUsers || loadingPersons;
     }
 
-    var test = false;
+    var test = true;
     function update() {
         if (test) {
             people.loading = true;
             $timeout(function () {
                 createTestData();
                 people.loading = false;
-            }, 2000);
+            }, 500);
             return;
         }
 

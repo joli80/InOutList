@@ -80,3 +80,37 @@
     fill: #444;
     padding-top: 4px;
 }
+
+.row.people .col {
+    color: #fff;
+    min-width: 250px;
+}
+
+    .row.people .col .col-content {
+        padding: 5px 10px;
+        height: 70px;
+    }
+
+        .row.people .col .col-content.green {
+            background-color: #339933;
+        }
+
+        .row.people .col .col-content.red {
+            background-color: #990000;
+        }
+
+        .row.people .col .col-content.green-light {
+            background-color: #00CC00;
+        }
+
+        .row.people .col .col-content.blue {
+            background-color: #426EFC;
+        }
+
+        .row.people .col .col-content.purple {
+            background-color: #8F6FF0;
+        }
+
+        .row.people .col .col-content.yellow {
+            background-color: #FFCC00;
+        }
