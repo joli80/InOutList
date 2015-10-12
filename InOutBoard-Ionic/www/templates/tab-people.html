@@ -17,15 +17,17 @@
 
         <div class="row responsive-sm people">
             <div class="col" collection-repeat="person in People.all() | orderBy:'name'">
-                <div class="col-content {{person.statusColor()}}">
-                    <strong>{{person.name}}</strong><br />
-                    <span ng-bind-html="person.statusText()"></span> <span ng-show="person.returns">(<translate>back</translate> {{person.returns}})</span>
-                </div>
+                <a href="#/tab/people/{{person.id}}">
+                    <div class="col-content {{person.statusColor()}}">
+                        <strong>{{person.name}}</strong><br />
+                        <span ng-bind-html="person.statusText()"></span> <span ng-show="person.returns">(<translate>back</translate> {{person.returns}})</span>
+                    </div>
+                </a>
             </div>
-            <!--<div class="col">.col</div>
-            <div class="col">.col</div>
-            <div class="col">.col</div>-->
         </div>
+        <!--<div class="col">.col</div>
+        <div class="col">.col</div>
+        <div class="col">.col</div>-->
 
 
     </ion-content>

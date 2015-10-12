@@ -13,7 +13,7 @@
     height: 80px;
 }
 
-.item img.emoticon {
+img.emoticon {
     margin: 0 0 -4px;
 }
 
@@ -21,30 +21,29 @@
     color: #fff;
 }
 
-.button.button-green {
-    background-color: #339933;
+.button.green {
     border-color: #337733;
 }
 
-    .button.button-green.active, .button.button-green.activated {
+    .button.green.active, .button.green.activated {
         border-color: #337733;
         background-color: #337733;
         box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
     }
 
-.button.button-red {
+.button.red {
     background-color: #990000;
     border-color: #770000;
 }
 
-    .button.button-red.active, .button.button-red.activated {
+    .button.red.active, .button.red.activated {
         border-color: #770000;
         background-color: #770000;
         box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
     }
 
 
-.status-bar.red, .item.red {
+/*.status-bar.red, .item.red {
     background-color: #990000;
 }
 
@@ -67,7 +66,7 @@
 .status-bar.yellow, .item.yellow {
     background-color: #FFCC00;
     color: #000;
-}
+}*/
 
 /*.spinner {
     position: absolute;
@@ -81,36 +80,44 @@
     padding-top: 4px;
 }
 
-.row.people .col {
-    color: #fff;
-    min-width: 250px;
+.row.people {
+    margin-top: 20px;
 }
 
-    .row.people .col .col-content {
-        padding: 5px 10px;
-        height: 70px;
+    .row.people .col {
+        min-width: 250px;
     }
 
-        .row.people .col .col-content.green {
-            background-color: #339933;
+        .row.people .col a {
+            color: #fff;
+            text-decoration: none;
         }
 
-        .row.people .col .col-content.red {
-            background-color: #990000;
+        .row.people .col .col-content {
+            padding: 10px;
+            height: 70px;
         }
 
-        .row.people .col .col-content.green-light {
-            background-color: #00CC00;
-        }
+.green {
+    background-color: #339933;
+}
 
-        .row.people .col .col-content.blue {
-            background-color: #426EFC;
-        }
+.red {
+    background-color: #990000;
+}
 
-        .row.people .col .col-content.purple {
-            background-color: #8F6FF0;
-        }
+.green-light {
+    background-color: #00CC00;
+}
 
-        .row.people .col .col-content.yellow {
-            background-color: #FFCC00;
-        }
+.blue {
+    background-color: #426EFC;
+}
+
+.purple {
+    background-color: #8F6FF0;
+}
+
+.yellow {
+    background-color: #FFCC00;
+}
