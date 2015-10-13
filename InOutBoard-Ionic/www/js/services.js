@@ -207,15 +207,41 @@
     };
 })
 
-.factory('People', function (GraphApi, InOutListApi, $timeout, $ionicPlatform) {
+.factory('People', function (GraphApi, InOutListApi, $timeout, $ionicPlatform, $interval) {
 
     $ionicPlatform.on("deviceready", function (event) {
         update(true);
+        startPoll();
     });
 
     $ionicPlatform.on("resume", function (event) {
         update(true);
+        startPoll();
     });
+
+    $ionicPlatform.on("pause", function (event) {
+        stopPoll();
+    });
+
+    var poll;
+    function startPoll() {
+        if (angular.isDefined(poll)) return;
+
+        poll = $interval(function () {
+            var now = new Date();
+            var nextUpdate = new Date(latestUpdate);
+            nextUpdate.setSeconds(latestUpdate.getSeconds() + 60);
+            if (now > nextUpdate)
+                update(true);
+        }, 10 * 1000);
+    }
+
+    function stopPoll() {
+        if (angular.isDefined(poll)) {
+            $interval.cancel(poll);
+            poll = undefined;
+        }
+    }
 
     var combinedUsersAndPersons = {};
     function getAndAddCombined(id) {
@@ -268,7 +294,9 @@
     }
 
     var test = false;
+    var latestUpdate = new Date();
     function update(silentLoginOnly) {
+        latestUpdate = new Date();
         if (test) {
             people.loading = true;
             $timeout(function () {
