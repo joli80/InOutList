@@ -5,6 +5,11 @@
     </ion-nav-buttons>
     <ion-content>
         <div class="people">
+            <div ng-show="People.needLogin">
+                <button class="button button-block icon-left ion-log-in" translate ng-click="update()">
+                    Log in
+                </button>
+            </div>
             <div class="person" ng-repeat="person in People.all() | orderBy:'name'">
                 <a href="#/tab/people/{{person.id}}">
                     <div class="col-content {{person.statusColor()}}">

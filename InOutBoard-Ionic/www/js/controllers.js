@@ -19,7 +19,6 @@ angular.module('inoutlist.controllers', [])
 .controller('MeCtrl', function ($scope, People, $ionicPopup) {
 
     $scope.People = People;
-    People.meScope = $scope;
 
     $scope.getMe = function () {
         $scope.me = People.get(People.me.id);

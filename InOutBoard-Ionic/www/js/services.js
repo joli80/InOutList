@@ -211,6 +211,7 @@
 
     $ionicPlatform.on("deviceready", function (event) {
         update(true);
+        $timeout(function () { }, 0); // Update scopes
     });
 
     $ionicPlatform.on("resume", function (event) {
@@ -299,8 +300,6 @@
             if (e.silent && silentLoginOnly) {
                 people.needLogin = true;
                 e.abort = true;
-                if (people.meScope)
-                    people.meScope.$apply();
             }
         });
     }
@@ -463,8 +462,7 @@
         get: get,
         put: put,
         loading: false,
-        needLogin: false,
-        meScope: null
+        needLogin: false
     };
     return people;
 });
