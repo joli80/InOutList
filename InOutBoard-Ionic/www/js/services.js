@@ -211,7 +211,6 @@
 
     $ionicPlatform.on("deviceready", function (event) {
         update(true);
-        $timeout(function () { }, 0); // Update scopes
     });
 
     $ionicPlatform.on("resume", function (event) {
@@ -300,6 +299,7 @@
             if (e.silent && silentLoginOnly) {
                 people.needLogin = true;
                 e.abort = true;
+                $timeout(function () { }, 0); // Update scopes
             }
         });
     }
