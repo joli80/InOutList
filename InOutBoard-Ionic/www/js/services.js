@@ -107,7 +107,7 @@
         return user;
     };
 
-    function getUsers(onSuccess, onError, onAuthCompleted) {
+    function getUsers(onSuccess, onError, onAuthCompleted, onAuthError) {
         Adal.authenticate(resourceUri, function (result) {
 
             if (onAuthCompleted)
@@ -124,7 +124,7 @@
                 if (onError)
                     onError(err);
             });
-        });
+        }, onAuthError);
     }
 
     function getUser(objectId) {
@@ -173,7 +173,7 @@
     }
 
     return {
-        authenticate: function (resourceUri, authCompletedCallback) {
+        authenticate: function (resourceUri, authCompletedCallback, authErrorCallback) {
             var authContext = new Microsoft.ADAL.AuthenticationContext(authority);
             authContext.tokenCache.readItems().then(function (items) {
                 for (var i = 0; i < items.length; i++) {
@@ -190,11 +190,16 @@
                     onAuthCompleted(authResult, authCompletedCallback);
                 }, function () {
                     // We require user credentials so triggers authentication dialog
-                    authContext.acquireTokenAsync(resourceUri, clientId, redirectUri).then(function (authResult) {
-                        onAuthCompleted(authResult, authCompletedCallback);
-                    }, function (err) {
-                        console.error("Failed to authenticate: " + JSON.stringify(err));
-                    });
+                    var e = { silent: true };
+                    if (authErrorCallback)
+                        authErrorCallback(e);
+                    if (!e.abort) {
+                        authContext.acquireTokenAsync(resourceUri, clientId, redirectUri).then(function (authResult) {
+                            onAuthCompleted(authResult, authCompletedCallback);
+                        }, function (err) {
+                            console.error("Failed to authenticate: " + JSON.stringify(err));
+                        });
+                    }
                 });
             });
 
@@ -204,11 +209,12 @@
 
 .factory('People', function (GraphApi, InOutListApi, $timeout, $ionicPlatform) {
 
+    $ionicPlatform.on("deviceready", function (event) {
+        update(true);
+    });
+
     $ionicPlatform.on("resume", function (event) {
-        if (combinedUsersAndPersons) {
-            update();
-        }
-        //console.log('app resume event', event);
+        update(true);
     });
 
     var combinedUsersAndPersons = {};
@@ -225,7 +231,7 @@
         return combinedUsersAndPersons[id];
     }
 
-    function getUsers(onSuccess, onError, onAuthCompleted) {
+    function getUsers(onSuccess, onError, onAuthCompleted, onAuthError) {
         GraphApi.update(function () {
             for (var i = 0; i < GraphApi.users.length; i++) {
                 var user = GraphApi.users[i];
@@ -237,7 +243,7 @@
 
             if (onSuccess)
                 onSuccess();
-        }, onError, onAuthCompleted);
+        }, onError, onAuthCompleted, onAuthError);
     }
 
     function getPersons(onSuccess, onError) {
@@ -252,6 +258,7 @@
 
             if (onSuccess)
                 onSuccess();
+
         }, onError);
     }
 
@@ -261,7 +268,7 @@
     }
 
     var test = false;
-    function update() {
+    function update(silentLoginOnly) {
         if (test) {
             people.loading = true;
             $timeout(function () {
@@ -286,6 +293,10 @@
                 loadingPersons = false;
                 updateLoading();
             }, null);
+        }, function (e) {
+            // On login fail
+            if (e.silent && silentLoginOnly)
+                e.abort = true;
         });
     }
 

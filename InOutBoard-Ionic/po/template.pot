@@ -8,79 +8,79 @@ msgstr ""
 msgid "All"
 msgstr ""
 
-#: www/templates/tab-me.html:30
-#: www/templates/tab-me.html:49
+#: www/templates/tab-me.html:29
+#: www/templates/tab-me.html:48
 msgid "Arrend"
+msgstr ""
+
+#: www/templates/tab-me.html:22
+#: www/templates/tab-me.html:33
+msgid "At work"
+msgstr ""
+
+#: www/templates/tab-me.html:52
+msgid "Back"
+msgstr ""
+
+#: www/templates/tab-me.html:41
+msgid "Business arrend"
+msgstr ""
+
+#: www/templates/tab-me.html:42
+msgid "Business travel"
+msgstr ""
+
+#: www/templates/tab-me.html:35
+msgid "Busy"
 msgstr ""
 
 #: www/templates/tab-me.html:23
 #: www/templates/tab-me.html:34
-msgid "At work"
-msgstr ""
-
-#: www/templates/tab-me.html:53
-msgid "Back"
-msgstr ""
-
-#: www/templates/tab-me.html:42
-msgid "Business arrend"
-msgstr ""
-
-#: www/templates/tab-me.html:43
-msgid "Business travel"
-msgstr ""
-
-#: www/templates/tab-me.html:36
-msgid "Busy"
-msgstr ""
-
-#: www/templates/tab-me.html:24
-#: www/templates/tab-me.html:35
 msgid "Gone for the day"
 msgstr ""
 
-#: www/templates/tab-me.html:45
+#: www/templates/tab-me.html:44
 msgid "In a meeting"
+msgstr ""
+
+#: www/templates/tab-me.html:8
+msgid "Log in"
 msgstr ""
 
 #: www/templates/tabs.html:9
 msgid "Me"
 msgstr ""
 
-#: www/templates/tab-me.html:41
+#: www/templates/tab-me.html:40
 msgid "Parenting leave"
 msgstr ""
 
-#: www/templates/tab-me.html:44
+#: www/templates/tab-me.html:43
 msgid "Private arrend"
 msgstr ""
 
-#: www/templates/tab-me.html:9
-msgid "Refresh"
-msgstr ""
-
-#: www/templates/tab-me.html:39
+#: www/templates/tab-me.html:38
 msgid "Sick"
 msgstr ""
 
-#: www/templates/tab-me.html:40
+#: www/templates/tab-me.html:39
 msgid "Sick children"
 msgstr ""
 
-#: www/templates/tab-me.html:56
+#: www/templates/tab-me.html:55
 msgid "Submit"
 msgstr ""
 
-#: www/templates/tab-me.html:38
+#: www/templates/tab-me.html:37
 msgid "Vacation"
 msgstr ""
 
-#: www/templates/tab-me.html:37
+#: www/templates/tab-me.html:36
 msgid "Working at home"
 msgstr ""
 
-#: www/templates/people-detail.html:12
-#: www/templates/tab-me.html:17
-#: www/templates/tab-people.html:11
+#: www/templates/people-detail.html:13
+#: www/templates/tab-me.html:16
+#: www/templates/tab-people.html:12
 msgid "back"
 msgstr ""
