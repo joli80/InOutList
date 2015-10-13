@@ -32,7 +32,7 @@ angular
     gettextCatalog.debug = true;
 })
 
-.config(function ($stateProvider, $urlRouterProvider) {
+.config(function ($stateProvider, $urlRouterProvider, $compileProvider) {
 
     // Ionic uses AngularUI Router which uses the concept of states
     // Learn more here: https://github.com/angular-ui/ui-router
@@ -79,5 +79,7 @@ angular
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/tab/me');
+
+    $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|tel|sms|ftp|mailto|file|ghttps?|ms-appx|x-wmapp0):/)
 
 });
