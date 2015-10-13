@@ -285,6 +285,7 @@
             updateLoading();
         }, null, function () {
             // On login success, continue to get 
+            people.needLogin = false;
             loadingUsers = true;
             loadingPersons = true;
             updateLoading();
@@ -295,8 +296,12 @@
             }, null);
         }, function (e) {
             // On login fail
-            if (e.silent && silentLoginOnly)
+            if (e.silent && silentLoginOnly) {
+                people.needLogin = true;
                 e.abort = true;
+                if (people.meScope)
+                    people.meScope.$apply();
+            }
         });
     }
 
@@ -441,7 +446,6 @@
         }
     }
 
-
     var people = {
         update: update,
         all: function () {
@@ -458,7 +462,9 @@
         me: {},
         get: get,
         put: put,
-        loading: false
+        loading: false,
+        needLogin: false,
+        meScope: null
     };
     return people;
 });

@@ -4,12 +4,12 @@
         <button class="button button-icon icon ion-refresh" ng-click="update()"></button>
     </ion-nav-buttons>
     <ion-content class="padding">
-        <div ng-hide="getMe()">
+        <div ng-show="People.needLogin">
             <button class="button button-block icon-left ion-log-in" translate ng-click="update()">
                 Log in
             </button>
         </div>
-        <div ng-show="me">
+        <div ng-show="getMe()">
             <div class="list card ">
                 <div class="item person {{me.statusColor()}}">
                     <strong>{{me.name}}</strong><br />
