@@ -293,7 +293,7 @@
         people.loading = loadingUsers || loadingPersons;
     }
 
-    var test = true;
+    var test = false;
     var latestUpdate = new Date();
     function update(silentLoginOnly) {
         latestUpdate = new Date();
