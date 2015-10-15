@@ -219,3 +219,4 @@ InOutBoard-Ionic/res/native/android/infracontrol_keystore
 InOutBoard-Ionic/res/native/android/InOutList_keystore
 InOutBoard-Ionic/res/native/android/ant.properties
 build.json
+res/native
