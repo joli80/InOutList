@@ -337,21 +337,33 @@
             var c = getAndAddCombined(i);
 
             var status = "Jobbar :huvudvärk: hemma";
-            if ((i % 7) == 0) {
-                status = "Det här är en lång statustext";
-            }
 
-            c.setPerson({
+            var person = {
                 Name: 'Name' + i,
                 Phone: '70' + i,
                 CellPhone: '+4670345654' + i,
                 Status: i,
-                StatusMessage: status,
+                StatusMessage: "Jobbar :huvudvärk: hemma",
                 BackAgainMessage: "kl " + i
-            });
+            };
+
+            if ((i % 7) == 0) {
+                person.StatusMessage = "Det här är en lång statustext";
+            }
+            if ((i % 5) == 0) {
+                person.Phone = '';
+            }
+            if ((i % 6) == 0) {
+                person.CellPhone = '';
+            }
+
+            c.setPerson(person);
+
             c.setUser({
                 userPrincipalName: 'name' + i + '@example.com'
             });
+
+
 
         }
         people.me = getCombined(0);

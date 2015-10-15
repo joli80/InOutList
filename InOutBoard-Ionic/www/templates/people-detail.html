@@ -9,19 +9,19 @@
                 <strong>{{person.name}}</strong><br />
                 <span ng-bind-html="person.statusText()"></span>  <span ng-show="person.returns">(<translate>back</translate> {{person.returns}})</span>
             </div>
-            <a href="tel:{{person.phone}}" class="item item-icon-left">
+            <a href="tel:{{person.phone}}" class="item item-icon-left" ng-show="person.phone">
                 <i class="icon ion-ios-telephone"></i>
                 {{person.phone}}
             </a>
-            <a href="tel:{{person.mobile}}" class="item item-icon-left">
+            <a href="tel:{{person.mobile}}" class="item item-icon-left" ng-show="person.mobile">
                 <i class="icon ion-ios-telephone"></i>
                 {{person.mobile}}
             </a>
-            <a href="sms:{{person.mobile}}" class="item item-icon-left">
+            <a href="sms:{{person.mobile}}" class="item item-icon-left" ng-show="person.mobile">
                 <i class="icon ion-android-textsms"></i>
                 {{person.mobile}}
             </a>
-            <a href="mailto:{{person.email}}" class="item item-icon-left">
+            <a href="mailto:{{person.email}}" class="item item-icon-left" ng-show="person.email">
                 <i class="icon ion-ios-email"></i>
                 {{person.email}}
             </a>
