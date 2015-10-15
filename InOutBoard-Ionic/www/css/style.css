@@ -9,7 +9,6 @@
 }
 
 .item.person {
-    color: #fff;
     height: 80px;
 }
 
@@ -76,22 +75,27 @@ img.emoticon {
 }
 
 .green {
+    color: #fff;
     background-color: #339933;
 }
 
 .red {
+    color: #fff;
     background-color: #990000;
 }
 
 .green-light {
+    color: #fff;
     background-color: #00CC00;
 }
 
 .blue {
+    color: #fff;
     background-color: #426EFC;
 }
 
 .purple {
+    color: #fff;
     background-color: #8F6FF0;
 }
 
