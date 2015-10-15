@@ -8,7 +8,6 @@ msgstr ""
 msgid "All"
 msgstr ""
 
-#: www/templates/tab-me.html:29
 #: www/templates/tab-me.html:48
 msgid "Arrend"
 msgstr ""
@@ -44,6 +43,7 @@ msgid "In a meeting"
 msgstr ""
 
 #: www/templates/tab-me.html:8
+#: www/templates/tab-people.html:9
 msgid "Log in"
 msgstr ""
 
@@ -67,6 +67,10 @@ msgstr ""
 msgid "Sick children"
 msgstr ""
 
+#: www/templates/tab-me.html:29
+msgid "Status"
+msgstr ""
+
 #: www/templates/tab-me.html:55
 msgid "Submit"
 msgstr ""
@@ -81,6 +85,6 @@ msgstr ""
 
 #: www/templates/people-detail.html:13
 #: www/templates/tab-me.html:16
-#: www/templates/tab-people.html:12
+#: www/templates/tab-people.html:17
 msgid "back"
 msgstr ""

@@ -27,7 +27,7 @@
                 <div class="list">
                     <label class="item item-input item-select">
                         <div class="input-label" translate>
-                            Arrend
+                            Status
                         </div>
                         <select ng-model="me.person.Status" convert-to-number ng-change="onSelectChange()" tabindex="1">
                             <option value="0" translate>At work</option>
@@ -50,7 +50,7 @@
                     </label>
                     <label class="item item-input">
                         <span class="input-label" translate>Back</span>
-                        <input type="text" ng-model="me.person.BackAgainMessage" tabindex="3">
+                        <input type="text" ng-model="me.person.BackAgainMessage" tabindex="3" autocapitalize="none">
                     </label>
                     <button type="submit" class="button button-block" translate ng-click="submit()">
                         Submit

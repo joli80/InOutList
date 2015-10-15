@@ -16,7 +16,7 @@ msgstr ""
 msgid "All"
 msgstr "Alla"
 
-#: www/templates/tab-me.html:29 www/templates/tab-me.html:48
+#: www/templates/tab-me.html:48
 msgid "Arrend"
 msgstr "Ärende"
 
@@ -48,7 +48,7 @@ msgstr "Gått för dagen"
 msgid "In a meeting"
 msgstr "Möte"
 
-#: www/templates/tab-me.html:8
+#: www/templates/tab-me.html:8 www/templates/tab-people.html:9
 msgid "Log in"
 msgstr "Logga in"
 
@@ -72,6 +72,10 @@ msgstr "Sjuk"
 msgid "Sick children"
 msgstr "Vård av barn"
 
+#: www/templates/tab-me.html:29
+msgid "Status"
+msgstr "Status"
+
 #: www/templates/tab-me.html:55
 msgid "Submit"
 msgstr "Skicka"
@@ -85,7 +89,7 @@ msgid "Working at home"
 msgstr "Arbetar hemma"
 
 #: www/templates/people-detail.html:13 www/templates/tab-me.html:16
-#: www/templates/tab-people.html:12
+#: www/templates/tab-people.html:17
 msgid "back"
 msgstr "åter"
 
