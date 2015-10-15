@@ -13,6 +13,7 @@ angular.module('inoutlist.controllers', [])
         $scope.modal = modal;
     });
     $scope.openModal = function (person) {
+        person.getFace();
         $scope.person = person;
         $scope.modal.show();
     };
@@ -29,6 +30,9 @@ angular.module('inoutlist.controllers', [])
     $scope.update = function () {
         People.update();
     };
+    $scope.close = function () {
+        $scope.modal.hide();
+    }
 })
 
 .controller('MeCtrl', function ($scope, People, $ionicPopup) {

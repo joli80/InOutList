@@ -293,7 +293,7 @@
         people.loading = loadingUsers || loadingPersons;
     }
 
-    var test = false;
+    var test = true;
     var latestUpdate = new Date();
     function update(silentLoginOnly) {
         latestUpdate = new Date();
@@ -358,10 +358,7 @@
     }
 
     function get(id) {
-        var c = getCombined(id);
-        if (c)
-            c.getFace();
-        return c;
+        return getCombined(id);
     }
 
     function combined(id) {

@@ -40,6 +40,10 @@ msgstr "Tjänsteresa"
 msgid "Busy"
 msgstr "Upptagen"
 
+#: www/templates/people-detail.html:32
+msgid "Close"
+msgstr "Stäng"
+
 #: www/templates/tab-me.html:23 www/templates/tab-me.html:34
 msgid "Gone for the day"
 msgstr "Gått för dagen"
@@ -88,7 +92,7 @@ msgstr "Semester"
 msgid "Working at home"
 msgstr "Arbetar hemma"
 
-#: www/templates/people-detail.html:13 www/templates/tab-me.html:16
+#: www/templates/people-detail.html:12 www/templates/tab-me.html:16
 #: www/templates/tab-people.html:17
 msgid "back"
 msgstr "åter"
