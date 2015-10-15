@@ -8,10 +8,10 @@
     },
     "installed_plugins": {
         "cordova-plugin-ms-adal": {
-            "PACKAGE_NAME": "Inne/ute-tavla"
+            "PACKAGE_NAME": "Inne/ute-tavlan"
         },
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "Inne/ute-tavla"
+            "PACKAGE_NAME": "Inne/ute-tavlan"
         }
     },
     "dependent_plugins": {}

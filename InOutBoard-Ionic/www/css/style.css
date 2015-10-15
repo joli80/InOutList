@@ -94,3 +94,11 @@ img.emoticon {
     color: #000;
     background-color: #FFCC00;
 }
+
+.platform-windowsphone .tab-item {
+    max-width: none;
+}
+
+.platform-windows .tab-item {
+    max-width: none;
+}
