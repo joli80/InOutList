@@ -58,15 +58,6 @@ angular
             }
         }
     })
-    .state('tab.people-detail', {
-        url: '/people/:id',
-        views: {
-            'tab-people': {
-                templateUrl: 'templates/people-detail.html',
-                controller: 'PeopleDetailCtrl'
-            }
-        }
-    })
     .state('tab.me', {
         url: '/me',
         views: {

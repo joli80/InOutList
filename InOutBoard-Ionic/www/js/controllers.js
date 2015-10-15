@@ -1,16 +1,31 @@
 angular.module('inoutlist.controllers', [])
 
-.controller('PeopleCtrl', function ($scope, People) {
+.controller('PeopleCtrl', function ($scope, People, $ionicModal) {
     $scope.People = People;
     $scope.update = function () {
         People.update($scope);
     };
+
+    $ionicModal.fromTemplateUrl('templates/people-detail.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function (modal) {
+        $scope.modal = modal;
+    });
+    $scope.openModal = function (person) {
+        $scope.person = person;
+        $scope.modal.show();
+    };
+    $scope.closeModal = function () {
+        $scope.modal.hide();
+    };
+    //Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function () {
+        $scope.modal.remove();
+    });
 })
 
-.controller('PeopleDetailCtrl', function ($scope, $stateParams, People) {
-    $scope.person = People.get($stateParams.id);
-    $scope.People = People;
-
+.controller('PeopleDetailCtrl', function ($scope, People) {
     $scope.update = function () {
         People.update();
     };

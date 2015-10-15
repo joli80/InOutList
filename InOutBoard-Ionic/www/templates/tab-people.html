@@ -11,7 +11,7 @@
                 </button>
             </div>
             <div class="person" ng-repeat="person in People.all() | orderBy:'name'">
-                <a href="#/tab/people/{{person.id}}">
+                <a href="#" ng-click="openModal(person)">
                     <div class="col-content {{person.statusColor()}}">
                         <strong>{{person.name}}</strong><br />
                         <span ng-bind-html="person.statusText()"></span> <span ng-show="person.returns">(<translate>back</translate> {{person.returns}})</span>
