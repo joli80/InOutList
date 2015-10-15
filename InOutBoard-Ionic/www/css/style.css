@@ -26,18 +26,15 @@ img.emoticon {
 }
 
     .button.green.active, .button.green.activated {
-        border-color: #337733;
         background-color: #337733;
         box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
     }
 
 .button.red {
-    background-color: #990000;
     border-color: #770000;
 }
 
     .button.red.active, .button.red.activated {
-        border-color: #770000;
         background-color: #770000;
         box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
     }
@@ -59,7 +56,7 @@ img.emoticon {
         margin-bottom: 5px;
     }
 
-@media (min-width: 550px) {
+@media (min-width: 568px) {
     .people .person {
         width: 250px;
         margin-right: 5px;
