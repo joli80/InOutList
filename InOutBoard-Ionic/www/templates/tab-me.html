@@ -16,14 +16,13 @@
                     <span ng-bind-html="me.statusText()"></span> <span ng-show="me.returns">(<translate>back</translate> {{me.returns}})</span>
                 </div>
             </div>
-
-            <p>
-                <div class="button-bar control">
-                    <a translate class="button green" ng-click="submitStatus(0)">At work</a>
-                    <a translate class="button red" ng-click="submitStatus(1)">Gone for the day</a>
-                </div>
-            </p>
-            <form>
+            <form ng-show="me.person">
+                <p>
+                    <div class="button-bar control">
+                        <a translate class="button green" ng-click="submitStatus(0)">At work</a>
+                        <a translate class="button red" ng-click="submitStatus(1)">Gone for the day</a>
+                    </div>
+                </p>
                 <div class="list">
                     <label class="item item-input item-select">
                         <div class="input-label" translate>

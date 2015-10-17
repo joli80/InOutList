@@ -13,8 +13,8 @@ angular.module('inoutlist.controllers', [])
         $scope.modal = modal;
     });
     $scope.openModal = function (person) {
-        person.getFace();
         $scope.person = person;
+        person.getFace();
         $scope.modal.show();
     };
     $scope.closeModal = function () {
@@ -27,9 +27,6 @@ angular.module('inoutlist.controllers', [])
 })
 
 .controller('PeopleDetailCtrl', function ($scope, People) {
-    $scope.update = function () {
-        People.update();
-    };
     $scope.close = function () {
         $scope.modal.hide();
     }

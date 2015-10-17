@@ -5,7 +5,7 @@
     <ion-content class="padding">
         <div class="list card ">
             <div class="item person {{person.statusColor()}} item-avatar">
-                <img ng-src="{{person.face}}">
+                <img ng-show="person.face" ng-src="{{person.face}}">
                 <strong>{{person.name}}</strong><br />
                 <span ng-bind-html="person.statusText()"></span>  <span ng-show="person.returns">(<translate>back</translate> {{person.returns}})</span>
             </div>

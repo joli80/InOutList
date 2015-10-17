@@ -209,6 +209,8 @@
 
 .factory('People', function (GraphApi, InOutListApi, $timeout, $ionicPlatform, $interval) {
 
+    var people = {};
+
     $ionicPlatform.on("deviceready", function (event) {
         update(true);
         startPoll();
@@ -408,10 +410,10 @@
             email: '',
             status: '',
             returns: '',
-            face: '',
+            face: undefined,
             getFace: function () {
-                if (!c.face) {
-                    c.face = 'img/profile.png';
+                if (c.face === undefined) {
+                    c.face = '';
 
                     if (test)
                         return;
@@ -482,7 +484,7 @@
         }
     }
 
-    var people = {
+    people = {
         update: update,
         all: function () {
             var array = [];
