@@ -218,3 +218,4 @@ platforms/
 build.json
 InOutBoard-Ionic/res/native/
 InOutList_keystore
+.io-config.json
