@@ -12,7 +12,7 @@
   <access launch-external="yes" origin="sms:*"/>
   <access launch-external="yes" origin="market:*"/>
   <vs:features/>
-  <preference name="SplashScreen" value="none"/>
+  <preference name="SplashScreen" value="splash"/>
   <preference name="windows-target-version" value="8.1"/>
   <preference name="windows-phone-target-version" value="8.1"/>
   <preference name="android-minSdkVersion" value="14"/>
@@ -20,7 +20,7 @@
   <preference name="ShowTitle" value="True"/>
   <preference name="InAppBrowserStorageEnabled" value="True"/>
   <preference name="SuppressesIncrementalRendering" value="True"/>
-  <preference name="SplashScreenDelay" value="3000"/>
+  <preference name="SplashScreenDelay" value="500"/>
   <platform name="android">
     <splash src="resources\android\splash\drawable-land-ldpi-screen.png" density="land-ldpi"/>
     <splash src="resources\android\splash\drawable-land-mdpi-screen.png" density="land-mdpi"/>
