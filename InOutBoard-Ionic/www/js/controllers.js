@@ -66,6 +66,7 @@ angular.module('inoutlist.controllers', [])
                 $scope.me.person.StatusMessage = '';
                 $scope.me.person.BackAgainMessage = '';
                 break;
+            case 1:
             case 3:
                 $scope.me.person.BackAgainMessage = ''
             default:
