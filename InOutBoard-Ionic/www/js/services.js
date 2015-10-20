@@ -1,4 +1,5 @@
-﻿angular.module('inoutlist.services', [])
+﻿/* global Microsoft */
+angular.module('inoutlist.services', [])
 
     .factory('InOutListApi', function (Adal, $resource) {
 
@@ -233,7 +234,7 @@
 
             poll = $interval(function () {
                 var now = new Date();
-                var nextUpdate = new Date(latestUpdate);
+                var nextUpdate = new Date(latestUpdate.toString());
                 nextUpdate.setSeconds(latestUpdate.getSeconds() + 60);
                 if (now > nextUpdate)
                     update(true);

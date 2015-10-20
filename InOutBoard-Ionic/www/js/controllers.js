@@ -1,3 +1,4 @@
+/* global angular */
 angular.module('inoutlist.controllers', [])
 
 .controller('PeopleCtrl', function ($scope, People, $ionicModal) {
