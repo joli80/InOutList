@@ -104,4 +104,6 @@
   <vs:plugin name="cordova-plugin-ms-adal" version="0.6.0"/>
   <vs:plugin name="cordova-plugin-whitelist" version="1.0.0"/>
   <icon src="resources\android\icon\drawable-xhdpi-icon.png"/>
+  <hook type="after_prepare" src="hooks/after_prepare/010_add_platform_class.js" />
+  <hook type="after_prepare" src="hooks/after_prepare/020_remove_sass_from_platforms.js" />
 </widget>
