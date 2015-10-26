@@ -4,8 +4,23 @@
         "uninstalled": []
     },
     "config_munge": {
-        "files": {}
+        "files": {
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"ADALProxy\"><param name=\"ios-package\" value=\"CordovaAdalPlugin\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
     },
-    "installed_plugins": {},
+    "installed_plugins": {
+        "cordova-plugin-ms-adal": {
+            "PACKAGE_NAME": "se.twigg.inoutlist"
+        }
+    },
     "dependent_plugins": {}
 }

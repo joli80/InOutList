@@ -1,15 +1,18 @@
+Node version: v4.2.1
+
+Cordova version: 5.3.3
+
+Config.xml file: 
+
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget android-versionCode="19" defaultlocale="sv-SE" id="se.twigg.inoutlist" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
-  <name>Inneute-tavlan</name>
+  <name>Inne/ute-tavlan</name>
   <description>
   </description>
   <author email="dev@cordova.apache.org" href="http://cordova.io">Johan Lindqvist</author>
   <content src="index.html" />
   <access origin="https://*.infracontrol.com" />
   <access origin="https://*.windows.net" />
-  <access origin="https://*.microsoftonline.com" />
-  <access origin="https://*.microsoftonline-p.com" />
-  <access origin="http://inoutlist/" />
   <access launch-external="yes" origin="tel:*" />
   <access launch-external="yes" origin="geo:*" />
   <access launch-external="yes" origin="mailto:*" />
@@ -111,3 +114,10 @@
   <hook type="after_prepare" src="hooks/after_prepare/010_add_platform_class.js" />
   <hook type="after_prepare" src="hooks/after_prepare/020_remove_sass_from_platforms.js" />
 </widget>
+
+Plugins: 
+
+cordova-plugin-ms-adal,cordova-plugin-whitelist
+
+No Platforms Currently Installed
+
