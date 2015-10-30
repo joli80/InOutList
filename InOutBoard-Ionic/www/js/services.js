@@ -1,4 +1,5 @@
-﻿/* global Microsoft */
+﻿/* global angular */
+/* global Microsoft */
 angular.module('inoutlist.services', [])
 
     .factory('InOutListApi', function (Adal, $resource) {
@@ -207,10 +208,10 @@ angular.module('inoutlist.services', [])
         };
     })
 
-    .factory('People', function (GraphApi, InOutListApi, $timeout, $ionicPlatform, $interval) {
+    .factory('People', function (GraphApi, InOutListApi, $timeout, $ionicPlatform, $interval, $ionicLoading) {
 
         var people = {};
-        var test = false;
+        var test = true;
 
         $ionicPlatform.ready(function () {
             update(true);
@@ -296,15 +297,28 @@ angular.module('inoutlist.services', [])
         var loadingPersons, loadingUsers;
         function updateLoading() {
             people.loading = loadingUsers || loadingPersons;
+            showLoading(people.loading);
+        }
+
+        function showLoading(show) {
+            if (people.loading) {
+                $ionicLoading.show({
+                    templateUrl: 'templates/loading.html'
+                });
+            } else {
+                $ionicLoading.hide();
+            }
         }
 
         function update(silentLoginOnly) {
             latestUpdate = new Date();
             if (test) {
-                people.loading = true;
+                loadingPersons = true;
+                updateLoading();
                 $timeout(function () {
                     createTestData();
-                    people.loading = false;
+                    loadingPersons = false;
+                    updateLoading();
                 }, 500);
                 return;
             }

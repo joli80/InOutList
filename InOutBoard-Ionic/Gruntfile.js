@@ -19,6 +19,6 @@
         },
     })
 
-    //grunt.registerTask('default', ['nggettext_extract']);
+    grunt.registerTask('default', ['nggettext_extract']);
 
 };
