@@ -29,7 +29,7 @@ img.emoticon {
     }
 
 .people {
-    margin: 20px 10px;
+    margin: 20px 0;
 }
 
     .people .person {
@@ -58,19 +58,19 @@ img.emoticon {
     }
 }
 
-@media (min-width: 768px) {  
+@media (min-width: 770px) {  
     .people {
-        max-width: 768px;
+        max-width: 765px;
     }
 }
 
-@media (min-width: 1024px) {   
+@media (min-width: 1040px) {   
     .people {
-        max-width: 1024px;
+        max-width: 1030px;
     }
 }
 
-@media (min-width: 1300px) {
+@media (min-width: 1320px) {
     .people {
         max-width: 1300px;
     }
