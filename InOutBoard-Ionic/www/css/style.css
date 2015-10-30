@@ -1,5 +1,3 @@
-/* Empty. Add your own CSS if you like */
-
 .item.person {
     height: 80px;
 }
@@ -30,14 +28,6 @@ img.emoticon {
         box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
     }
 
-.spinner svg {
-    width: 28px;
-    height: 28px;
-    stroke: #444;
-    fill: #444;
-    padding-top: 4px;
-}
-
 .people {
     margin: 20px 10px;
 }
@@ -47,10 +37,9 @@ img.emoticon {
         margin-bottom: 5px;
     }
 
-@media (min-width: 568px) {
-    
+@media (min-width: 568px) {  
     .people {
-        width: 560px;
+        max-width: 560px;
         margin-left: auto;
         margin-right: auto;
     }
@@ -61,32 +50,29 @@ img.emoticon {
         display: block;
         float: left;
     }
-  
+    
+    .me {
+        max-width: 568px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 @media (min-width: 768px) {  
     .people {
-        width: 768px;
+        max-width: 768px;
     }
 }
 
 @media (min-width: 1024px) {   
     .people {
-        width: 1024px;
+        max-width: 1024px;
     }
 }
 
 @media (min-width: 1300px) {
     .people {
-        width: 1300px;
-    }
-}
-
-@media (min-width: 568px) {
-    .me {
-        max-width: 568px;
-        margin-left: auto;
-        margin-right: auto;
+        max-width: 1300px;
     }
 }
 
