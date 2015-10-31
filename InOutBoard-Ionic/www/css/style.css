@@ -29,7 +29,7 @@ img.emoticon {
     }
 
 .people {
-    margin: 20px 0;
+    margin: 20px 10px;
 }
 
     .people .person {
@@ -37,34 +37,39 @@ img.emoticon {
         margin-bottom: 5px;
     }
 
-@media (min-width: 568px) {  
+div.me {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+@media (min-width: 568px) {
     .people {
         max-width: 560px;
         margin-left: auto;
         margin-right: auto;
     }
-    
-    .people .person {
-        width: 250px;
-        margin-right: 5px;
-        display: block;
-        float: left;
-    }
-    
-    .me {
+
+        .people .person {
+            width: 250px;
+            margin-right: 5px;
+            display: block;
+            float: left;
+        }
+
+    div.me {
         max-width: 568px;
         margin-left: auto;
         margin-right: auto;
     }
 }
 
-@media (min-width: 770px) {  
+@media (min-width: 770px) {
     .people {
         max-width: 765px;
     }
 }
 
-@media (min-width: 1040px) {   
+@media (min-width: 1040px) {
     .people {
         max-width: 1030px;
     }
@@ -123,16 +128,16 @@ img.emoticon {
     max-width: none;
 }
 
-ion-content.me {
+form.me {
     position: relative;
 }
 
 .overlay.on {
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    background-color:rgba(255, 255, 255, 0.50);
-    z-index:9999;
+    position: absolute;
+    top: 0;
+    left: -1px;
+    right: -1px;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.50);
+    z-index: 9999;
 }

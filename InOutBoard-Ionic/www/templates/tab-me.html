@@ -3,7 +3,7 @@
         <ion-spinner ng-show="People.loading"></ion-spinner>
         <button class="button button-icon icon ion-refresh" ng-click="update()"></button>
     </ion-nav-buttons>
-    <ion-content class="padding me">
+    <ion-content class="padding">
         <div ng-show="People.needLogin">
             <button class="button button-block icon-left ion-log-in" translate ng-click="update()">
                 Log in
@@ -17,7 +17,7 @@
                     <span ng-bind-html="me.statusText()"></span> <span ng-show="me.returns">(<translate>back</translate> {{me.returns}})</span>
                 </div>
             </div>
-            <form ng-show="me.person">
+            <form ng-show="me.person" class="me">
                 <p>
                     <div class="button-bar control">
                         <a translate class="button green" ng-click="submitStatus(0)">At work</a>
@@ -56,8 +56,8 @@
                         Submit
                     </button>
                 </div>
+                <div ng-class="{on: People.loading}" class="overlay"></div>
             </form>
         </div>
-        <div ng-class="{on: People.loading}" class="overlay"></div>
     </ion-content>
 </ion-view>
