@@ -208,7 +208,7 @@ angular.module('inoutlist.services', [])
         };
     })
 
-    .factory('People', function (GraphApi, InOutListApi, $timeout, $ionicPlatform, $interval, $ionicLoading) {
+    .factory('People', function (GraphApi, InOutListApi, $timeout, $ionicPlatform, $interval) {
 
         var people = {};
         var test = true;
@@ -297,17 +297,6 @@ angular.module('inoutlist.services', [])
         var loadingPersons, loadingUsers;
         function updateLoading() {
             people.loading = loadingUsers || loadingPersons;
-            showLoading(people.loading);
-        }
-
-        function showLoading(show) {
-            if (people.loading) {
-                $ionicLoading.show({
-                    templateUrl: 'templates/loading.html'
-                });
-            } else {
-                $ionicLoading.hide();
-            }
         }
 
         function update(silentLoginOnly) {

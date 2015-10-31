@@ -1,8 +1,9 @@
 <ion-view>
     <ion-nav-buttons side="secondary">
+        <ion-spinner ng-show="People.loading"></ion-spinner>
         <button class="button button-icon icon ion-refresh" ng-click="update()"></button>
     </ion-nav-buttons>
-    <ion-content class="padding">
+    <ion-content class="padding me">
         <div ng-show="People.needLogin">
             <button class="button button-block icon-left ion-log-in" translate ng-click="update()">
                 Log in
@@ -11,7 +12,8 @@
         <div ng-show="getMe()" class="me">
             <div class="list card ">
                 <div class="item person {{me.statusColor()}}">
-                    <strong>{{me.name}}</strong><br />
+                    <strong>{{me.name}}</strong>
+                    <br />
                     <span ng-bind-html="me.statusText()"></span> <span ng-show="me.returns">(<translate>back</translate> {{me.returns}})</span>
                 </div>
             </div>
@@ -56,5 +58,6 @@
                 </div>
             </form>
         </div>
+        <div ng-class="{on: People.loading}" class="overlay"></div>
     </ion-content>
 </ion-view>
