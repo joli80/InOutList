@@ -141,3 +141,11 @@ form.me {
     background-color: rgba(255, 255, 255, 0.50);
     z-index: 9999;
 }
+
+.spinner svg {
+    width: 28px;
+    height: 28px;
+    stroke: #444;
+    fill: #444;
+    padding-top: 4px;
+}
