@@ -5,7 +5,9 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
+		118243B32B3745C487A4FE40 /* ADALiOS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D3F2961DDD2E434E9D7F7A1E /* ADALiOS.bundle */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
@@ -38,12 +40,11 @@
 		7E7966E51810823500FA85AD /* icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DB1810823500FA85AD /* icon-76@2x.png */; };
 		7E7966E61810823500FA85AD /* icon-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DC1810823500FA85AD /* icon-small.png */; };
 		7E7966E71810823500FA85AD /* icon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DD1810823500FA85AD /* icon-small@2x.png */; };
+		8C5FAF5860EF43A99BF38957 /* ADALiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5222C885D82B4DC28FB96F40 /* ADALiOS.framework */; };
+		A9F792BEB69F466D86FFBBE3 /* ADALiOS.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = C9DE5D1A6624463DBE514014 /* ADALiOS.entitlements */; };
+		D2BA97C6FD144D9DA2382CD9 /* CordovaAdalUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D63389A763244FD8865B290A /* CordovaAdalUtils.m */; };
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
 		FE71031A2BE0443CA9F2B363 /* CordovaAdalPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = FF222E704EB3494E890E14DD /* CordovaAdalPlugin.m */; };
-		D2BA97C6FD144D9DA2382CD9 /* CordovaAdalUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D63389A763244FD8865B290A /* CordovaAdalUtils.m */; };
-		118243B32B3745C487A4FE40 /* ADALiOS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D3F2961DDD2E434E9D7F7A1E /* ADALiOS.bundle */; };
-		A9F792BEB69F466D86FFBBE3 /* ADALiOS.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = C9DE5D1A6624463DBE514014 /* ADALiOS.entitlements */; };
-		8C5FAF5860EF43A99BF38957 /* ADALiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5222C885D82B4DC28FB96F40 /* ADALiOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,11 +65,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03F9F427B0EA4EEAB0563D5A /* CordovaAdalPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CordovaAdalPlugin.h; path = "cordova-plugin-ms-adal/CordovaAdalPlugin.h"; sourceTree = "<group>"; };
+		04CAF4181BE653FF00F0425F /* Inne ute-tavlan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "Inne ute-tavlan.entitlements"; path = "Inne ute-tavlan/Inne ute-tavlan.entitlements"; sourceTree = "<group>"; };
 		1D3623240D0F684500981E51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* Inne ute-tavlan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Inne ute-tavlan.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1F766FDD13BBADB100FB74C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
-		1F766FE013BBADB100FB74C0 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Localizable.strings; sourceTree = "<group>"; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		301BF52D109A57CC0062928A /* CordovaLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CordovaLib.xcodeproj; path = CordovaLib/CordovaLib.xcodeproj; sourceTree = "<group>"; };
@@ -92,6 +93,7 @@
 		30C1856519D5FC0A00212699 /* icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-60@3x.png"; sourceTree = "<group>"; };
 		30FC414816E50CA1004E6F35 /* icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72@2x.png"; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Inne ute-tavlan-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Inne ute-tavlan-Prefix.pch"; sourceTree = "<group>"; };
+		5222C885D82B4DC28FB96F40 /* ADALiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ADALiOS.framework; path = "Inne ute-tavlan/Plugins/cordova-plugin-ms-adal/ADALiOS.framework"; sourceTree = "<group>"; };
 		5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		7E7966D41810823500FA85AD /* icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-40.png"; sourceTree = "<group>"; };
 		7E7966D51810823500FA85AD /* icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-40@2x.png"; sourceTree = "<group>"; };
@@ -104,18 +106,16 @@
 		7E7966DC1810823500FA85AD /* icon-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-small.png"; sourceTree = "<group>"; };
 		7E7966DD1810823500FA85AD /* icon-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-small@2x.png"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Inne ute-tavlan-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Inne ute-tavlan-Info.plist"; path = "../Inne ute-tavlan-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		C9DE5D1A6624463DBE514014 /* ADALiOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = unknown; path = ADALiOS.entitlements; sourceTree = "<group>"; };
+		CB61E45295B8410691B72373 /* CordovaAdalUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CordovaAdalUtils.h; path = "cordova-plugin-ms-adal/CordovaAdalUtils.h"; sourceTree = "<group>"; };
+		D3F2961DDD2E434E9D7F7A1E /* ADALiOS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ADALiOS.bundle; sourceTree = "<group>"; };
 		D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
+		D63389A763244FD8865B290A /* CordovaAdalUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CordovaAdalUtils.m; path = "cordova-plugin-ms-adal/CordovaAdalUtils.m"; sourceTree = "<group>"; };
 		EB87FDF21871DA7A0020F90C /* merges */ = {isa = PBXFileReference; lastKnownFileType = folder; name = merges; path = ../../merges; sourceTree = "<group>"; };
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../www; sourceTree = "<group>"; };
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "Inne ute-tavlan/config.xml"; sourceTree = "<group>"; };
-		FF222E704EB3494E890E14DD /* CordovaAdalPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CordovaAdalPlugin.m"; path = "cordova-plugin-ms-adal/CordovaAdalPlugin.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		D63389A763244FD8865B290A /* CordovaAdalUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CordovaAdalUtils.m"; path = "cordova-plugin-ms-adal/CordovaAdalUtils.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		03F9F427B0EA4EEAB0563D5A /* CordovaAdalPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CordovaAdalPlugin.h"; path = "cordova-plugin-ms-adal/CordovaAdalPlugin.h"; sourceTree = "<group>"; fileEncoding = 4; };
-		CB61E45295B8410691B72373 /* CordovaAdalUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CordovaAdalUtils.h"; path = "cordova-plugin-ms-adal/CordovaAdalUtils.h"; sourceTree = "<group>"; fileEncoding = 4; };
-		D3F2961DDD2E434E9D7F7A1E /* ADALiOS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = "ADALiOS.bundle"; path = "ADALiOS.bundle"; sourceTree = "<group>"; };
-		C9DE5D1A6624463DBE514014 /* ADALiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = unknown; name = "ADALiOS.entitlements"; path = "ADALiOS.entitlements"; sourceTree = "<group>"; fileEncoding = 4; };
-		5222C885D82B4DC28FB96F40 /* ADALiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "ADALiOS.framework"; path = "Inne ute-tavlan/Plugins/cordova-plugin-ms-adal/ADALiOS.framework"; sourceTree = "<group>"; };
+		FF222E704EB3494E890E14DD /* CordovaAdalPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CordovaAdalPlugin.m; path = "cordova-plugin-ms-adal/CordovaAdalPlugin.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +158,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				04CAF4181BE653FF00F0425F /* Inne ute-tavlan.entitlements */,
 				EB87FDF41871DAF40020F90C /* config.xml */,
 				EB87FDF31871DA8E0020F90C /* www */,
 				EB87FDF21871DA7A0020F90C /* merges */,
@@ -304,8 +305,18 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 510;
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = 6A5Z4EMAEX;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
+					};
+				};
 			};
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "__CLI__" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Inne ute-tavlan" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
@@ -429,7 +440,13 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = "Inne ute-tavlan/Inne ute-tavlan.entitlements";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Inne ute-tavlan/Plugins/cordova-plugin-ms-adal\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -452,10 +469,6 @@
 				);
 				PRODUCT_NAME = "Inne ute-tavlan";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"Inne ute-tavlan/Plugins/cordova-plugin-ms-adal\"",
-				);
 			};
 			name = Debug;
 		};
@@ -464,7 +477,13 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = "Inne ute-tavlan/Inne ute-tavlan.entitlements";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Inne ute-tavlan/Plugins/cordova-plugin-ms-adal\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Inne ute-tavlan/Inne ute-tavlan-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -485,10 +504,6 @@
 				);
 				PRODUCT_NAME = "Inne ute-tavlan";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"Inne ute-tavlan/Plugins/cordova-plugin-ms-adal\"",
-				);
 			};
 			name = Release;
 		};
@@ -591,7 +606,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "__CLI__" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Inne ute-tavlan" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
