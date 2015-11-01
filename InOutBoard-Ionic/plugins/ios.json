@@ -18,6 +18,9 @@
         }
     },
     "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "se.twigg.inoutlist"
+        },
         "cordova-plugin-ms-adal": {
             "PACKAGE_NAME": "se.twigg.inoutlist"
         }
