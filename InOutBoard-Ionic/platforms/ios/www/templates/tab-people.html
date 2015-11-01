@@ -1,0 +1,24 @@
+<ion-view>
+    <ion-nav-buttons side="secondary">
+        <ion-spinner ng-show="People.loading"></ion-spinner>
+        <button class="button button-icon icon ion-refresh" ng-click="update()"></button>
+    </ion-nav-buttons>
+    <ion-content class="padding">
+        <div ng-show="People.needLogin">
+            <button class="button button-block icon-left ion-log-in" translate ng-click="update()">
+                Log in
+            </button>
+        </div>
+        <div class="people">
+            <div class="person" ng-repeat="person in People.all() | orderBy:'name'">
+                <a href="#/tab/people" ng-click="openModal(person)">
+                    <div class="col-content {{person.statusColor()}}">
+                        <strong>{{person.name}}</strong>
+                        <br />
+                        <span ng-bind-html="person.statusText()"></span> <span ng-show="person.returns">(<translate>back</translate> {{person.returns}})</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

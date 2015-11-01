@@ -1,0 +1,151 @@
+.item.person {
+    height: 80px;
+}
+
+img.emoticon {
+    margin: 0 0 -4px;
+}
+
+.control .button {
+    color: #fff;
+}
+
+.button.green {
+    border-color: #337733;
+}
+
+    .button.green.active, .button.green.activated {
+        background-color: #337733;
+        box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
+    }
+
+.button.red {
+    border-color: #770000;
+}
+
+    .button.red.active, .button.red.activated {
+        background-color: #770000;
+        box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
+    }
+
+.people {
+    margin: 20px 10px;
+}
+
+    .people .person {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+div.me {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+@media (min-width: 568px) {
+    .people {
+        max-width: 560px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+        .people .person {
+            width: 250px;
+            margin-right: 5px;
+            display: block;
+            float: left;
+        }
+
+    div.me {
+        max-width: 568px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (min-width: 770px) {
+    .people {
+        max-width: 765px;
+    }
+}
+
+@media (min-width: 1040px) {
+    .people {
+        max-width: 1030px;
+    }
+}
+
+@media (min-width: 1320px) {
+    .people {
+        max-width: 1300px;
+    }
+}
+
+.people .person a {
+    text-decoration: none;
+}
+
+.person .col-content {
+    padding: 10px;
+    height: 75px;
+}
+
+.green {
+    color: #fff;
+    background-color: #339933;
+}
+
+.red {
+    color: #fff;
+    background-color: #990000;
+}
+
+.green-light {
+    color: #fff;
+    background-color: #00CC00;
+}
+
+.blue {
+    color: #fff;
+    background-color: #426EFC;
+}
+
+.purple {
+    color: #fff;
+    background-color: #8F6FF0;
+}
+
+.yellow {
+    color: #000;
+    background-color: #FFCC00;
+}
+
+.platform-windowsphone .tab-item {
+    max-width: none;
+}
+
+.platform-windows .tab-item {
+    max-width: none;
+}
+
+form.me {
+    position: relative;
+}
+
+.overlay.on {
+    position: absolute;
+    top: 0;
+    left: -1px;
+    right: -1px;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.50);
+    z-index: 9999;
+}
+
+.spinner svg {
+    width: 28px;
+    height: 28px;
+    stroke: #444;
+    fill: #444;
+    padding-top: 4px;
+}

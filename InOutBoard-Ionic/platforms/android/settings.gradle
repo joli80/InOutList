@@ -1,0 +1,5 @@
+// GENERATED FILE - DO NOT EDIT
+include ":"
+include ":CordovaLib"
+include ":cordova-plugin-ms-adal:CordovaADAL"
+project(":cordova-plugin-ms-adal:CordovaADAL").projectDir = new File("cordova-plugin-ms-adal/inoutlist-CordovaADAL")

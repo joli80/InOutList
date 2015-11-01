@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget android-versionCode="19" defaultlocale="sv-SE" id="se.twigg.inoutlist" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
+    <preference name="loglevel" value="DEBUG" />
+    <splash density="land-ldpi" src="resources\android\splash\drawable-land-ldpi-screen.png" />
+    <splash density="land-mdpi" src="resources\android\splash\drawable-land-mdpi-screen.png" />
+    <splash density="land-hdpi" src="resources\android\splash\drawable-land-hdpi-screen.png" />
+    <splash density="land-xhdpi" src="resources\android\splash\drawable-land-xhdpi-screen.png" />
+    <splash density="land-xxhdpi" src="resources\android\splash\drawable-land-xxhdpi-screen.png" />
+    <splash density="land-xxxhdpi" src="resources\android\splash\drawable-land-xxxhdpi-screen.png" />
+    <splash density="port-ldpi" src="resources\android\splash\drawable-port-ldpi-screen.png" />
+    <splash density="port-mdpi" src="resources\android\splash\drawable-port-mdpi-screen.png" />
+    <splash density="port-hdpi" src="resources\android\splash\drawable-port-hdpi-screen.png" />
+    <splash density="port-xhdpi" src="resources\android\splash\drawable-port-xhdpi-screen.png" />
+    <splash density="port-xxhdpi" src="resources\android\splash\drawable-port-xxhdpi-screen.png" />
+    <splash density="port-xxxhdpi" src="resources\android\splash\drawable-port-xxxhdpi-screen.png" />
+    <icon density="ldpi" src="resources\android\icon\drawable-ldpi-icon.png" />
+    <icon density="mdpi" src="resources\android\icon\drawable-mdpi-icon.png" />
+    <icon density="hdpi" src="resources\android\icon\drawable-hdpi-icon.png" />
+    <icon density="xhdpi" src="resources\android\icon\drawable-xhdpi-icon.png" />
+    <icon density="xxhdpi" src="resources\android\icon\drawable-xxhdpi-icon.png" />
+    <icon density="xxxhdpi" src="resources\android\icon\drawable-xxxhdpi-icon.png" />
+    <name>Inne ute-tavlan</name>
+    <description>
+    </description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">Johan Lindqvist</author>
+    <content src="index.html" />
+    <access origin="https://*.infracontrol.com" />
+    <access origin="https://*.windows.net" />
+    <access origin="https://*.microsoftonline.com" />
+    <access origin="https://*.microsoftonline-p.com" />
+    <access origin="http://inoutlist/" />
+    <access launch-external="yes" origin="tel:*" />
+    <access launch-external="yes" origin="geo:*" />
+    <access launch-external="yes" origin="mailto:*" />
+    <access launch-external="yes" origin="sms:*" />
+    <access launch-external="yes" origin="market:*" />
+    <vs:features />
+    <preference name="SplashScreen" value="splash" />
+    <preference name="windows-target-version" value="8.1" />
+    <preference name="windows-phone-target-version" value="8.1" />
+    <preference name="android-minSdkVersion" value="14" />
+    <preference name="KeepRunning" value="True" />
+    <preference name="ShowTitle" value="True" />
+    <preference name="InAppBrowserStorageEnabled" value="True" />
+    <preference name="SuppressesIncrementalRendering" value="True" />
+    <preference name="SplashScreenDelay" value="500" />
+    <vs:platformSpecificValues>
+        <vs:platformSpecificWidget id="Infracontrol.Inneute-tavlan" platformName="windows" version="1.1.0.1">
+            <vs:name>Inne/ute-tavlan</vs:name>
+            <vs:publisherId>CN=75CE6365-50F2-475C-8B2F-F33E39F05BC7</vs:publisherId>
+            <vs:author>Infracontrol</vs:author>
+        </vs:platformSpecificWidget>
+    </vs:platformSpecificValues>
+    <vs:plugin name="cordova-plugin-ms-adal" version="0.6.0" />
+    <vs:plugin name="cordova-plugin-whitelist" version="1.0.0" />
+    <icon src="resources\android\icon\drawable-xhdpi-icon.png" />
+    <hook src="hooks/after_prepare/010_add_platform_class.js" type="after_prepare" />
+    <hook src="hooks/after_prepare/020_remove_sass_from_platforms.js" type="after_prepare" />
+    <feature name="ADALProxy">
+        <param name="android-package" value="com.microsoft.aad.adal.CordovaAdalPlugin" />
+    </feature>
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+</widget>

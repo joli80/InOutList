@@ -1,0 +1,63 @@
+<ion-view>
+    <ion-nav-buttons side="secondary">
+        <ion-spinner ng-show="People.loading"></ion-spinner>
+        <button class="button button-icon icon ion-refresh" ng-click="update()"></button>
+    </ion-nav-buttons>
+    <ion-content class="padding">
+        <div ng-show="People.needLogin">
+            <button class="button button-block icon-left ion-log-in" translate ng-click="update()">
+                Log in
+            </button>
+        </div>
+        <div ng-show="getMe()" class="me">
+            <div class="list card ">
+                <div class="item person {{me.statusColor()}}">
+                    <strong>{{me.name}}</strong>
+                    <br />
+                    <span ng-bind-html="me.statusText()"></span> <span ng-show="me.returns">(<translate>back</translate> {{me.returns}})</span>
+                </div>
+            </div>
+            <form ng-show="me.person" class="me">
+                <p>
+                    <div class="button-bar control">
+                        <a translate class="button green" ng-click="submitStatus(0)">At work</a>
+                        <a translate class="button red" ng-click="submitStatus(1)">Gone for the day</a>
+                    </div>
+                </p>
+                <div class="list">
+                    <label class="item item-input item-select">
+                        <div class="input-label" translate>
+                            Status
+                        </div>
+                        <select ng-model="me.person.Status" convert-to-number ng-change="onSelectChange()" tabindex="1">
+                            <option value="0" translate>At work</option>
+                            <option value="1" translate>Gone for the day</option>
+                            <option value="2" translate>Busy</option>
+                            <option value="3" translate>Working at home</option>
+                            <option value="11" translate>Vacation</option>
+                            <option value="12" translate>Sick</option>
+                            <option value="13" translate>Sick children</option>
+                            <option value="14" translate>Parenting leave</option>
+                            <option value="21" translate>Business arrend</option>
+                            <option value="22" translate>Business travel</option>
+                            <option value="23" translate>Private arrend</option>
+                            <option value="24" translate>In a meeting</option>
+                        </select>
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label" translate>Arrend</span>
+                        <input type="text" ng-model="me.person.StatusMessage" tabindex="2">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label" translate>Back</span>
+                        <input type="text" ng-model="me.person.BackAgainMessage" tabindex="3" autocapitalize="none">
+                    </label>
+                    <button type="submit" class="button button-block" translate ng-click="submit()">
+                        Submit
+                    </button>
+                </div>
+                <div ng-class="{on: People.loading}" class="overlay"></div>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>
