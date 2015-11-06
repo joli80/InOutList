@@ -468,6 +468,7 @@
 					"-weak-lSystem",
 					"-ObjC",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = se.twigg.inoutlist1;
 				PRODUCT_NAME = "Inne ute-tavlan";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -490,6 +491,12 @@
 				GCC_PREFIX_HEADER = "Inne ute-tavlan/Inne ute-tavlan-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
+				HEADER_SEARCH_PATHS = (
+					"\"$(TARGET_BUILD_DIR)/usr/local/lib/include\"",
+					"\"$(OBJROOT)/UninstalledProducts/include\"",
+					"\"$(BUILT_PRODUCTS_DIR)\"",
+					"\"$(OBJROOT)/UninstalledProducts/$(PLATFORM_NAME)/include\"",
+				);
 				INFOPLIST_FILE = "Inne ute-tavlan/Inne ute-tavlan-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
@@ -504,6 +511,7 @@
 					"-weak-lSystem",
 					"-ObjC",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = se.twigg.inoutlist1;
 				PRODUCT_NAME = "Inne ute-tavlan";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
