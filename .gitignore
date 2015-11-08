@@ -243,3 +243,6 @@ build.json
 InOutBoard-Ionic/res/native/
 InOutList_keystore
 .io-config.json
+ant.properties
+platforms/android/
+platforms/windows/
