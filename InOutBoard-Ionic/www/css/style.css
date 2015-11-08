@@ -144,3 +144,8 @@ form.me {
     fill: #444;
     padding-top: 4px;
 }
+
+.person .person-content {
+    padding: 10px;
+    height: 75px;
+}
