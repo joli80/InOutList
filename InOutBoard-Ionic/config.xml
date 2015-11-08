@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget android-versionCode="19" defaultlocale="sv-SE" id="se.twigg.inoutlist" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
+<widget android-versionCode="20" defaultlocale="sv-SE" id="se.twigg.inoutlist" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
   <name>Inne ute-tavlan</name>
   <description>
   </description>
