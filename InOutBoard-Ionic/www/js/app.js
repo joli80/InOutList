@@ -2,7 +2,7 @@
 /* global cordova */
 angular
 
-    .module('inoutlist', ['ionic', 'inoutlist.controllers', 'inoutlist.services', 'gettext', 'ngResource'])
+    .module('inoutlist', ['ionic', 'inoutlist.controllers', 'inoutlist.services', 'gettext', 'ngResource', 'ngIOS9UIWebViewPatch'])
 
     .directive('convertToNumber', function () {
         return {

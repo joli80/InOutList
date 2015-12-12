@@ -211,7 +211,7 @@ angular.module('inoutlist.services', [])
     .factory('People', function (GraphApi, InOutListApi, $timeout, $ionicPlatform, $interval) {
 
         var people = {};
-        var test = false;
+        var test = true;
 
         $ionicPlatform.ready(function () {
             update(true);
