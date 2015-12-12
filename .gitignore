@@ -246,3 +246,5 @@ InOutList_keystore
 ant.properties
 platforms/android/
 platforms/windows/
+/InOutBoard-Ionic/platforms/
+platforms/ios/
