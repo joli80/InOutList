@@ -9,10 +9,15 @@
   },
   "cordovaPlugins": [
     "cordova-plugin-ms-adal",
-    "cordova-plugin-whitelist"
+    "cordova-plugin-whitelist",
+    "cordova-plugin-ms-adal@0.6.0",
+    "cordova-plugin-whitelist@1.0.0"
   ],
   "cordovaPlatforms": [
     "ios",
-    "android"
+    {
+      "platform": "android",
+      "locator": "windows"
+    }
   ]
 }
