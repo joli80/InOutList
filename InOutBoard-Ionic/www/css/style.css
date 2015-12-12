@@ -119,9 +119,9 @@ div.me {
     max-width: none;
 }
 
-.platform-windows .tab-item {
+/*.platform-windows .tab-item {
     max-width: none;
-}
+}*/
 
 form.me {
     position: relative;
